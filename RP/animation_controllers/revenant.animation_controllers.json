@@ -1,0 +1,36 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.revenant": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"animations": [
+						"bob",
+						{
+							"move": "query.modified_move_speed"
+						},
+						"look_at_target"
+					],
+					"transitions": [
+						{
+							"has_target": "query.has_target"
+						}
+					]
+				},
+				"has_target": {
+					"animations": [
+						"attack",
+						"target",
+						"look_at_target"
+					],
+					"transitions": [
+						{
+							"default": "!query.has_target"
+						}
+					]
+				}
+			}
+		}
+	}
+}

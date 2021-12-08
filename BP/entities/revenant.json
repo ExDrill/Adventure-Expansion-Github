@@ -1,0 +1,127 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:revenant",
+			"is_summonable": true,
+			"is_spawnable": true
+		},
+		"component_groups": {
+			"instant_despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"components": {
+			"minecraft:health": {
+				"value": 50,
+				"max": 50
+			},
+			"minecraft:physics": {},
+			"minecraft:collision_box": {
+				"height": 2,
+				"width": 0.7
+			},
+			"minecraft:attack": {
+				"damage": 5
+			},
+			"minecraft:nameable": {},
+			"minecraft:pushable": {},
+			"minecraft:movement": {
+				"value": 0.2
+			},
+			"minecraft:flying_speed": {
+				"value": 0.2
+			},
+			"minecraft:knockback_resistance": {
+				"value": 0.9
+			},
+			"minecraft:behavior.melee_attack": {
+				"priority": 0
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "fire",
+						"deals_damage": false
+					},
+					{
+						"cause": "lava",
+						"deals_damage": false
+					},
+					{
+						"cause": "fire_tick",
+						"deals_damage": false
+					},
+					{
+						"cause": "magma",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:navigation.hover": {
+                "can_path_over_water": true,
+                "can_sink": false,
+                "can_pass_doors": false,
+                "can_path_from_air": true,
+                "avoid_water": true,
+                "avoid_damage_blocks": true,
+                "avoid_sun": false
+            },
+			"minecraft:movement.hover": {},
+			"minecraft:behavior.random_hover": {
+                "priority": 2,
+                "xz_dist": 8,
+                "y_dist": 8,
+                "y_offset": -1,
+                "interval": 1,
+                "hover_height": [1, 4]
+            },
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 1,
+				"entity_types": [
+                    {   
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "player"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "irongolem"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "snowgolem"
+								}
+							]
+						},
+                        "max_dist": 15
+                    }
+                ]
+			},
+			"minecraft:on_death": {
+				"event": "exdrill:on_death",
+				"target": "self"
+			}
+		},
+		"events": {
+			"exdrill:on_death": {
+				"run_command": {
+					"command": [
+						"summon exdrill:soul_blast"
+					],
+					"target": "self"
+				},
+				"add": {
+					"component_groups": [
+						"instant_despawn"
+					]
+				}
+			}
+		}
+	}
+}

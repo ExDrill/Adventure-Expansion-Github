@@ -1,0 +1,24 @@
+{
+	"resource_pack_name": "Adventure Expansion",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"crumbled_rock": {
+			"textures": "textures/items/crumbled_rock"
+		},
+		"crumbled_hammer": {
+			"textures": "textures/items/crumbled_hammer"
+		},
+		"crumbled_chestplate": {
+			"textures": "textures/items/crumbled_chestplate"
+		},
+		"adventure_expansion_spawn_egg": {
+			"textures": [
+				"textures/items/egg_revenant",
+				"textures/items/egg_crumbles"
+			]
+		},
+		"bottled_soul": {
+			"textures": "textures/items/bottled_soul"
+		}
+	}
+}

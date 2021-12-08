@@ -1,0 +1,50 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"ExDrill"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.1.5",
+				"2.1.1"
+			]
+		}
+	},
+	"header": {
+		"name": "Adventure Expansion Behaviors",
+		"description": "Created by ExDrill",
+		"min_engine_version": [
+			1,
+			17,
+			0
+		],
+		"uuid": "a0c4e2bd-9a2e-432c-8c8f-4fca7ff4fc99",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "833ca871-dbbe-47fd-be54-40d91200e246",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "afa80316-3c51-498e-9b13-d6cbe827b03d",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	]
+}

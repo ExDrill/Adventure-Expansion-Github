@@ -1,0 +1,14 @@
+## Item
+item.exdrill:crumbled_rock=Crumbled Rock
+item.exdrill:crumbled_hammer=Crumbled Hammer
+item.exdrill:crumbled_chestplate=Crumbled Chestplate
+item.exdrill:bottled_soul=Bottled Soul
+## Block
+tile.exdrill:crumbled_rock_block.name=Block of Crumbled Rock
+## Entity
+entity.exdrill:revenant.name=Revenant
+entity.exdrill:crumbles.name=Crumbles
+## Spawn Egg
+item.spawn_egg.entity.exdrill:revenant.name=Spawn Revenant
+item.spawn_egg.entity.exdrill:crumbles.name=Spawn Crumbles
+## Misc

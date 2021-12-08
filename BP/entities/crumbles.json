@@ -1,0 +1,53 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:crumbles",
+			"is_summonable": true,
+			"is_spawnable": true
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:health": {
+				"value": 150,
+				"max": 150
+			},
+			"minecraft:knockback_resistance": {
+				"value": 0.5
+			},
+			"minecraft:collision_box": {
+				"width": 1.25,
+				"height": 3
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 4
+					}
+				]
+			},
+			"minecraft:behavior.random_stroll": {
+				"priority": 5
+			},
+			"minecraft:behavior.look_at_player": {
+				"priority": 5
+			},
+			"minecraft:behavior.random_look_around": {
+				"priority": 6
+			}
+		},
+		"events": {}
+	}
+}

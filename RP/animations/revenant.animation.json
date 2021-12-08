@@ -1,0 +1,53 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.revenant.target": {
+			"loop": "hold_on_last_frame",
+			"bones": {
+				"leftArm": {
+					"rotation": [-135, 0, 0]
+				},
+				"rightArm": {
+					"rotation": [-135, 0, 0]
+				}
+			}
+		},
+		"animation.revenant.move": {
+			"anim_time_update": "query.modified_move_speed",
+			"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": ["-math.cos(query.anim_time*180)*45", 0, 0]
+				},
+				"rightArm": {
+					"rotation": ["math.cos(query.anim_time*180)*45", 0, 0]
+				}
+			}
+		},
+		"animation.revenant.attack": {
+			"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": ["math.cos(variable.attack_time*360)*35", 0, 0]
+				},
+				"rightArm": {
+					"rotation": ["math.cos(variable.attack_time*360)*35", 0, 0]
+				}
+			}
+		},
+		"animation.revenant.bob": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"position": [0, "math.cos(query.anim_time*90)*1.5", 0]
+				},
+				"leftArm": {
+					"rotation": [0, 0, "5 + math.cos(query.anim_time*90)*5"]
+				},
+				"rightArm": {
+					"rotation": [0, 0, "-5 + math.cos(query.anim_time*90)*-5"]
+				}
+			}
+		}
+	}
+}

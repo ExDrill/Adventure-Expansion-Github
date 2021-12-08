@@ -1,0 +1,41 @@
+{
+	"type": "minecraftBedrock",
+	"name": "Adventure Expansion",
+	"namespace": "exdrill",
+	"authors": [
+		"ExDrill"
+	],
+	"targetVersion": "1.17.40",
+	"description": "",
+	"experimentalGameplay": {
+		"cavesAndCliffs": true,
+		"holidayCreatorFeatures": true,
+		"creationOfCustomBiomes": true,
+		"additionalModdingCapabilities": false,
+		"upcomingCreatorFeatures": true,
+		"enableGameTestFramework": false,
+		"experimentalMolangFeatures": true,
+		"educationEdition": false
+	},
+	"packs": {
+		"resourcePack": "./RP",
+		"behaviorPack": "./BP"
+	},
+	"compiler": {
+		"plugins": [
+			"typeScript",
+			"entityIdentifierAlias",
+			"customEntityComponents",
+			"customItemComponents",
+			"customBlockComponents",
+			"customCommands",
+			"moLang",
+			[
+				"simpleRewrite",
+				{
+					"packName": "Adventure Expansion"
+				}
+			]
+		]
+	}
+}

@@ -1,0 +1,75 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "exdrill:crumbled_hammer"
+		},
+		"components": {
+			"minecraft:damage": 6,
+			"minecraft:weapon": {
+				"on_hurt_entity": {
+					"event": "exdrill:on_hurt_entity",
+					"target": "self"	
+				}
+			},
+			"minecraft:icon": {
+				"texture": "crumbled_hammer"
+			},
+			"minecraft:max_stack_size": 1,
+			"minecraft:durability": {
+				"damage_chance": { "min": 60, "max": 100 },
+				"max_durability": 292
+			},
+			"minecraft:hand_equipped": true
+		},
+		"events": {
+			"exdrill:on_hurt_entity": {
+				"sequence": [
+					{
+						"condition": "query.scoreboard('abrupt_hammer') == 4",
+						"damage": {
+							"amount": 4,
+							"target": "other",
+							"type": "entity_attack"
+						},
+						"run_command": {
+							"command": [
+								"scoreboard players set @s abrupt_hammer 0",
+								"particle exdrill:large_crumbled_rock_particle ^ ^1 ^2",
+								"playsound mob.zombie.woodbreak @a ~ ~ ~"
+							],
+							"target": "self"
+						}
+					},
+					{
+						"condition": "query.scoreboard('abrupt_hammer') != 4",
+						"run_command": {
+							"command": [
+								"scoreboard players add @s abrupt_hammer 1",
+								"particle exdrill:small_crumbled_rock_particle ^ ^1 ^2",
+								"playsound break.tuff @a ~ ~ ~"
+							],
+							"target": "self"
+						}
+					},
+					{
+						"condition": "query.scoreboard('abrupt_hammer') != 4",
+						"damage": {
+							"amount": 1,
+							"target": "self",
+							"type": "all"
+						}
+					},
+					{
+						"condition": "query.scoreboard('abrupt_hammer') == 4",
+						"damage": {
+							"amount": 3,
+							"target": "self",
+							"type": "all"
+						}
+					}
+				]
+			}
+		}
+	}
+}

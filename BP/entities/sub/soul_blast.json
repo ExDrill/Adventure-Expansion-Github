@@ -1,0 +1,79 @@
+{
+    "format_version": "1.17.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "exdrill:soul_blast",
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "instant_despawn": {
+                "minecraft:instant_despawn": {}
+            }
+        },
+        "components": {
+            "minecraft:damage_sensor": {
+                "triggers": {
+                    "cause": "all",
+                    "deals_damage": false
+                }
+            },
+            "minecraft:health": {
+                "value": 1,
+                "min": 1,
+                "max": 1
+            },
+            "minecraft:collision_box": {
+                "height": 2,
+                "width": 2
+            },
+            "minecraft:timer": {
+                "looping": false,
+                "time": 2,
+                "time_down_event": {
+                    "event": "instant_despawn",
+                    "target": "self"
+                }                
+            },
+            "minecraft:interact": {
+                "interactions": {
+                    "use_item": true,
+                    "interact_text": "action.interact.collect_soul",
+                    "spawn_items": {
+                        "table": "loot_tables/entities/harvest_soul.json"
+                    },
+                    "on_interact": {
+                        "event": "instant_despawn",
+                        "target": "self",
+                        "filters": {
+                            "test": "has_equipment",
+                            "subject": "other",
+                            "domain": "hand",
+                            "value": "minecraft:glass_bottle"
+                        }
+                    }
+                }
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "run_command": {
+                    "command": [
+                        "particle exdrill:soul_burst_particle ~ ~ ~",
+                        "summon xp_orb ~ ~ ~",
+                        "summon xp_orb ~ ~ ~",
+                        "summon xp_orb ~ ~ ~"
+                    ],
+                    "target": "self"
+                }
+            },
+            "instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "instant_despawn"
+                    ]
+                }
+            }
+        }
+    }
+}

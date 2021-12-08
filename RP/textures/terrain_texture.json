@@ -1,0 +1,11 @@
+{
+	"num_mip_levels": 4,
+	"padding": 8,
+	"resource_pack_name": "Adventure Expansion",
+	"texture_name": "atlas.terrain",
+	"texture_data": {
+		"crumbled_rock_block": {
+			"textures": "textures/blocks/crumbled_rock"
+		}
+	}
+}

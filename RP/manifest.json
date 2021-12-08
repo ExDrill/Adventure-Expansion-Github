@@ -1,0 +1,40 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"ExDrill"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.1.5",
+				"2.1.1"
+			]
+		}
+	},
+	"header": {
+		"name": "Adventure Expansion Resources",
+		"description": "Created by ExDrill",
+		"min_engine_version": [
+			1,
+			17,
+			0
+		],
+		"uuid": "afa80316-3c51-498e-9b13-d6cbe827b03d",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "0bbb98df-a9e4-4ed2-acbe-62c630ef9cb5",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	]
+}
