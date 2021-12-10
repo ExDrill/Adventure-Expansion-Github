@@ -7,9 +7,7 @@
 				"default": {
 					"animations": [
 						"bob",
-						{
-							"move": "query.modified_move_speed"
-						},
+						"general",
 						"look_at_target"
 					],
 					"transitions": [

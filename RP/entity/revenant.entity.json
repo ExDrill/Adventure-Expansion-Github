@@ -13,7 +13,7 @@
 				"default": "geometry.revenant"
 			},
 			"animations": {
-				"move": "animation.revenant.move",
+				"general": "animation.revenant.general",
 				"bob": "animation.revenant.bob",
 				"attack": "animation.revenant.attack",
 				"target": "animation.revenant.target",

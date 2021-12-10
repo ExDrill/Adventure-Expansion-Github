@@ -12,15 +12,14 @@
 				}
 			}
 		},
-		"animation.revenant.move": {
-			"anim_time_update": "query.modified_move_speed",
+		"animation.revenant.general": {
 			"loop": true,
 			"bones": {
 				"leftArm": {
-					"rotation": ["-math.cos(query.anim_time*180)*45", 0, 0]
+					"rotation": [ -90, 0, 0]
 				},
 				"rightArm": {
-					"rotation": ["math.cos(query.anim_time*180)*45", 0, 0]
+					"rotation": [ -90, 0, 0]
 				}
 			}
 		},
