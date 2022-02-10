@@ -1,0 +1,76 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:explosive_ball",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"runtime_identifier": "minecraft:arrow"
+		},
+		"component_groups": {
+			"scale": {
+				"minecraft:scale": {
+					"value": 0.5
+				}
+			},
+			"explode": {
+				"minecraft:explode": {
+					"breaks_blocks": false,
+					"causes_fire": false,
+					"fuse_lit": true,
+					"fuse_length": 0,
+					"power": 1
+				}
+			}
+		},
+		"components": {
+			"minecraft:collision_box": {
+				"height": 0.1,
+				"width": 0.1
+			},
+			"minecraft:physics": {},
+			"minecraft:projectile": {
+				"gravity": 0.01,
+				"on_hit": {
+					"definition_event": {
+						"affect_projectile": true,
+						"event_trigger": {
+							"event": "explode",
+							"target": "self"
+						}
+					},
+					"impact_damage": {
+						"damage": 2,
+						"knockback": false,
+						"destroy_on_hit": false
+					}
+				},
+				"offset": [ 0, 0.5, 0 ]
+			},
+			"minecraft:timer": {
+				"looping": true,
+				"time": 0.5,
+				"time_down_event": {
+					"event": "explode",
+					"target": "self"
+				}
+			}
+		},
+		"events": {
+			"explode": {
+				"add": {
+					"component_groups": [
+						"explode"
+					]
+				}
+			},
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"scale"
+					]
+				}
+			}
+		}
+	}
+}

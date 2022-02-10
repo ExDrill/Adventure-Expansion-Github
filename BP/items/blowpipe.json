@@ -1,0 +1,18 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:item": {
+        "description": {
+            "identifier": "exdrill:blowpipe"
+        },
+        "components": {
+            "minecraft:max_stack_size": 1,
+            "minecraft:display_name": {
+                "value": "Blowpipe"
+            },
+            "minecraft:icon": {
+                "texture": "blowpipe"
+            }
+        },
+        "events": {}
+    }
+}

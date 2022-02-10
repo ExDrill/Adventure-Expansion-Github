@@ -1,0 +1,31 @@
+{
+	"format_version": "1.11.0",
+	"minecraft:spawn_rules": {
+		"description": {
+			"identifier": "exdrill:revenant",
+			"population_control": "monster"
+		},
+		"conditions": [
+			{
+				"minecraft:biome_filter": {
+					"test": "has_biome_tag",
+					"operator": "==",
+					"value": "soulsand_valley"
+				},
+				"minecraft:weight": {
+					"default": 5
+				},
+				"minecraft:spawns_on_block_filter": [
+					"soul_sand",
+					"soul_soil"
+				],
+				"minecraft:difficulty_filter": {
+					"min": "easy",
+					"max": "hard"
+				},
+				"minecraft:spawns_on_surface": {},
+				"minecraft:spawns_underground": {}
+			}
+		]
+	}
+}

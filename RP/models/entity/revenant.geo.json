@@ -6,35 +6,46 @@
 				"identifier": "geometry.revenant",
 				"texture_width": 64,
 				"texture_height": 64,
-				"visible_bounds_width": 3,
-				"visible_bounds_height": 3.5,
-				"visible_bounds_offset": [0, 1.25, 0]
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
 			},
 			"bones": [
 				{
 					"name": "head",
-					"pivot": [0, 22, 0],
+					"pivot": [0, 14, 0],
 					"cubes": [
-						{"origin": [-8, 9, -5], "size": [16, 28, 10], "uv": [0, 0]}
+						{"origin": [-5, 7, -3], "size": [10, 14, 6], "uv": [0, 0]}
 					],
 					"locators": {
-						"emitter": [0, 13, 0]
+						"flames0": [-7, 19, 0],
+						"flames1": [8, 16, 0],
+						"flames2": [0, 12, 5],
+						"flames3": [0, 22, -6]
 					}
+				},
+				{
+					"name": "tail",
+					"parent": "head",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-3, 4, -2], "size": [6, 4, 4], "uv": [28, 16]}
+					]
 				},
 				{
 					"name": "leftArm",
 					"parent": "head",
-					"pivot": [-8, 19, 0],
+					"pivot": [5, 12, 0],
 					"cubes": [
-						{"origin": [-12, 4, -3], "size": [4, 18, 6], "uv": [0, 38]}
+						{"origin": [5, 4, -2], "size": [3, 10, 4], "uv": [0, 20]}
 					]
 				},
 				{
 					"name": "rightArm",
 					"parent": "head",
-					"pivot": [8, 19, 0],
+					"pivot": [-5, 12, 0],
 					"cubes": [
-						{"origin": [8, 4, -3], "size": [4, 18, 6], "uv": [0, 38], "mirror": true}
+						{"origin": [-8, 4, -2], "size": [3, 10, 4], "uv": [0, 20], "mirror": true}
 					]
 				}
 			]

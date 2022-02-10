@@ -1,0 +1,72 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.crumbles.move.arms": {
+			"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": ["variable.tcos1", 0, 0]
+				},
+				"rightArm": {
+					"rotation": ["-variable.tcos1", 0, 0]
+				}
+			}
+		},
+		"animation.crumbles.move.legs": {
+			"loop": true,
+			"bones": {
+				"leftLeg": {
+					"rotation": ["-variable.tcos1", 0, 0]
+				},
+				"rightLeg": {
+					"rotation": ["variable.tcos1", 0, 0]
+				}
+			}
+		},
+		"animation.crumbles.move.body": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [0, 0, "variable.tcos0"]
+				}
+			}
+		},
+		"animation.crumbles.holding": {
+			"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": [-42.73421, 15.69986, 16.32495],
+					"position": [0, 0, -10]
+				},
+				"rightArm": {
+					"rotation": [-42.73421, -15.69986, -16.32495],
+					"position": [0, 0, -10]
+				}
+			}
+		},
+		"animation.crumbles.attack.rotations": {
+			"loop": true,
+			"bones": {
+				"leftarm": {
+					"rotation": ["-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) * 1.2 + math.sin(variable.attack_time * 180)) * 10.0", 0, 0]
+				},
+				"rightarm": {
+					"rotation": ["-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) * 1.2 + math.sin(variable.attack_time * 180)) * 30.0", "-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) ? (-90.0 * math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180)) + 30.0 : 0.0)", 0]
+				}
+			}
+		},
+		"animation.crumbles.block": {
+			"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": [-136.64867, 20.70481, -9.00717],
+					"position": [0, -10, -12]
+				},
+				"rightArm": {
+					"rotation": [-136.64867, -20.70481, 9.00717],
+					"position": [0, -10, -12]
+				}
+			}
+		}
+	}
+}

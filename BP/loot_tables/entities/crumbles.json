@@ -1,0 +1,22 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "exdrill:crumbled_rock",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 18,
+                                "max": 23
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

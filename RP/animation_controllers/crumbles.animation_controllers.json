@@ -1,0 +1,35 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.crumbles": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"animations": [
+						{
+							"holding": "query.has_rider"
+						},
+						"attack",
+						"move.arms",
+						"move.body"
+					],
+					"transitions": [
+						{
+							"blocking": "query.is_ignited"
+						}
+					]
+				},
+				"blocking": {
+					"animations": [
+						"block"
+					],
+					"transitions": [
+						{
+							"default": "!query.is_ignited"
+						}
+					]
+				}
+			}
+		}
+	}
+}

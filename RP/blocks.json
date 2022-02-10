@@ -7,5 +7,8 @@
 	"exdrill:crumbled_rock_block": {
 		"textures": "crumbled_rock_block",
 		"sound": "deepslate"
+	},
+	"exdrill:soul_sanctum": {
+		"sound": "deepslate_bricks"
 	}
 }

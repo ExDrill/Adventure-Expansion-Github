@@ -6,7 +6,79 @@
 			"is_summonable": true,
 			"is_spawnable": true
 		},
-		"component_groups": {},
+		"component_groups": {
+			"decider": {
+				"minecraft:target_nearby_sensor": {
+					"inside_range": 7,
+					"outside_range": 8,
+					"on_inside_range": {
+						"event": "melee_attack",
+						"target": "self"
+					},
+					"on_outside_range": {
+						"event": "blocking",
+						"target": "self"
+					}
+				}
+			},
+			"melee_attack": {
+				"minecraft:behavior.melee_attack": {
+					"priority": 0,
+					"on_attack": {
+						"event": "grab_entity",
+						"target": "self"
+					},
+					"speed_multiplier": 1.5
+				}
+			},
+			"knockback_attack": {
+				"minecraft:timer": {
+					"looping": true,
+					"time": 0.45,
+					"time_down_event": {
+						"event": "let_go_of_entity",
+						"target": "self"
+					}
+				},
+				"minecraft:behavior.knockback_roar": {
+					"priority": 0,
+					"cooldown_time": 4,
+					"attack_time": 0.5,
+					"duration": 1,
+					"on_roar_end": {
+						"event": "melee_attack",
+						"target": "self"
+					},
+					"knockback_damage": 7,
+					"knockback_strength": 10,
+					"knockback_range": 2
+				},
+				"minecraft:area_attack": {
+					"cause": "suffocation",
+					"damage_per_tick": 3,
+					"damage_range": 3
+				}
+			},
+			"blocking": {
+				"minecraft:behavior.melee_attack": {
+					"priority": 0,
+					"on_attack": {
+						"event": "grab_entity",
+						"target": "self"
+					},
+					"reach_multiplier": 0,
+					"track_target": true,
+					"speed_multiplier": 3
+				},
+				"minecraft:is_ignited": {},
+				"minecraft:damage_sensor": {
+					"triggers": {
+						"cause": "projectile",
+						"deals_damage": false
+					}
+				}
+			}
+		},
 		"components": {
 			"minecraft:health": {
 				"value": 150,
@@ -15,14 +87,47 @@
 			"minecraft:knockback_resistance": {
 				"value": 0.5
 			},
+			"minecraft:attack": {
+				"damage": 5
+			},
 			"minecraft:collision_box": {
 				"width": 1.25,
 				"height": 3
+			},
+			"minecraft:movement": {
+				"value": 0.15
 			},
 			"minecraft:physics": {},
 			"minecraft:pushable": {
 				"is_pushable": true,
 				"is_pushable_by_piston": true
+			},
+			"minecraft:interact": {
+				"interactions": {
+					"cooldown": 0
+				}
+			},
+			"minecraft:loot": {
+				"table": "loot_tables/entities/crumbles.json"
+			},
+			"minecraft:rideable": {
+				"family_types": [
+					"player"
+				],
+				"crouching_skip_interact": false,
+				"rider_can_interact": false,
+				"controlling_seat": 0,
+				"seat_count": 1,
+				"seats": [
+					{
+						"position": [
+							0,
+							0,
+							1.5
+						],
+						"lock_rider_rotation": 180
+					}
+				]
 			},
 			"minecraft:hurt_on_condition": {
 				"damage_conditions": [
@@ -38,16 +143,133 @@
 					}
 				]
 			},
-			"minecraft:behavior.random_stroll": {
-				"priority": 5
-			},
+			"minecraft:navigation.generic": {},
+			"minecraft:movement.generic": {},
 			"minecraft:behavior.look_at_player": {
-				"priority": 5
+				"priority": 12
+			},
+			"minecraft:type_family": {
+				"family": [
+					"crumbles",
+					"mob",
+					"monster"
+				]
 			},
 			"minecraft:behavior.random_look_around": {
-				"priority": 6
+				"priority": 10
+			},
+			"minecraft:behavior.hurt_by_target": {
+				"entity_types": {
+					"filters": {
+						"test": "is_family",
+						"subject": "other",
+						"value": "crumbles"
+					}
+				}
+			},
+			"minecraft:jump.static": {},
+			"minecraft:follow_range": {
+				"value": 64
+			},
+			"minecraft:behavior.random_stroll": {
+				"priority": 3
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 1,
+				"reselect_targets": true,
+				"scan_interval": 20,
+				"entity_types": {
+					"max_dist": 64,
+					"filters": {
+						"any_of": [
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "player"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "snowgolem"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "irongolem"
+							}
+						]
+					}
+				}
 			}
 		},
-		"events": {}
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"decider"
+					]
+				}
+			},
+			"melee_attack": {
+				"add": {
+					"component_groups": [
+						"melee_attack"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"knockback_attack",
+						"blocking"
+					]
+				}
+			},
+			"blocking": {
+				"add": {
+					"component_groups": [
+						"blocking"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"melee_attack",
+						"knockback_attack"
+					]
+				}
+			},
+			"grab_entity": {
+				"randomize": [
+					{
+						"run_command": {
+							"command": [
+								"ride @p[r=3,c=1] start_riding @s teleport_rider"
+							],
+							"target": "self"
+						},
+						"add": {
+							"component_groups": [
+								"knockback_attack"
+							]
+						},
+						"remove": {
+							"component_groups": [
+								"melee_attack"
+							]
+						},
+						"weight": 1
+					},
+					{
+						"weight": 5
+					}
+				]
+			},
+			"let_go_of_entity": {
+				"run_command": {
+					"command": [
+						"ride @s evict_riders"
+					],
+					"target": "self"
+				}
+			}
+		}
 	}
 }

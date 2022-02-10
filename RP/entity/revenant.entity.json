@@ -14,20 +14,26 @@
 			},
 			"animations": {
 				"general": "animation.revenant.general",
-				"bob": "animation.revenant.bob",
+				"move": "animation.revenant.move",
+				"emerge": "animation.revenant.emerge",
+				"controller": "controller.animation.revenant",
 				"attack": "animation.revenant.attack",
-				"target": "animation.revenant.target",
-				"look_at_target": "animation.common.look_at_target",
-				"setup": "controller.animation.revenant"
+				"grounded": "animation.revenant.grounded"
 			},
 			"scripts": {
 				"animate": [
-					"setup"
+					"controller"
 				]
+			},
+			"sound_effects": {
+				"emerge": "dig.soul_sand"
 			},
 			"render_controllers": [
 				"controller.render.default_emissive"
 			],
+			"particle_effects": {
+				"soul_flame": "exdrill:soul_flame"
+			},
 			"spawn_egg": {
 				"texture": "adventure_expansion_spawn_egg",
 				"texture_index": 0

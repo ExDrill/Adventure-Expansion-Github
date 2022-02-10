@@ -1,50 +1,239 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.revenant.target": {
-			"loop": "hold_on_last_frame",
-			"bones": {
-				"leftArm": {
-					"rotation": [-135, 0, 0]
-				},
-				"rightArm": {
-					"rotation": [-135, 0, 0]
-				}
-			}
-		},
 		"animation.revenant.general": {
 			"loop": true,
 			"bones": {
 				"leftArm": {
-					"rotation": [ -90, 0, 0]
+					"rotation": [0, 0, "-5 + math.cos(query.anim_time*90)*5"]
 				},
 				"rightArm": {
-					"rotation": [ -90, 0, 0]
+					"rotation": [0, 0, "5 + math.cos(query.anim_time*90)*-5"]
+				},
+				"head": {
+					"position": [0, "math.cos(query.anim_time*90)*0.5", 0]
+				},
+				"tail": {
+					"rotation": ["22.5 + math.cos(query.anim_time*90)*15", 0, 0]
+				}
+			}
+		},
+		"animation.revenant.grounded": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"position": [0, -20, 0],
+					"scale": 0
+				}
+			}
+		},
+		"animation.revenant.move": {
+			"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": [22.5, 0, 0]
+				},
+				"rightArm": {
+					"rotation": [22.5, 0, 0]
+				},
+				"head": {
+					"rotation": [10, 0, 0]
+				},
+				"tail": {
+					"rotation": [0, 0, 0]
+				}
+			}
+		},
+		"animation.revenant.emerge": {
+			"loop": false,
+			"animation_length": 3.12,
+			"sound_effects": {
+				"0.24": {
+					"effect": "emerge"
+				},
+				"0.76": {
+					"effect": "emerge"
+				},
+				"1.28": {
+					"effect": "emerge"
+				},
+				"1.8": {
+					"effect": "emerge"
+				}
+			},
+			"bones": {
+				"head": {
+					"position": {
+						"0.0": [0, -20, 0],
+						"3.12": [0, 0, 0]
+					},
+					"scale": {
+						"0.0": [ 0, 0, 0 ],
+						"2.0": [ 1, 1, 1 ]
+					}
+				},
+				"leftArm": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, -67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.12": {
+							"post": [-45, 0, -112.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.24": {
+							"post": [-35.26439, 30, -77.23561],
+							"lerp_mode": "catmullrom"
+						},
+						"0.36": {
+							"post": [0, 0, -67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.52": {
+							"post": [0, 0, -67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.64": {
+							"post": [-45, 0, -112.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.76": {
+							"post": [-35.26439, 30, -77.23561],
+							"lerp_mode": "catmullrom"
+						},
+						"0.88": {
+							"post": [0, 0, -67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.04": {
+							"post": [0, 0, -67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.16": {
+							"post": [-45, 0, -112.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.28": {
+							"post": [-35.26439, 30, -77.23561],
+							"lerp_mode": "catmullrom"
+						},
+						"1.4": {
+							"post": [0, 0, -67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.56": {
+							"post": [0, 0, -67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.68": {
+							"post": [-45, 0, -112.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.8": {
+							"post": [-35.26439, 30, -77.23561],
+							"lerp_mode": "catmullrom"
+						},
+						"1.92": {
+							"post": [0, 0, -35],
+							"lerp_mode": "catmullrom"
+						},
+						"2.8": {
+							"post": [0, 0, -35],
+							"lerp_mode": "catmullrom"
+						},
+						"3.12": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"rightArm": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.12": {
+							"post": [-45, 0, 112.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.24": {
+							"post": [-35.26439, -30, 77.2356],
+							"lerp_mode": "catmullrom"
+						},
+						"0.36": {
+							"post": [0, 0, 67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.52": {
+							"post": [0, 0, 67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.64": {
+							"post": [-45, 0, 112.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.76": {
+							"post": [-35.26439, -30, 77.2356],
+							"lerp_mode": "catmullrom"
+						},
+						"0.88": {
+							"post": [0, 0, 67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.04": {
+							"post": [0, 0, 67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.16": {
+							"post": [-45, 0, 112.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.28": {
+							"post": [-35.26439, -30, 77.2356],
+							"lerp_mode": "catmullrom"
+						},
+						"1.4": {
+							"post": [0, 0, 67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.56": {
+							"post": [0, 0, 67.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.68": {
+							"post": [-45, 0, 112.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.8": {
+							"post": [-35.26439, -30, 77.2356],
+							"lerp_mode": "catmullrom"
+						},
+						"1.92": {
+							"post": [0, 0, 35],
+							"lerp_mode": "catmullrom"
+						},
+						"2.8": {
+							"post": [0, 0, 35],
+							"lerp_mode": "catmullrom"
+						},
+						"3.12": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
 				}
 			}
 		},
 		"animation.revenant.attack": {
-			"loop": true,
-			"bones": {
-				"leftArm": {
-					"rotation": ["math.cos(variable.attack_time*360)*35", 0, 0]
+			"loop" : true,
+			"bones" : {
+				"leftarm" : {
+					"rotation" : [ "-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) * 1.2 + math.sin(variable.attack_time * 180)) * 10.0", 0.0, 0.0 ]
 				},
-				"rightArm": {
-					"rotation": ["math.cos(variable.attack_time*360)*35", 0, 0]
-				}
-			}
-		},
-		"animation.revenant.bob": {
-			"loop": true,
-			"bones": {
-				"head": {
-					"position": [0, "math.cos(query.anim_time*90)*1.5", 0]
-				},
-				"leftArm": {
-					"rotation": [0, 0, "5 + math.cos(query.anim_time*90)*5"]
-				},
-				"rightArm": {
-					"rotation": [0, 0, "-5 + math.cos(query.anim_time*90)*-5"]
+				"rightarm" : {
+					"rotation" : [ "-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) * 1.2 + math.sin(variable.attack_time * 180)) * 30.0", "-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) ? (-90.0 * math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180)) + 30.0 : 0.0)", 0.0 ]
 				}
 			}
 		}

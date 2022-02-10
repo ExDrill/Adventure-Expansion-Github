@@ -6,6 +6,24 @@
 	"texture_data": {
 		"crumbled_rock_block": {
 			"textures": "textures/blocks/crumbled_rock"
+		},
+		"soul_sanctum_0": {
+			"textures": "textures/blocks/soul_sanctum/soul_sanctum_0"
+		},
+		"soul_sanctum_1": {
+			"textures": "textures/blocks/soul_sanctum/soul_sanctum_1"
+		},
+		"soul_sanctum_2": {
+			"textures": "textures/blocks/soul_sanctum/soul_sanctum_2"
+		},
+		"soul_sanctum_3": {
+			"textures": "textures/blocks/soul_sanctum/soul_sanctum_3"
+		},
+		"soul_sanctum_4": {
+			"textures": "textures/blocks/soul_sanctum/soul_sanctum_4"
+		},
+		"soul_sanctum_5": {
+			"textures": "textures/blocks/soul_sanctum/soul_sanctum_5"
 		}
 	}
 }

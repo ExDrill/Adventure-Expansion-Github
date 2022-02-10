@@ -5,7 +5,10 @@
 			"identifier": "exdrill:crumbled_rock_block"
 		},
 		"components": {
-			"minecraft:destroy_time": 1
+			"minecraft:destroy_time": 1,
+			"minecraft:creative_category": {
+				"category": "construction"
+			}
 		}
 	}
 }

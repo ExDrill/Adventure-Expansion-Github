@@ -34,7 +34,7 @@
 				{
 					"name": "leftArm",
 					"parent": "body",
-					"pivot": [0, 0, 0],
+					"pivot": [11, 24, 0],
 					"cubes": [
 						{"origin": [12, 10, -3], "size": [6, 16, 6], "uv": [68, 106]},
 						{"origin": [11, 3, -4], "size": [8, 11, 8], "uv": [34, 110]}
@@ -43,7 +43,7 @@
 				{
 					"name": "rightArm",
 					"parent": "body",
-					"pivot": [0, 0, 0],
+					"pivot": [-11, 24, 0],
 					"cubes": [
 						{"origin": [-18, 10, -3], "size": [6, 16, 6], "uv": [68, 106]},
 						{"origin": [-19, 3, -4], "size": [8, 11, 8], "uv": [34, 110]}
@@ -52,7 +52,7 @@
 				{
 					"name": "leftLeg",
 					"parent": "root",
-					"pivot": [0, 0, 0],
+					"pivot": [5, 10, 0],
 					"cubes": [
 						{"origin": [2, 0, -3], "size": [6, 16, 6], "uv": [94, 106]}
 					]
@@ -60,7 +60,7 @@
 				{
 					"name": "rightLeg",
 					"parent": "root",
-					"pivot": [0, 0, 0],
+					"pivot": [-5, 10, 0],
 					"cubes": [
 						{"origin": [-8, 0, -3], "size": [6, 16, 6], "uv": [94, 106]}
 					]

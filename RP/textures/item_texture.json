@@ -8,17 +8,21 @@
 		"crumbled_hammer": {
 			"textures": "textures/items/crumbled_hammer"
 		},
-		"crumbled_chestplate": {
-			"textures": "textures/items/crumbled_chestplate"
-		},
 		"adventure_expansion_spawn_egg": {
 			"textures": [
 				"textures/items/egg_revenant",
-				"textures/items/egg_crumbles"
+				"textures/items/egg_crumbles",
+				"textures/items/egg_sailorager"
 			]
 		},
 		"bottled_soul": {
 			"textures": "textures/items/bottled_soul"
+		},
+		"blowpipe": {
+			"textures": "textures/items/blowpipe"
+		},
+		"flintlock": {
+			"textures": "textures/items/flintlock"
 		}
 	}
 }

@@ -1,1 +1,33 @@
-{}
+{
+    "entity_sounds": {
+        "entities": {
+            "exdrill:revenant": {
+                "pitch": 1,
+                "volume": 1,
+                "events": {
+                    "ambient": "mob.revenant.idle",
+                    "hurt": "mob.revenant.hurt",
+                    "death": "mob.revenant.death"
+                }
+            },
+            "exdrill:crumbles": {
+                "pitch": 0.8,
+                "volume": 1,
+                "events": {
+                    "hurt": "mob.ravager.bite",
+                    "ambient": "mob.ravager.celebrate",
+                    "death": "mob.ravager.death"
+                }
+            },
+            "exdrill:sailorager": {
+                "events": {
+                    "ambient": "mob.vindicator.idle",
+                    "death": "mob.vindicator.death",
+                    "hurt": "mob.vindicator.hurt"
+                },
+                "pitch": [ 0.8, 1.2 ],
+                "volume": 1
+            }
+        }
+    }
+}

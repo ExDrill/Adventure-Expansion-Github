@@ -2,29 +2,55 @@
 	"format_version": "1.10.0",
 	"animation_controllers": {
 		"controller.animation.revenant": {
-			"initial_state": "default",
+			"initial_state": "idle",
 			"states": {
 				"default": {
 					"animations": [
-						"bob",
 						"general",
-						"look_at_target"
-					],
-					"transitions": [
 						{
-							"has_target": "query.has_target"
+							"move": "query.modified_move_speed * 2"
+						},
+						"attack"
+					],
+					"particle_effects": [
+						{
+							"effect": "soul_flame",
+							"locator": "flames0"
+						},
+						{
+							"effect": "soul_flame",
+							"locator": "flames1"
+						},
+						{
+							"effect": "soul_flame",
+							"locator": "flames2"
+						},
+						{
+							"effect": "soul_flame",
+							"locator": "flames3"
 						}
 					]
 				},
-				"has_target": {
+				"emerging": {
 					"animations": [
-						"attack",
-						"target",
-						"look_at_target"
+						"emerge"
 					],
 					"transitions": [
 						{
-							"default": "!query.has_target"
+							"default": "query.variant == 2"
+						}
+					]
+				},
+				"idle": {
+					"animations": [
+						"grounded"
+					],
+					"transitions": [
+						{
+							"emerging": "query.variant == 1"
+						},
+						{
+							"default": "query.variant == 2"
 						}
 					]
 				}

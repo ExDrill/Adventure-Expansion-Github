@@ -1,3 +1,30 @@
 {
-	"sound_definitions": {}
+	"format_version": "1.17.0",
+	"sound_definitions": {
+		"mob.revenant.idle": {
+			"category": "hostile",
+			"max_distance": 12,
+			"sounds": [
+				"sounds/mob/revenant/idle1",
+				"sounds/mob/revenant/idle2",
+				"sounds/mob/revenant/idle3"
+			]
+		},
+		"mob.revenant.hurt": {
+			"category": "hostile",
+			"max_distance": 12,
+			"sounds": [
+				"sounds/mob/revenant/hurt1",
+				"sounds/mob/revenant/hurt2",
+				"sounds/mob/revenant/hurt3"
+			]
+		},
+		"mob.revenant.death": {
+			"category": "hostile",
+			"max_distance": 12,
+			"sounds": [
+				"sounds/mob/revenant/death"
+			]
+		}
+	}
 }

@@ -1,0 +1,48 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "exdrill:sailorager",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/sailorager"
+			},
+			"geometry": {
+				"default": "geometry.sailorager"
+			},
+			"animations": {
+				"move.arms": "animation.player.move.arms",
+				"move.legs": "animation.player.move.legs",
+				"bob": "animation.player.bob",
+				"look_at_target": "animation.common.look_at_target",
+				"has_target": "animation.sailorager.has_target"
+			},
+			"scripts": {
+				"pre_animation": [
+					"variable.tcos0 = (math.cos(query.modified_distance_moved * 60) * query.modified_move_speed / variable.gliding_speed_value) * 40;"
+				],
+				"animate": [
+					{
+						"move.arms": "!query.has_target"
+					},
+					"move.legs",
+					"bob",
+					"look_at_target",
+					{
+						"has_target": "query.has_target"
+					}
+				]
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"texture": "adventure_expansion_spawn_egg",
+				"texture_index": 2
+			},
+			"enable_attachables": true
+		}
+	}
+}

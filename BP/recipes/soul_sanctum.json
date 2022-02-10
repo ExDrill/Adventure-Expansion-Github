@@ -1,0 +1,29 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "exdrill:soul_sanctum"
+        },
+        "pattern": [
+            "CSC",
+            "CGC",
+            "CCC"
+        ],
+        "key": {
+            "C": {
+                "item": "exdrill:crumbled_rock"
+            },
+            "S": {
+                "item": "exdrill:bottled_soul"
+            },
+            "G": {
+                "item": "minecraft:ghast_tear"
+            }
+        },
+        "tags": ["crafting_table"],
+        "result": {
+            "item": "exdrill:soul_sanctum",
+            "count": 1
+        }
+    }
+}

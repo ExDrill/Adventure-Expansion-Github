@@ -1,0 +1,23 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "exdrill:explosive_ball",
+			"materials": {
+				"default": "entity"
+			},
+			"textures": {
+				"default": "textures/entity/explosive_ball"
+			},
+			"geometry": {
+				"default": "geometry.explosive_ball"
+			},
+			"scripts": {
+				"scale": 0.5
+			},
+			"render_controllers": [
+				"controller.render.default"
+			]
+		}
+	}
+}
