@@ -1,0 +1,26 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:block": {
+		"description": {
+			"identifier": "dev_random:pirate_ship_combat_unit"
+		},
+		"components": {
+			"minecraft:destroy_time": 9999,
+			"minecraft:on_interact": {
+				"event": "place_structure",
+				"target": "self"
+			},
+			"minecraft:on_placed": { "event": "place_structure", "target": "self" }
+		},
+		"events": {
+			"place_structure": {
+                "run_command": {
+                    "command": [ "structure load \"exdrill:pirate_ship/combat_unit\" ~-20 ~1 ~-14"]
+                },
+				"set_block": {
+					"block_type": "minecraft:air"
+				}
+            }
+		}	
+	}
+}

@@ -11,8 +11,53 @@
             },
             "minecraft:icon": {
                 "texture": "blowpipe"
+            },
+            "minecraft:durability": {
+                "max_durability": 512,
+                "damage_chance": {
+                    "min": 60,
+                    "max": 100
+                }
+            },
+            "minecraft:on_use": {
+                "on_use": {
+                    "event": "on_use",
+                    "target": "self",
+                    "condition": "query.equipped_item_any_tag('slot.weapon.offhand', 'exdrill:blowpipe_ammo')"
+                }
             }
         },
-        "events": {}
+        "events": {
+            "on_use": {
+                "sequence": [
+                    {
+                        "swing": {},
+                        "damage": {
+                            "amount": 1,
+                            "type": "durability",
+                            "target": "self"
+                        },
+                        "run_command": {
+                            "command": [
+                                "playsound mob.llama.spit @s ~ ~ ~"
+                            ],
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "shoot": {
+                            "projectile": "exdrill:cactus_spine",
+                            "launch_power": 0.5
+                        },
+                        "run_command": {
+                            "command": [
+                                "clear @s exdrill:cactus_spine 0 1"
+                            ]
+                        },
+                        "condition": "query.is_item_name_any('slot.weapon.offhand', 0, 'exdrill:cactus_spine')"
+                    }
+                ]
+            }
+        }
     }
 }

@@ -26,14 +26,6 @@
 			}
 		},
 		"events": {
-			"place_sound": {
-				"run_command": {
-					"command": [
-						"playsound mob.revenant.idle @a ~ ~ ~"
-					],
-					"target": "self"
-				}
-			},
 			"switch_states": {
 				"sequence": [
 					{
@@ -44,7 +36,7 @@
 					{
 						"randomize": [
 							{
-								"weight": 9
+								"weight": 24
 							},
 							{
 								"run_command": {

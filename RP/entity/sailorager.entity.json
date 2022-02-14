@@ -17,7 +17,8 @@
 				"move.legs": "animation.player.move.legs",
 				"bob": "animation.player.bob",
 				"look_at_target": "animation.common.look_at_target",
-				"has_target": "animation.sailorager.has_target"
+				"has_target": "animation.sailorager.has_target",
+				"kick": "animation.sailorager.kick"
 			},
 			"scripts": {
 				"pre_animation": [
@@ -29,9 +30,10 @@
 					},
 					"move.legs",
 					"bob",
+					"kick",
 					"look_at_target",
 					{
-						"has_target": "query.has_target"
+						"has_target": "query.facing_target_to_range_attack"
 					}
 				]
 			},

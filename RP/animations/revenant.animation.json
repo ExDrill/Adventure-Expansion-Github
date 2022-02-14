@@ -236,6 +236,16 @@
 					"rotation" : [ "-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) * 1.2 + math.sin(variable.attack_time * 180)) * 30.0", "-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) ? (-90.0 * math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180)) + 30.0 : 0.0)", 0.0 ]
 				}
 			}
+		},
+		"animation.soul_blast": {
+			"loop": false,
+			"animation_length": 4,
+			"particle_effects": {
+				"0.0": {
+					"effect": "soul_burst",
+					"locator": "locator"
+				}
+			}
 		}
 	}
 }

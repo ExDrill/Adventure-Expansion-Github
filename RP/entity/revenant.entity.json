@@ -17,7 +17,7 @@
 				"move": "animation.revenant.move",
 				"emerge": "animation.revenant.emerge",
 				"controller": "controller.animation.revenant",
-				"attack": "animation.revenant.attack",
+				"attack": "animation.skeleton.attack",
 				"grounded": "animation.revenant.grounded"
 			},
 			"scripts": {

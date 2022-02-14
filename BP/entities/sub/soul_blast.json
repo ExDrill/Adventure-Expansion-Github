@@ -24,11 +24,15 @@
                 "max": 1
             },
             "minecraft:collision_box": {
-                "height": 2,
-                "width": 2
+                "height": 1.5,
+                "width": 1.5
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
             },
             "minecraft:timer": {
-                "looping": false,
+                "looping": true,
                 "time": 2,
                 "time_down_event": {
                     "event": "instant_despawn",
@@ -60,7 +64,7 @@
                 "run_command": {
                     "command": [
                         "particle exdrill:soul_burst_particle ~ ~ ~",
-                        "summon xp_orb ~ ~ ~",
+                        "effect @s levitation 5 1 true",
                         "summon xp_orb ~ ~ ~",
                         "summon xp_orb ~ ~ ~"
                     ],

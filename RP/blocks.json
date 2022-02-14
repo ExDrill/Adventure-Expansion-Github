@@ -4,6 +4,9 @@
 		1,
 		0
 	],
+	"structure_void": {
+		"blockshape": "lantern"
+	},
 	"exdrill:crumbled_rock_block": {
 		"textures": "crumbled_rock_block",
 		"sound": "deepslate"

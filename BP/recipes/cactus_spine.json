@@ -1,0 +1,19 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "exdrill:cactus_spine"
+		},
+		"tags": [ "crafting_table" ],
+		"ingredients": [
+			{
+				"item": "minecraft:cactus",
+				"count": 1
+			}
+		],
+		"result": {
+			"item": "exdrill:cactus_spine",
+			"count": 6
+		}
+	}
+}

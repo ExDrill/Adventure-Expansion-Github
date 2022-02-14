@@ -1,0 +1,15 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "exdrill:cactus_spine"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "cactus_spine"
+			},
+			"minecraft:allow_off_hand": true,
+			"tag:exdrill:blowpipe_ammo": {}
+		}
+	}
+}

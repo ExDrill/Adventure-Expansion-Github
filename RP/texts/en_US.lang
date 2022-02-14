@@ -4,6 +4,7 @@ item.exdrill:crumbled_hammer=Crumbled Hammer
 item.exdrill:bottled_soul=Bottled Soul
 item.exdrill:blowdart=Blowpipe
 item.exdrill:flintlock=Flintlock
+item.exdrill:cactus_spine=Cactus Spine
 ## Block
 tile.exdrill:crumbled_rock_block.name=Block of Crumbled Rock
 tile.exdrill:soul_sanctum.name=Soul Sanctum
@@ -16,3 +17,4 @@ item.spawn_egg.entity.exdrill:revenant.name=Spawn Revenant
 item.spawn_egg.entity.exdrill:crumbles.name=Spawn Crumbles
 item.spawn_egg.entity.exdrill:sailorager.name=Spawn Sailorager
 ## Misc
+action.interact.collect_soul=Collect

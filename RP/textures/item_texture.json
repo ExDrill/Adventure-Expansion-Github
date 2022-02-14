@@ -23,6 +23,9 @@
 		},
 		"flintlock": {
 			"textures": "textures/items/flintlock"
+		},
+		"cactus_spine": {
+			"textures": "textures/items/cactus_spine"
 		}
 	}
 }

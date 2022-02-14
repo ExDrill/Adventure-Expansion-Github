@@ -1,0 +1,12 @@
+{
+	"format_version": "1.13.0",
+	"minecraft:structure_template_feature": {
+		"description": {
+			"identifier": "exdrill:pirate_ship"
+		},
+		"structure_name": "exdrill:redstone_pirate_ship",
+		"adjustment_radius": 8,
+		"facing_direction": "east",
+		"constraints": {}
+	}
+}

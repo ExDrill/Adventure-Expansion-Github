@@ -1,0 +1,33 @@
+{
+	"format_version": "1.13.0",
+	"minecraft:feature_rules": {
+		"description": {
+			"identifier": "exdrill:pirate_ship_feature",
+			"places_feature": "exdrill:pirate_ship"
+		},
+		"conditions": {
+			"placement_pass": "first_pass",
+			"minecraft:biome_filter": {
+				"test": "has_biome_tag",
+				"operator": "==",
+				"value": "deep"
+			}
+		},
+		"distribution": {
+			"scatter_chance": {
+				"numerator": 1,
+				"denominator": 800
+			},
+			"iterations": 1,
+			"x": {
+				"extent": [ 0, 32],
+				"distribution": "uniform"
+			},
+			"y": 62,
+			"z": {
+				"extent": [ 0, 32],
+				"distribution": "uniform"
+			}
+		}
+	}
+}

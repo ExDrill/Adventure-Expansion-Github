@@ -11,6 +11,14 @@
 					"rotation": [-90, 0, 0]
 				}
 			}
+		},
+		"animation.sailorager.kick": {
+			"loop": true,
+			"bones": {
+				"leftLeg": {
+					"rotation": [ "math.sin(variable.attack_time * 180.0) * -80", 0, 0 ]
+				}
+			}
 		}
 	}
 }

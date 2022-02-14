@@ -6,7 +6,36 @@
 			"is_summonable": true,
 			"is_spawnable": true
 		},
-		"component_groups": {},
+		"component_groups": {
+			"mode_switcher": {
+				"minecraft:target_nearby_sensor": {
+					"inside_range": 1,
+					"outside_range": 2,
+					"on_inside_range": {
+						"event": "melee",
+						"target": "self"
+					},
+					"on_outside_range": {
+						"event": "ranged",
+						"target": "self"
+					}
+				}
+			},
+			"ranged": {
+				"minecraft:behavior.ranged_attack": {
+					"priority": 0,
+					"attack_interval_min": 1,
+					"attack_interval_max": 3,
+					"attack_radius": 15
+				}
+			},
+			"melee": {
+				"minecraft:behavior.melee_attack": {
+					"priority": 0,
+					"reach_multiplier": 3
+				}
+			}
+		},
 		"components": {
 			"minecraft:health": {
 				"value": 25,
@@ -20,12 +49,19 @@
 				"total_supply": 20,
 				"suffocate_time": 15
 			},
+			"minecraft:attack": {
+				"damage": 2
+			},
+			"minecraft:shooter": {
+				"def": "exdrill:explosive_ball"
+			},
 			"minecraft:nameable": {},
 			"minecraft:type_family": {
 				"family": [
 					"mob",
 					"illager",
-					"sailorager"
+					"sailorager",
+					"monster"
 				]
 			},
 			"minecraft:experience_reward": {
@@ -34,16 +70,11 @@
 			"minecraft:pushable": {},
 			"minecraft:movement.basic": {},
 			"minecraft:navigation.walk": {
-				"can_walk": true
+				"can_walk": true,
+				"can_swim": true
 			},
-			"minecraft:behavior.ranged_attack": {
-				"priority": 0,
-				"attack_interval_min": 4,
-				"attack_interval_max": 5,
-				"attack_radius": 15
-			},
-			"minecraft:shooter": {
-				"def": "exdrill:explosive_ball"
+			"minecraft:underwater_movement": {
+				"value": 0.15
 			},
 			"minecraft:jump.static": {},
 			"minecraft:can_climb": {},
@@ -88,10 +119,42 @@
 							}
 						]
 					},
-					"max_dist": 16
+					"max_dist": 25
 				}
 			}
 		},
-		"events": {}
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"mode_switcher"
+					]
+				}
+			},
+			"melee": {
+				"add": {
+					"component_groups": [
+						"melee"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"ranged"
+					]
+				}
+			},
+			"ranged": {
+				"add": {
+					"component_groups": [
+						"ranged"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"melee"
+					]
+				}
+			}
+		}
 	}
 }
