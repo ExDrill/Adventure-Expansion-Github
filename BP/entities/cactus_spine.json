@@ -4,7 +4,7 @@
 		"description": {
 			"identifier": "exdrill:cactus_spine",
 			"is_summonable": true,
-			"is_spawnable": true,
+			"is_spawnable": false,
 			"runtime_identifier": "minecraft:arrow"
 		},
 		"component_groups": {

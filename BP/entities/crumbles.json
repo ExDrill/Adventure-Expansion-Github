@@ -69,13 +69,6 @@
 					"reach_multiplier": 0,
 					"track_target": true,
 					"speed_multiplier": 3
-				},
-				"minecraft:is_ignited": {},
-				"minecraft:damage_sensor": {
-					"triggers": {
-						"cause": "projectile",
-						"deals_damage": false
-					}
 				}
 			}
 		},
@@ -93,6 +86,12 @@
 			"minecraft:collision_box": {
 				"width": 1.25,
 				"height": 3
+			},
+			"minecraft:damage_sensor": {
+				"triggers": {
+					"cause": "projectile",
+					"deals_damage": false
+				}
 			},
 			"minecraft:movement": {
 				"value": 0.15
