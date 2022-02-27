@@ -1,0 +1,47 @@
+{
+	"format_version": "1.13.0",
+	"minecraft:feature_rules": {
+		"description": {
+			"identifier": "exdrill:gauntlet_feature",
+			"places_feature": "exdrill:gauntlet"
+		},
+		"conditions": {
+			"placement_pass": "final_pass",
+			"minecraft:biome_filter": {
+				"any_of": [
+					{
+						"test": "has_biome_tag",
+						"operator": "==",
+						"value": "desert"
+					},
+					{
+						"test": "has_biome_tag",
+						"operator": "==",
+						"value": "plains"
+					},
+					{
+						"test": "has_biome_tag",
+						"operator": "==",
+						"value": "ice_plains"
+					}
+				]
+			}
+		},
+		"distribution": {
+			"iterations": 1,
+			"scatter_chance": {
+				"numerator": 1,
+				"denominator": 800
+			},
+			"x": {
+				"extent": [ 0, 16 ],
+				"distribution": "gaussian"
+			},
+			"y": "query.heightmap(variable.worldx,variable.worldz)",
+			"z": {
+				"extent": [ 0, 16 ],
+				"distribution": "gaussian"
+			}
+		}
+	}
+}

@@ -2,22 +2,25 @@
 	"format_version": "1.16.100",
 	"minecraft:block": {
 		"description": {
-			"identifier": "exdrill:soul_sanctum",
-			"properties": {
-				"exdrill:center": [ 0, 1, 2, 3, 4, 5 ]
-			}
+			"identifier": "exdrill:soul_sanctum"
 		},
 		"components": {
 			"minecraft:geometry": "geometry.soul_sanctum",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "soul_sanctum",
+					"render_method": "alpha_test"
+				}
+			},
 			"minecraft:destroy_time": 0.5,
 			"minecraft:block_light_absorption": 0,
 			"minecraft:block_light_emission": 0.4,
 			"minecraft:breathability": "air",
 			"minecraft:ticking": {
 				"looping": true,
-				"range": [ 0.1, 0.1 ],
+				"range": [ 5, 5 ],
 				"on_tick": {
-					"event": "switch_states",
+					"event": "soul",
 					"target": "self"
 				}
 			},
@@ -26,114 +29,24 @@
 			}
 		},
 		"events": {
-			"switch_states": {
-				"sequence": [
+			"soul": {
+				"randomize": [
 					{
-						"set_block_property": {
-							"exdrill:center": "(query.block_property('exdrill:center')<5) ? query.block_property('exdrill:center') + 1 : 0"
-						}
+						"run_command": {
+							"command": [
+								"particle minecraft:soul_particle ~ ~ ~",
+								"playsound mob.revenant.idle @a ~ ~ ~",
+								"effect @a[r=2] regeneration 5 0 false"
+							],
+							"target": "self"
+						},
+						"weight": 1
 					},
 					{
-						"randomize": [
-							{
-								"weight": 24
-							},
-							{
-								"run_command": {
-								"command": [
-									"particle minecraft:soul_particle ~ ~0.5 ~",
-									"playsound mob.revenant.idle @a ~ ~ ~",
-									"execute @p[r=2,c=1] ~ ~1 ~ effect @s regeneration 3 0 false"
-									],
-									"target": "self"
-								},
-								"weight": 1
-							}
-						],
-						"condition": "query.block_property('exdrill:center') == 5"
+						"weight": 9
 					}
 				]
 			}
-		},
-		"permutations": [
-			{
-				"condition": "query.block_property('exdrill:center') == 0",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "soul_sanctum_0",
-							"ambient_occlusion": true,
-							"render_method": "alpha_test",
-							"face_dimming": true
-						}
-					}
-				}
-			},
-			{
-				"condition": "query.block_property('exdrill:center') == 1",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "soul_sanctum_1",
-							"ambient_occlusion": true,
-							"render_method": "alpha_test",
-							"face_dimming": true
-						}
-					}
-				}
-			},
-			{
-				"condition": "query.block_property('exdrill:center') == 2",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "soul_sanctum_2",
-							"ambient_occlusion": true,
-							"render_method": "alpha_test",
-							"face_dimming": true
-						}
-					}
-				}
-			},
-			{
-				"condition": "query.block_property('exdrill:center') == 3",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "soul_sanctum_3",
-							"ambient_occlusion": true,
-							"render_method": "alpha_test",
-							"face_dimming": true
-						}
-					}
-				}
-			},
-			{
-				"condition": "query.block_property('exdrill:center') == 4",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "soul_sanctum_4",
-							"ambient_occlusion": true,
-							"render_method": "alpha_test",
-							"face_dimming": true
-						}
-					}
-				}
-			},
-			{
-				"condition": "query.block_property('exdrill:center') == 5",
-				"components": {
-					"minecraft:material_instances": {
-						"*": {
-							"texture": "soul_sanctum_5",
-							"ambient_occlusion": true,
-							"render_method": "alpha_test",
-							"face_dimming": true
-						}
-					}
-				}
-			}
-		]
+		}
 	}
 }

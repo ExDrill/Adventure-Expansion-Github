@@ -1,0 +1,44 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "exdrill:flupper",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/flupper/flupper",
+				"emissive_layer": "textures/entity/flupper/emissive_layer"
+			},
+			"geometry": {
+				"default": "geometry.flupper"
+			},
+			"animations": {
+				"walk": "animation.flupper.walk",
+				"flap": "animation.flupper.flap",
+				"hold": "animation.flupper.hold",
+				"eat": "animation.flupper.eat",
+				"walk.legs": "animation.flupper.walk.legs",
+				"controller": "controller.animation.flupper",
+				"deny": "animation.flupper.deny",
+				"baby": "animation.flupper.baby"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"baby": "query.is_baby"
+					}
+				]
+			},
+			"render_controllers": [
+				"controller.render.flupper",
+				"controller.render.flupper.emissive"
+			],
+			"spawn_egg": {
+				"texture": "adventure_expansion_spawn_egg",
+				"texture_index": 3
+			}
+		}
+	}
+}

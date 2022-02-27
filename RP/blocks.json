@@ -13,5 +13,8 @@
 	},
 	"exdrill:soul_sanctum": {
 		"sound": "deepslate_bricks"
+	},
+	"exdrill:chorus_bed": {
+		"sound": "cave_vines"
 	}
 }

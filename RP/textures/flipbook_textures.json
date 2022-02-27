@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "atlas_tile": "soul_sanctum",
+        "frames": [ 0, 1, 2, 3, 4, 5 ],
+        "blend_frames": true,
+        "flipbook_texture": "textures/blocks/soul_sanctum",
+        "ticks_per_frame": 2
+    }
+]

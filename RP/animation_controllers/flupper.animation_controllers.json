@@ -1,0 +1,51 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.flupper": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [
+                        {
+						    "walk": "math.min(1.0, query.modified_move_speed * 10)"
+					    }
+                    ],
+                    "transitions": [
+                        {
+                            "holding_item": "query.is_item_equipped"
+                        },
+                        {
+                            "flapping": "query.is_ignited"
+                        }
+                    ]
+                },
+                "holding_item": {
+                    "animations": [
+                        "hold",
+                        {
+                            "eat": "query.is_eating"
+                        },
+                        {
+                            "walk.legs": "math.min(1.0, query.modified_move_speed * 10)"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "!query.is_item_equipped"
+                        }
+                    ]
+                },
+                "flapping": {
+                    "animations": [
+                        "flap"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "!query.is_ignited"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

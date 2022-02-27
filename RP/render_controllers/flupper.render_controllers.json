@@ -1,0 +1,23 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.flupper": {
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Texture.default"
+			]
+		},
+		"controller.render.flupper.emissive": {
+			"geometry": "Geometry.default",
+			"textures": [
+				"Texture.emissive_layer"
+			],
+			"ignore_lighting": true
+		}
+	}
+}

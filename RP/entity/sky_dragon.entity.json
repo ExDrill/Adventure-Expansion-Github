@@ -1,0 +1,35 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "exdrill:sky_dragon",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/sky_dragon"
+			},
+			"geometry": {
+				"default": "geometry.sky_dragon"
+			},
+			"animations": {
+				"sleep": "animation.sky_dragon.sleep"
+			},
+			"scripts": {
+				"animate": [
+					"sleep"
+				]
+			},
+			"particle_effects": {
+				"z": "exdrill:z"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"texture": "adventure_expansion_spawn_egg",
+				"texture_index": 4
+			}
+		}
+	}
+}

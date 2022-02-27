@@ -8,7 +8,8 @@
 			"minecraft:destroy_time": 1,
 			"minecraft:creative_category": {
 				"category": "construction"
-			}
+			},
+			"tag:exdrill:solid_block": {}
 		}
 	}
 }

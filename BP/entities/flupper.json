@@ -1,0 +1,382 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:flupper",
+			"is_summonable": true,
+			"is_spawnable": true,
+			"animations": {
+				"flupper": "controller.animation.flupper",
+				"flap": "animation.flupper.flap"
+			},
+			"scripts": {
+				"animate": [
+					"flupper",
+					{
+						"flap": "query.has_rider"
+					}
+				]
+			}
+		},
+		"component_groups": {
+			"baby_flupper": {
+				"minecraft:scale": {
+					"value": 0.5
+				},
+				"minecraft:behavior.follow_parent": {
+					"priority": 1,
+					"speed_multiplier": 2
+				},
+				"minecraft:is_baby": {},
+				"minecraft:ageable": {
+					"duration": 1200,
+					"grow_up": {
+						"event": "grow_up",
+						"target": "self"
+					},
+					"feed_items": [
+						"chorus_fruit"
+					]
+				}
+			},
+			"is_ignited": {
+				"minecraft:is_ignited": {}
+			},
+			"can_move": {
+				"minecraft:movement.generic": {},
+				"minecraft:navigation.generic": {}
+			},
+			"is_hungry": {
+				"minecraft:interact": {
+					"interactions": [
+						{
+							"on_interact": {
+								"event": "deny",
+								"target": "self",
+								"filters": {
+									"test": "has_equipment",
+									"subject": "other",
+									"domain": "hand",
+									"operator": "!=",
+									"value": "chorus_fruit"
+								}
+							}
+						},
+						{
+							"cooldown": 3,
+							"on_interact": {
+								"event": "feed",
+								"target": "self",
+								"filters": {
+									"all_of": [
+										{
+											"test": "has_equipment",
+											"subject": "other",
+											"domain": "hand",
+											"value": "chorus_fruit"
+										},
+										{
+											"test": "has_component",
+											"subject": "self",
+											"operator": "not",
+											"value": "minecraft:is_baby"
+										}
+									]
+								}
+							},
+							"use_item": true
+						}
+					]
+				},
+				"minecraft:behavior.equip_item": {},
+				"minecraft:behavior.pickup_items": {
+					"priority": 10,
+					"max_dist": 3,
+					"goal_radius": 2
+				},
+				"minecraft:behavior.eat_carried_item": {
+					"delay_before_eating": 2,
+					"priority": 0
+				},
+				"minecraft:equip_item": {},
+				"minecraft:shareables": {
+					"all_items": false,
+					"all_items_max_amount": 1,
+					"items": [
+						{
+							"item": "chorus_fruit",
+							"priority": 0,
+							"max_amount": 1
+						}
+					]
+				},
+				"minecraft:type_family": {
+					"family": [
+						"mob",
+						"flupper"
+					]
+				}
+			},
+			"allows_riding": {
+				"minecraft:behavior.breed": {
+					"priority": 0,
+					"speed_multiplier": 1.4
+				},
+				"minecraft:breedable": {
+					"breeds_with": {
+						"mate_type": "exdrill:flupper",
+						"baby_type": "exdrill:flupper"
+					},
+					"breed_cooldown": 1000,
+					"extra_baby_chance": 0.1,
+					"breed_items": "chorus_fruit"
+				},
+				"minecraft:is_tamed": {},
+				"minecraft:rideable": {
+					"family_types": [
+						"player"
+					],
+					"rider_can_interact": true,
+					"seat_count": 1,
+					"seats": {
+						"min_rider_count": 1,
+						"max_rider_count": 1,
+						"position": [ 0, 0.9, 0 ]
+					}
+				},
+				"minecraft:input_ground_controlled": {},
+				"minecraft:behavior.controlled_by_player": {
+					"priority": 0,
+					"mount_speed_multiplier": 0.5
+				},
+				"minecraft:type_family": {
+					"family": [
+						"mob",
+						"flupper",
+						"flupper_tamed"
+					]
+				}
+			}
+		},
+		"components": {
+			"minecraft:health": {
+				"value": 30,
+				"max": 30
+			},
+			"minecraft:movement": {
+				"value": 0.1
+			},
+			"minecraft:leashable": {},
+			"minecraft:nameable": {},
+			"minecraft:scheduler": {
+				"scheduled_events": [
+					{
+						"event": "cannot_walk",
+						"filters": {
+							"test": "rider_count",
+							"subject": "self",
+							"value": 1
+						},
+						"target": "self"
+					},
+					{
+						"event": "can_walk",
+						"filters": {
+							"test": "rider_count",
+							"subject": "self",
+							"value": 0
+						},
+						"target": "self"
+					}
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 1,
+				"height": 1.5
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:behavior.tempt": {
+				"priority": 2,
+				"speed_multiplier": 1.1,
+				"items": [
+					"chorus_fruit"
+				]
+			},
+			"minecraft:jump.static": {},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 4
+					},
+					{
+						"filters": {
+							"test": "in_contact_with_water",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "contact",
+						"damage_per_tick": 3
+					}
+				]
+			},
+			"minecraft:environment_sensor": {
+				"triggers": [
+					{
+						"event": "flight",
+						"filters": {
+							"any_of": [
+								{
+									"test": "has_mob_effect",
+									"subject": "self",
+									"value": "levitation"
+								
+								},
+								{
+									"test": "has_mob_effect",
+									"subject": "self",
+									"value": "slow_falling"
+								
+								}
+							]
+						},
+						"target": "self"
+					},
+					{
+						"event": "grounded",
+						"filters": {
+							"any_of": [
+								{
+									"test": "on_ground",
+									"value": true
+								}
+							]
+						},
+						"target": "self"
+					}
+				]
+			},
+			"minecraft:behavior.random_stroll": {
+				"priority": 0
+			},
+			"minecraft:behavior.random_look_around": {
+				"priority": 6
+			},
+			"minecraft:behavior.look_at_player": {
+				"priority": 2
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"is_hungry",
+						"can_move"
+					]
+				}
+			},
+			"minecraft:entity_born": {
+				"add": {
+					"component_groups": [
+						"baby_flupper",
+						"is_hungry",
+						"can_move"
+					]
+				}
+			},
+			"grow_up": {
+				"remove": {
+					"component_groups": [
+						"baby_flupper"
+					]
+				}
+			},
+			"deny": {
+				"run_command": {
+					"command": [
+						"playanimation @s animation.flupper.deny t 3",
+						"particle minecraft:villager_angry ~ ~2 ~"
+					],
+					"target": "self"
+				}
+			},
+			"feed": {
+				"run_command": {
+					"command": [
+						"replaceitem entity @s slot.weapon.mainhand 0 chorus_fruit"
+					],
+					"target": "self"
+				}
+			},
+			"can_walk": {
+				"add": {
+					"component_groups": [
+						"can_move"
+					]
+				}
+			},
+			"cannot_walk": {
+				"remove": {
+					"component_groups": [
+						"can_move"
+					]
+				}
+			},
+			"flight": {
+				"add": {
+					"component_groups": [
+						"is_ignited"
+					]
+				}
+			},
+			"grounded": {
+				"remove": {
+					"component_groups": [
+						"is_ignited"
+					]
+				}
+			},
+			"on_eat_item": {
+				"randomize": [
+					{
+						"add": {
+							"component_groups": [
+								"allows_riding"
+							]
+						},
+						"remove": {
+							"component_groups": [
+								"is_hungry"
+							]
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:villager_happy ~ ~2 ~"
+							]
+						},
+						"weight": 1
+					},
+					{
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_smoke_particle ~ ~2 ~"
+							]
+						},
+						"weight": 2
+					}
+				]
+			}
+		}
+	}
+}

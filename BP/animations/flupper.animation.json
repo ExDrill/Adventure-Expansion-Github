@@ -1,0 +1,14 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.flupper.flap": {
+			"loop": true,
+			"timeline": {
+				"0.0": [
+					"/function exdrill/flupper"
+				]
+			},
+			"animation_length": 0.1
+		}
+	}
+}

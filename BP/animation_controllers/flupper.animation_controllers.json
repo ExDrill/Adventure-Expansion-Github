@@ -1,0 +1,27 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.flupper": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"has_chorus_fruit": "query.is_item_equipped"
+						}
+					]
+				},
+				"has_chorus_fruit": {
+					"on_exit": [
+						"@s on_eat_item"
+					],
+					"transitions": [
+						{
+							"default": "!query.is_item_equipped"
+						}
+					]
+				}
+			}
+		}
+	}
+}

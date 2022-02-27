@@ -12,7 +12,9 @@
 			"textures": [
 				"textures/items/egg_revenant",
 				"textures/items/egg_crumbles",
-				"textures/items/egg_sailorager"
+				"textures/items/egg_sailorager",
+				"textures/items/egg_flupper",
+				"textures/items/egg_sky_dragon"
 			]
 		},
 		"bottled_soul": {

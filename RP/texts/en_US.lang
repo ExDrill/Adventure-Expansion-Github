@@ -6,15 +6,20 @@ item.exdrill:blowdart=Blowpipe
 item.exdrill:flintlock=Flintlock
 item.exdrill:cactus_spine=Cactus Spine
 ## Block
-tile.exdrill:crumbled_rock_block.name=Block of Crumbled Rock
+tile.exdrill:crumbled_rock_block.name=Crumbled Rock Block
 tile.exdrill:soul_sanctum.name=Soul Sanctum
+tile.exdrill:chorus_bed.name=Chorus Bed
 ## Entity
 entity.exdrill:revenant.name=Revenant
 entity.exdrill:crumbles.name=Crumbles
 entity.exdrill:sailorager.name=Sailorager
+entity.exdrill:flupper.name=Flupper
+entity.exdrill:sky_dragon.name=Sky Dragon
 ## Spawn Egg
 item.spawn_egg.entity.exdrill:revenant.name=Spawn Revenant
 item.spawn_egg.entity.exdrill:crumbles.name=Spawn Crumbles
 item.spawn_egg.entity.exdrill:sailorager.name=Spawn Sailorager
+item.spawn_egg.entity.exdrill:flupper.name=Spawn Flupper
+item.spawn_egg.entity.exdrill:sky_dragon.name=Spawn Sky Dragon
 ## Misc
 action.interact.collect_soul=Collect

@@ -1,0 +1,23 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:sky_dragon",
+			"is_summonable": true,
+			"is_spawnable": true
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:health": {
+				"value": 400,
+				"max": 400
+			},
+			"minecraft:physics": {},
+			"minecraft:collision_box": {
+				"width": 7,
+				"height": 5
+			}
+		},
+		"events": {}
+	}
+}

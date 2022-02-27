@@ -1,0 +1,31 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "dev_random:gauntlet_underground"
+        },
+        "components": {
+            "minecraft:destroy_time": 99999,
+            "minecraft:on_interact": {
+                "event": "load_structure",
+                "target": "self"
+            },
+            "minecraft:on_placed": {
+                "event": "load_structure",
+                "target": "self"
+            }
+        },
+        "events": {
+            "load_structure": {
+                "set_block": {
+                    "block_type": "minecraft:air"
+                },
+                "run_command": {
+                    "command": [
+                        "structure load \"exdrill:gauntlet/underground\" ~-13 ~-7 ~-12"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+	"format_version": "1.13.0",
+	"minecraft:structure_template_feature": {
+		"description": {
+			"identifier": "exdrill:flupper_nest"
+		},
+		"structure_name": "exdrill:flupper_nest/main",
+		"adjustment_radius": 8,
+		"facing_direction": "south",
+		"constraints": {
+			"grounded": {}
+		}
+	}
+}
