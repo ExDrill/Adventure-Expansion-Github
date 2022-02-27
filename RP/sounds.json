@@ -27,6 +27,27 @@
                 },
                 "pitch": [ 0.8, 1.2 ],
                 "volume": 1
+            },
+            "exdrill:flupper": {
+                "pitch": [ 0.8, 0.9 ],
+                "volume": 1,
+                "events": {
+                    "ambient": {
+                        "sound": "mob.axolotl.idle",
+                        "pitch": 1.4,
+                        "volume": 1
+                    },
+                    "death": {
+                        "sound": "mob.fox.screech",
+                        "pitch": 1.4,
+                        "volume": 1
+                    },
+                    "hurt": {
+                        "sound": "mob.dolphin.hurt",
+                        "pitch": 1.4,
+                        "volume": 1
+                    }
+                }
             }
         }
     }

@@ -127,7 +127,7 @@
 						"mate_type": "exdrill:flupper",
 						"baby_type": "exdrill:flupper"
 					},
-					"breed_cooldown": 1000,
+					"breed_cooldown": 10,
 					"extra_baby_chance": 0.1,
 					"breed_items": "chorus_fruit"
 				},
@@ -200,8 +200,8 @@
 				"is_pushable_by_piston": true
 			},
 			"minecraft:behavior.tempt": {
-				"priority": 2,
-				"speed_multiplier": 1.1,
+				"priority": 1,
+				"speed_multiplier": 2,
 				"items": [
 					"chorus_fruit"
 				]
@@ -268,10 +268,11 @@
 				]
 			},
 			"minecraft:behavior.random_stroll": {
-				"priority": 0
+				"priority": 1,
+				"speed_multiplier": 1.5
 			},
 			"minecraft:behavior.random_look_around": {
-				"priority": 6
+				"priority": 4
 			},
 			"minecraft:behavior.look_at_player": {
 				"priority": 2

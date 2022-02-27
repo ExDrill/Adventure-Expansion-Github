@@ -1,37 +1,24 @@
 {
-	"format_version": "1.13.0",
-	"minecraft:feature_rules": {
-		"description": {
-			"identifier": "exdrill:flupper_nest_feature",
-			"places_feature": "exdrill:flupper_nest"
-		},
-		"conditions": {
-			"placement_pass": "final_pass",
-			"minecraft:biome_filter": {
-				"any_of": [
-					{
-						"test": "has_biome_tag",
-						"operator": "==",
-						"value": "the_end"
-					}
-				]
-			}
-		},
-		"distribution": {
-			"iterations": 1,
-			"scatter_chance": {
-				"numerator": 1,
-				"denominator": 400
-			},
-			"x": {
-				"extent": [ 0, 16 ],
-				"distribution": "gaussian"
-			},
-			"y": "query.heightmap(variable.worldx,variable.worldz)",
-			"z": {
-				"extent": [ 0, 16 ],
-				"distribution": "gaussian"
-			}
-		}
-	}
+    "format_version": "1.13.0",
+
+    "minecraft:feature_rules": {
+        "description": {
+            "identifier": "exdrill:flupper_nest_feature",
+            "places_feature": "exdrill:flupper_nest_scatter"
+        },
+
+        "conditions": {
+            "placement_pass": "first_pass",
+            "minecraft:biome_filter": {
+                "test": "has_biome_tag",
+                "value": "the_end"
+            }
+        },
+        "distribution": {
+            "iterations": "math.sqrt(math.pow(v.originx, 2) + math.pow(v.originz, 2)) > 1280",
+            "x": 0,
+            "z": 0,
+            "y": 0
+        }
+    }
 }

@@ -7,7 +7,7 @@
 				"default": {
 					"transitions": [
 						{
-							"has_chorus_fruit": "query.is_item_equipped"
+							"has_chorus_fruit": "query.is_item_equipped && !query.is_baby"
 						}
 					]
 				},

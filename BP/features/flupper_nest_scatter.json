@@ -1,0 +1,23 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:scatter_feature": {
+		"description": {
+			"identifier": "exdrill:flupper_nest_scatter"
+		},
+		"iterations": 1,
+		"scatter_chance": {
+			"numerator": 1,
+			"denominator": 250
+		},
+		"x": {
+			"extent": [ 0, 16 ],
+			"distribution": "gaussian"
+		},
+		"y": "query.heightmap(variable.worldx, variable.worldz)",
+		"z": {
+			"extent": [ 0, 16 ],
+			"distribution": "gaussian"
+		},
+		"places_feature": "exdrill:flupper_nest"
+	}
+}
