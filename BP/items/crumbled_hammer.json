@@ -15,6 +15,22 @@
 			"minecraft:icon": {
 				"texture": "crumbled_hammer"
 			},
+			"minecraft:enchantable": {
+				"slot": "axe",
+				"value": 15
+			},
+			"minecraft:digger": {
+				"destroy_speeds": [
+					{
+						"block": {
+							"tags": "query.any_tag('stone')"
+						},
+						"speed": 1
+					}
+				]
+			},
+			"tag:minecraft:is_pickaxe": {},
+			"minecraft:mining_speed": 15,
 			"minecraft:max_stack_size": 1,
 			"minecraft:durability": {
 				"damage_chance": { "min": 60, "max": 100 },

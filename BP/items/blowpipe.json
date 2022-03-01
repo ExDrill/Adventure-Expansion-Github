@@ -19,6 +19,10 @@
                     "max": 100
                 }
             },
+            "minecraft:enchantable": {
+                "slot": "elytra",
+                "value": 5
+            },
             "minecraft:on_use": {
                 "on_use": {
                     "event": "on_use",

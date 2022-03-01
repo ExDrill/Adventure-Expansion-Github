@@ -4,10 +4,12 @@
 		"description": {
 			"identifier": "exdrill:blowpipe",
 			"materials": {
-				"default": "entity_alphatest"
+				"default": "entity_alphatest",
+				"enchanted": "entity_alphatest_glint"
 			},
 			"textures": {
-				"default": "textures/entity/blowpipe"
+				"default": "textures/entity/blowpipe",
+				"enchanted": "textures/misc/enchanted_item_glint"
 			},
 			"geometry": {
 				"default": "geometry.blowpipe"
@@ -28,7 +30,7 @@
 			},
 			"item": { "exdrill:blowpipe": "query.owner_identifier == 'exdrill:inhabitant'" },
 			"render_controllers": [
-				"controller.render.default"
+				"controller.render.item_default"
 			]
 		}
 	}
