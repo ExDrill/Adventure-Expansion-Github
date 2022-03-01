@@ -1,0 +1,33 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "exdrill:vine_whip",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"frame_0": "textures/entity/vine_whip/vine_whip_0",
+				"frame_1": "textures/entity/vine_whip/vine_whip_1",
+				"frame_2": "textures/entity/vine_whip/vine_whip_2",
+				"frame_3": "textures/entity/vine_whip/vine_whip_3",
+				"frame_4": "textures/entity/vine_whip/vine_whip_4",
+				"frame_5": "textures/entity/vine_whip/vine_whip_5"
+			},
+			"geometry": {
+				"default": "geometry.vine_whip"
+			},
+			"animations": {
+				"billboard": "animation.vine_whip.billboard"
+			},
+			"scripts": {
+				"animate": [
+					"billboard"
+				]
+			},
+			"render_controllers": [
+				"controller.render.vine_whip"
+			]
+		}
+	}
+}

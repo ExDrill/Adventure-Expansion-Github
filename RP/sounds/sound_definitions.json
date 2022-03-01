@@ -25,6 +25,31 @@
 			"sounds": [
 				"sounds/mob/revenant/death"
 			]
+		},
+		"mob.inhabitant.idle": {
+			"category": "hostile",
+			"max_distance": 12,
+			"sounds": [
+				"sounds/mob/inhabitant/idle1",
+				"sounds/mob/inhabitant/idle2",
+				"sounds/mob/inhabitant/idle3"
+			]
+		},
+		"mob.inhabitant.hurt": {
+			"category": "hostile",
+			"max_distance": 12,
+			"sounds": [
+				"sounds/mob/inhabitant/hurt1",
+				"sounds/mob/inhabitant/hurt2",
+				"sounds/mob/inhabitant/hurt3"
+			]
+		},
+		"mob.inhabitant.death": {
+			"category": "hostile",
+			"max_distance": 12,
+			"sounds": [
+				"sounds/mob/inhabitant/death"
+			]
 		}
 	}
 }

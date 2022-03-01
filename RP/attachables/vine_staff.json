@@ -1,0 +1,30 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "exdrill:vine_staff",
+            "textures": {
+                "default": "textures/entity/vine_staff"
+            },
+            "geometry": {
+                "default": "geometry.vine_staff"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "third_person": "animation.vine_staff.third_person",
+                "first_person": "animation.vine_staff.first_person"
+            },
+            "scripts": {
+                "animate": [
+                    { "third_person": "!c.is_first_person" },
+                    { "first_person": "c.is_first_person" }
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

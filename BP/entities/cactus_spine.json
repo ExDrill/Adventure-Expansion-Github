@@ -22,6 +22,7 @@
 			"minecraft:projectile": {
 				"gravity": 0.01,
 				"angle_offset": -10,
+				"offset": [ 0, 0.7, 0 ],
 				"power": 1,
 				"on_hit": {
 					"remove_on_hit": {},

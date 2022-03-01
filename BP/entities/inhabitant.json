@@ -1,0 +1,263 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:inhabitant",
+			"is_summonable": true,
+			"is_spawnable": true
+		},
+		"component_groups": {
+			"melee_unit": {
+				"minecraft:equipment": {
+					"table": "loot_tables/entities/equipment/inhabitant_melee.json",
+					"slot_drop_chance": [
+						{
+							"slot": "slot.weapon.mainhand",
+							"drop_chance": 0.05
+						}
+					]
+				},
+				"minecraft:behavior.melee_attack": {
+					"priority": 0,
+					"speed_multiplier": 1.5
+				},
+				"minecraft:attack": {
+					"damage": 4
+				},
+				"minecraft:movement": {
+					"value": 0.2
+				}
+			},
+			"staff_unit": {
+				"minecraft:movement": {
+					"value": 0.15
+				},
+				"minecraft:equipment": {
+					"table": "loot_tables/entities/equipment/inhabitant_staff.json",
+					"slot_drop_chance": [
+						{
+							"slot": "slot.weapon.mainhand",
+							"drop_chance": 0
+						}
+					]
+				},
+				"minecraft:behavior.summon_entity": {
+					"priority": 0,
+					"summon_choices": [
+						{
+							"cast_duration": 0.6,
+							"do_casting": true,
+							"cooldown_time": 1.5,
+							"min_activation_range": 0,
+							"start_sound_event": "cast.spell",
+							"max_activation_range": 25,
+							"weight": 1,
+							"sequence": [
+								{
+									"shape": "line",
+									"target": "self",
+									"base_delay": 0,
+									"sound_event": "prepare.summon",
+									"delay_per_summon": 0.05,
+									"num_entities_spawned": 16,
+									"entity_type": "exdrill:vine_whip",
+									"size": 20,
+									"entity_lifespan": 1.1
+								}
+							]
+						}
+					]
+				}
+			},
+			"ranged_unit": {
+				"minecraft:equipment": {
+					"table": "loot_tables/entities/equipment/inhabitant_ranged.json",
+					"slot_drop_chance": [
+						{
+							"slot": "slot.weapon.mainhand",
+							"drop_chance": 0.05
+						}
+					]
+				},
+				"minecraft:movement": {
+					"value": 0.22
+				},
+				"minecraft:shooter": {
+					"def": "exdrill:cactus_spine"
+				},
+				"minecraft:behavior.ranged_attack": {
+					"priority": 0,
+					"attack_radius": 20,
+					"swing": true,
+					"burst_shots": 2,
+					"attack_interval": 1.2
+				}
+			}
+		},
+		"components": {
+			"minecraft:health": {
+				"value": 20,
+				"max": 20
+			},
+			"minecraft:experience_reward": {
+				"on_death": "math.die_roll_integer(1, 1, 6) * 2"
+			},
+			"minecraft:collision_box": {
+				"width": 0.4,
+				"height": 1.9
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 4
+					}
+				]
+			},
+			"minecraft:loot": {
+				"table": "loot_tables/entities/inhabitant.json"
+			},
+			"minecraft:environment_sensor": {
+				"triggers": {
+					"event": "clear_poison",
+					"filters": {
+						"test": "has_mob_effect",
+						"value": "poison"
+					},
+					"target": "self"
+				}
+			},
+			"minecraft:navigation.walk": {
+				"avoid_damage_blocks": true
+			},
+			"minecraft:jump.static": {},
+			"minecraft:movement.generic": {},
+			"minecraft:behavior.random_stroll": {
+				"priority": 2,
+				"xz_dist": 25,
+				"y_dist": 3
+			},
+			"minecraft:breathable": {
+				"total_supply": 20,
+				"suffocate_time": 15
+			},
+			"minecraft:behavior.float": {
+				"priority": 0
+			},
+			"minecraft:behavior.look_at_target": {
+				"priority": 0
+			},
+			"minecraft:behavior.look_at_player": {
+				"priority": 5
+			},
+			"minecraft:behavior.random_look_around": {
+				"priority": 3
+			},
+			"minecraft:behavior.hurt_by_target": {
+				"priority": 1,
+				"entity_types": {
+					"filters": {
+						"any_of": [
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "undead"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "inhabitant"
+							}
+						]
+					}
+				}
+				
+			},
+			"minecraft:type_family": {
+				"family": [
+					"mob",
+					"monster",
+					"inhabitant"
+				]
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 0,
+				"within_radius": 20,
+				"entity_types": {
+					"filters": {
+						"any_of": [
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "player"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "villager"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "irongolem"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "snowgolem"
+							}
+						]
+					}
+				}
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"randomize": [
+					{
+						"add": {
+							"component_groups": [
+								"melee_unit"
+							]
+						},
+						"weight": 2
+					},
+					{
+						"add": {
+							"component_groups": [
+								"staff_unit"
+							]
+						},
+						"weight": 1
+					},
+					{
+						"add": {
+							"component_groups": [
+								"ranged_unit"
+							]
+						},
+						"weight": 2
+					}
+				]
+			},
+			"clear_poison": {
+				"run_command": {
+					"command": [
+						"effect @s poison 0 0 false"
+					]
+				}
+			}
+		}
+	}
+}

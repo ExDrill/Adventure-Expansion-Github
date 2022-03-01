@@ -28,6 +28,9 @@
 		},
 		"cactus_spine": {
 			"textures": "textures/items/cactus_spine"
+		},
+		"vine_staff": {
+			"textures": "textures/items/vine_staff"
 		}
 	}
 }

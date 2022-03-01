@@ -1,0 +1,161 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:vine_whip",
+			"is_summonable": true,
+			"is_spawnable": true
+		},
+		"component_groups": {
+			"scale": {
+				"minecraft:scale": {
+					"value": 2
+				}
+			},
+			"frame_0": {
+				"minecraft:variant": {
+					"value": 0
+				}
+			},
+			"frame_1": {
+				"minecraft:variant": {
+					"value": 1
+				}
+			},
+			"frame_2": {
+				"minecraft:variant": {
+					"value": 2
+				}
+			},
+			"frame_3": {
+				"minecraft:variant": {
+					"value": 3
+				}
+			},
+			"frame_4": {
+				"minecraft:variant": {
+					"value": 4
+				}
+			},
+			"frame_5": {
+				"minecraft:variant": {
+					"value": 5
+				}
+			},
+			"despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"components": {
+			"minecraft:mob_effect": {
+				"effect_range": 1,
+				"effect_time": 3,
+				"mob_effect": "poison"
+			},
+			"minecraft:damage_sensor": {
+				"triggers": {
+					"cause": "all",
+					"deals_damage": false
+				}
+			},
+			"minecraft:collision_box": {
+				"height": 0.1,
+				"width": 0.1
+			},
+			"minecraft:timer": {
+				"looping": true,
+				"time": 0.1,
+				"time_down_event": {
+					"event": "lifetime",
+					"target": "self"
+				}
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"frame_0",
+						"scale"
+					]
+				},
+				"run_command": {
+					"command": [
+						"playsound block.sweet_berry_bush.hurt @a ~ ~ ~",
+						"damage @a[r=1] 1"
+					]
+				}
+			},
+			"lifetime": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"frame_1"
+							]
+						},
+						"filters": {
+							"test": "is_variant",
+							"value": 0
+						}
+					},
+					{
+						"add": {
+							"component_groups": [
+								"frame_2"
+							]
+						},
+						"filters": {
+							"test": "is_variant",
+							"value": 1
+						}
+					},
+					{
+						"add": {
+							"component_groups": [
+								"frame_3"
+							]
+						},
+						"filters": {
+							"test": "is_variant",
+							"value": 2
+						}
+					},
+					{
+						"add": {
+							"component_groups": [
+								"frame_4"
+							]
+						},
+						"filters": {
+							"test": "is_variant",
+							"value": 3
+						}
+					},
+					{
+						"add": {
+							"component_groups": [
+								"frame_5"
+							]
+						},
+						"filters": {
+							"test": "is_variant",
+							"value": 4
+						}
+					},
+					{
+						"add": {
+							"component_groups": [
+								"despawn"
+							]
+						},
+						"filters": {
+							"test": "is_variant",
+							"value": 5
+						}
+					}
+				]
+			}
+		}
+	}
+}

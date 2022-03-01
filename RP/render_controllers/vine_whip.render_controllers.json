@@ -1,0 +1,22 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.vine_whip": {
+			"geometry": "Geometry.default",
+			"materials": [ { "*": "Material.default" } ],
+			"textures": [ "Array.frames[query.variant]" ],
+			"arrays": {
+				"textures": {
+					"Array.frames": [
+						"Texture.frame_1",
+						"Texture.frame_2",
+						"Texture.frame_3",
+						"Texture.frame_4",
+						"Texture.frame_5"
+					]
+				}
+			},
+			"ignore_lighting": false
+		}
+	}
+}

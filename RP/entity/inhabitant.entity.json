@@ -1,0 +1,57 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "exdrill:inhabitant",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/inhabitant"
+			},
+			"geometry": {
+				"default": "geometry.inhabitant"
+			},
+			"animations": {
+				"move.arms": "animation.player.move.arms",
+				"move.legs": "animation.player.move.legs",
+				"bob": "animation.player.bob",
+				"look_at_target": "animation.common.look_at_target",
+				"cast": "animation.inhabitant.cast",
+				"attack": "animation.inhabitant.attack.rotations",
+				"hold": "animation.player.holding",
+				"hold_blowpipe": "animation.pillager.crossbow.hold",
+				"celebrate": "animation.humanoid.celebrating"
+			},
+			"scripts": {
+				"pre_animation": [
+					"variable.tcos0 = (math.cos(query.modified_distance_moved * 60) * query.modified_move_speed / variable.gliding_speed_value) * 40;"
+				],
+				"animate": [
+					"move.arms",
+					"move.legs",
+					"look_at_target",
+					"bob",
+					"attack",
+					{
+						"celebrate": "!query.is_alive"
+					},
+					{
+						"hold": "query.get_equipped_item_name == 'blowpipe'"
+					},
+					{
+						"hold_blowpipe": "query.facing_target_to_range_attack"
+					},
+					{
+						"cast": "query.is_casting"
+					}
+				]
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"enable_attachables": true,
+			"spawn_egg": {}
+		}
+	}
+}

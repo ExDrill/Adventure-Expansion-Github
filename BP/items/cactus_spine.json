@@ -9,7 +9,11 @@
 				"texture": "cactus_spine"
 			},
 			"minecraft:allow_off_hand": true,
-			"tag:exdrill:blowpipe_ammo": {}
+			"tag:exdrill:blowpipe_ammo": {},
+			"minecraft:projectile": {
+				"projectile_entity": "exdrill:cactus_spine",
+				"minimum_critical_power": 0
+			}
 		}
 	}
 }

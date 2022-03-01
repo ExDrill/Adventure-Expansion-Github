@@ -2,7 +2,7 @@
 	"format_version": "1.10.0",
 	"minecraft:attachable": {
 		"description": {
-			"identifier": "exdrill:blowpipe.player",
+			"identifier": "exdrill:blowpipe",
 			"materials": {
 				"default": "entity_alphatest"
 			},
@@ -14,7 +14,7 @@
 			},
 			"animations": {
 				"first_person": "animation.blowpipe.first_person",
-				"third_person": "animation.blowpipe.third_person"
+				"third_person": "animation.blowpipe.third_person.inhabitant"
 			},
 			"scripts": {
 				"animate": [
@@ -26,7 +26,7 @@
 					}
 				]
 			},
-			"item": { "exdrill:blowpipe": "query.owner_identifier == 'minecraft:player'" },
+			"item": { "exdrill:blowpipe": "query.owner_identifier == 'exdrill:inhabitant'" },
 			"render_controllers": [
 				"controller.render.default"
 			]

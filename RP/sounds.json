@@ -48,6 +48,19 @@
                         "volume": 1
                     }
                 }
+            },
+            "exdrill:inhabitant": {
+                "pitch": 1,
+                "volume": 1,
+                "events": {
+                    "ambient": "mob.inhabitant.idle",
+                    "hurt": "mob.inhabitant.hurt",
+                    "death": {
+                        "sound": "mob.inhabitant.death",
+                        "pitch": [ 0.8, 1.2 ],
+                        "volume": 1
+                    }
+                }
             }
         }
     }

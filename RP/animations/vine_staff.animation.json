@@ -1,0 +1,54 @@
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.vine_staff.third_person": {
+            "loop": true,
+            "bones": {
+                "root": {
+                    "rotation": [ 90, 0, 0 ],
+                    "position": [ 0, 23, 10 ],
+                    "scale": 0.9
+                }
+            }
+        },
+        "animation.vine_staff.first_person": {
+            "loop": true,
+            "bones": {
+                "root": {
+                    "rotation": [ 20, 0, 200 ],
+                    "position": [ 0, 35, 0 ]
+                }
+            }
+        },
+        "animation.vine_whip.billboard": {
+            "loop": true,
+            "bones": {
+                "body": {
+                    "rotation": [ 0, "query.target_y_rotation", 0 ]
+                }
+            }
+        },
+        "animation.inhabitant.cast": {
+            "loop": true,
+            "bones": {
+                "rightArm": {
+                    "rotation": [ -135, 0, -15 ]
+                },
+                "leftArm": {
+                    "rotation": [ 25, 0, -15 ]
+                }
+            }
+        },
+        "animation.inhabitant.attack.rotations": {
+			"loop": true,
+			"bones": {
+				"leftarm": {
+					"rotation": ["-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) * 1.2 + math.sin(variable.attack_time * 180)) * 10.0", 0, 0]
+				},
+				"rightarm": {
+					"rotation": ["-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) * 1.2 + math.sin(variable.attack_time * 180)) * 30.0", "-(math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180) ? (-90.0 * math.sin((1 - math.pow((1 - variable.attack_time), 4)) * 180)) + 30.0 : 0.0)", 0]
+				}
+			}
+		}
+    }
+}

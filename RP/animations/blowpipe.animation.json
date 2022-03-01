@@ -22,6 +22,17 @@
                 }
             }
         },
+        "animation.blowpipe.third_person.inhabitant": {
+            "animation_length": 0,
+            "loop": true,
+            "bones": {
+                "body": {
+                    "position": [ 1, 20, -1 ],
+                    "rotation": [ 90, 0, 0 ],
+                    "scale": 0.9
+                }
+            }
+        },
         "animation.flintlock.third_person": {
             "animation_length": 0,
             "loop": true,
