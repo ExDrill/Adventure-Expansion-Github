@@ -20,6 +20,14 @@
                 "slot": "elytra",
                 "value": 5
             },
+            "minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": [ "exdrill:flintlock" ],
+                        "repair_amount": "context.other->query.remaining_durability + 0.12 * context.other->query.max_durability"
+                    }
+                ]
+            },
             "minecraft:cooldown": {
                 "duration": 5,
                 "category": "flintlock"

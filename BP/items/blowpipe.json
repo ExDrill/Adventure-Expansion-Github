@@ -19,6 +19,18 @@
                     "max": 100
                 }
             },
+            "minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": [ "bamboo" ],
+                        "repair_amount": 16
+                    },
+                    {
+                        "items": [ "exdrill:blowpipe" ],
+                        "repair_amount": "context.other->query.remaining_durability + 0.12 * context.other->query.max_durability"
+                    }
+                ]
+            },
             "minecraft:enchantable": {
                 "slot": "elytra",
                 "value": 5

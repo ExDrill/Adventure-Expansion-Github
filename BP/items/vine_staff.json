@@ -24,6 +24,14 @@
                 "slot": "elytra",
                 "value": 5
             },
+			"minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": [ "exdrill:vine_staff" ],
+                        "repair_amount": "context.other->query.remaining_durability + 0.12 * context.other->query.max_durability"
+                    }
+                ]
+            },
 			"minecraft:on_use_on": {
 				"on_use_on": {
 					"event": "exdrill:on_use_on",

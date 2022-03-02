@@ -51,7 +51,10 @@
 				"controller.render.default"
 			],
 			"enable_attachables": true,
-			"spawn_egg": {}
+			"spawn_egg": {
+				"texture": "adventure_expansion_spawn_egg",
+				"texture_index": 5
+			}
 		}
 	}
 }

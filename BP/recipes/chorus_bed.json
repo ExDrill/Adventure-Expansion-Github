@@ -1,0 +1,21 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "exdrill:chorus_bed"
+        },
+        "tags": [ "crafting_table" ],
+        "pattern": [
+            "CCC"
+        ],
+        "key": {
+            "C": {
+                "item": "chorus_flower"
+            }
+        },
+        "result": {
+            "item": "exdrill:chorus_bed",
+            "count": 16
+        }
+    }
+}

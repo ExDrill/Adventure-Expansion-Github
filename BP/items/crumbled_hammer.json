@@ -29,11 +29,23 @@
 					}
 				]
 			},
+			"minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": [ "exdrill:crumbled_hammer" ],
+                        "repair_amount": "context.other->query.remaining_durability + 0.12 * context.other->query.max_durability"
+                    },
+					{
+						"items": [ "exdrill:crumbled_rock" ],
+						"repair_amount": 100
+					}
+                ]
+            },
 			"tag:minecraft:is_pickaxe": {},
 			"minecraft:mining_speed": 15,
 			"minecraft:max_stack_size": 1,
 			"minecraft:durability": {
-				"damage_chance": { "min": 60, "max": 100 },
+				"damage_chance": { "min": 99, "max": 100 },
 				"max_durability": 292
 			},
 			"minecraft:hand_equipped": true

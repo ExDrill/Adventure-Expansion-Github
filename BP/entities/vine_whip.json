@@ -4,7 +4,7 @@
 		"description": {
 			"identifier": "exdrill:vine_whip",
 			"is_summonable": true,
-			"is_spawnable": true
+			"is_spawnable": false
 		},
 		"component_groups": {
 			"scale": {
