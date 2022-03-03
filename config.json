@@ -29,6 +29,7 @@
 			"customItemComponents",
 			"customBlockComponents",
 			"customCommands",
+			"firework",
 			"moLang",
 			[
 				"simpleRewrite",
