@@ -1,0 +1,26 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "exdrill:blowpipe"
+        },
+        "pattern": [
+            "  B",
+            " BF",
+            "B  "
+        ],
+        "tags": [ "crafting_table" ],
+        "key": {
+            "B": {
+                "item": "bamboo"
+            },
+            "F": {
+                "item": "feather"
+            }
+        },
+        "result": {
+            "item": "exdrill:blowpipe",
+            "count": 1
+        }
+    }
+}

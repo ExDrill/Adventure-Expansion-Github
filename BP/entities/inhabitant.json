@@ -139,7 +139,8 @@
 				}
 			},
 			"minecraft:navigation.walk": {
-				"avoid_damage_blocks": true
+				"avoid_damage_blocks": true,
+				"can_open_doors": true
 			},
 			"minecraft:jump.static": {},
 			"minecraft:movement.generic": {},
@@ -172,11 +173,19 @@
 							{
 								"test": "is_family",
 								"subject": "other",
+								"operator": "not",
 								"value": "undead"
 							},
 							{
 								"test": "is_family",
 								"subject": "other",
+								"operator": "not",
+								"value": "zoglin"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"operator": "not",
 								"value": "inhabitant"
 							}
 						]
@@ -191,9 +200,18 @@
 					"inhabitant"
 				]
 			},
+			"minecraft:persistent": {},
+			"minecraft:behavior.open_door": {
+				"close_door_after": false,
+				"priority": 1
+			},
+			"minecraft:follow_range": {
+				"value": 64
+			},
 			"minecraft:behavior.nearest_attackable_target": {
 				"priority": 0,
-				"within_radius": 20,
+				"must_see": true,
+				"within_radius": 35,
 				"entity_types": {
 					"filters": {
 						"any_of": [
@@ -203,9 +221,24 @@
 								"value": "player"
 							},
 							{
+								"all_of": [
+									{
+										"test": "is_family",
+										"subject": "other",
+										"value": "villager"
+									},
+									{
+										"test": "has_component",
+										"subject": "other",
+										"operator": "not",
+										"value": "minecraft:is_baby"
+									}
+								]
+							},
+							{
 								"test": "is_family",
 								"subject": "other",
-								"value": "villager"
+								"value": "wandering_trader"
 							},
 							{
 								"test": "is_family",
@@ -216,6 +249,26 @@
 								"test": "is_family",
 								"subject": "other",
 								"value": "snowgolem"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "adult_piglin"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "illager"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "ravager"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "piglin_brute"
 							}
 						]
 					}
