@@ -1,3 +1,88 @@
+func westStageTwo => {
+    $isNorth = true
+
+     if (!$stop && ?"query.scoreboard('north_count') >= 3") => {
+            $stop = true
+            $room = true
+            addscore()
+            delay(1) => {
+                stageTwoStructurePlace()
+            }
+    }
+
+    if (!$stop && ?"query.scoreboard('north_count') <= 2") => {
+        delay(1) => {
+            if (?"query.scoreboard('north_count') >= 1") => {
+                rc("tp @s ~ ~ ~-16")
+            }
+            rc("event entity @s north_start")
+            rc("setblock ~ ~ ~ dirt")
+            addscore()
+            delay(1) => {
+                stageTwoStructurePlace()
+            }
+        }
+    }
+
+    if($room) => {
+      rc("say room true")
+    }
+
+    if(!$room) => {
+      rc("say room false")
+    }
+
+    if(?"query.scoreboard('north_count') >= 4") => {
+      rc("say scoreboard true")
+    }
+
+    if(!?"query.scoreboard('north_count') >= 4") => {
+      rc("say scoreboard false")
+    }
+
+    if($room && ?"query.scoreboard('north_count') >= 4") => {
+      rc("say both true")
+    }
+
+    if(!($room && ?"query.scoreboard('north_count') >= 4")) => {
+      rc("say both false")
+    }
+
+
+
+
+
+    if ($room && ?"query.scoreboard('north_count') >= 4") => {
+        rc("tp @s ~ ~ ~-16")
+        rc("event entity @s north_start_room")
+        addscore()
+        $room = false
+        $westStageTwoDone = true
+        $isNorth = false
+        $stop = false
+        delay(1) => {
+            stageTwoStructurePlace()
+        }
+    }
+}
+
+
+
+func stageTwoStructurePlace => {
+     delay(1) => {
+        delay(1) => {
+            if (!$stageTwo) => {
+                setup()
+                $stageTwo = true
+            }
+            if (!$westStageTwoDone) => {
+                westStageTwo()
+            }
+        }
+    }
+}
+
+
 func westStart => {
     $isWest = true
 
@@ -31,6 +116,7 @@ func westStart => {
             $westStartDone = true
             $isWest = false
             $stop = false
+            rc("tp @s ~-7 ~ ~-6")
             delay(1) => {
                 placestructure()
             }
@@ -135,8 +221,6 @@ func northStart => {
 
 
 func placestructure => {
-    rc("function structure/debug")
-   
     delay(1) => {
         delay(1) => {
             if (!$northStartDone) => {
@@ -148,6 +232,12 @@ func placestructure => {
             }
             if (!$westStartDone && $eastStartDone) => {
                 westStart()
+            }
+
+            if ($northStartDone && $eastStartDone && $westStartDone) => {
+                stageTwoStructurePlace()
+                $stop = false
+                $room = false
             }
         }
     }
@@ -171,19 +261,34 @@ func addscore => {
 }
 
 func setup => {
-    rc("function structure/structure_setup")
     delay(1) => {
-        placestructure()
+         if ($firstStart) => {
+            rc("function structure/structure_setup")
+        }
     }
+
+    if (!$firstStart) => {
+        delay(1) => {
+            rc("function structure/structure_setup")
+            placestructure()
+            $firstStart = true
+        }
+    } 
 }
 
 func start => {
+    $firstStart = false
+    $stageTwo = false
     $stop = false
     $room = false
     $northStartDone = false
     $eastStartDone = false
     $westStartDone = false
     $southStartDone = false
+    $northStageTwoDone = false
+    $eastStageTwoDone = false
+    $westStageTwoDone = false
+    $southStageTwoDone = false
     $isNorth = false
     $isEast = false
     $isWest = false

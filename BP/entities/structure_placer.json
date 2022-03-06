@@ -39,7 +39,7 @@
 			"north_start": {
 				"run_command": {
 					"command": [
-						"structure load \"exdrill/jungle_sanctuary:hallway_0\" ~-9 ~-1 ~-16"
+						"structure load \"exdrill/jungle_sanctuary:hallway\" ~-9 ~-1 ~-16"
 					]
 				}
 			},
@@ -53,7 +53,7 @@
 			"east_start": {
 				"run_command": {
 					"command": [
-						"structure load \"exdrill/jungle_sanctuary:hallway_0\" ~1 ~-1 ~-9 90_degrees"
+						"structure load \"exdrill/jungle_sanctuary:hallway\" ~1 ~-1 ~-9 90_degrees"
 					]
 				}
 			},
@@ -67,7 +67,7 @@
 			"west_start": {
 				"run_command": {
 					"command": [
-						"structure load \"exdrill/jungle_sanctuary:hallway_0\" ~-16 ~-1 ~-6 270_degrees"
+						"structure load \"exdrill/jungle_sanctuary:hallway\" ~-16 ~-1 ~-6 270_degrees"
 					]
 				}
 			},
