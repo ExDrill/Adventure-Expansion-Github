@@ -1,0 +1,33 @@
+{
+	"format_version": "1.13.0",
+	"minecraft:feature_rules": {
+		"description": {
+			"identifier": "exdrill:jungle_sanctuary_feature",
+			"places_feature": "exdrill:jungle_sanctuary"
+		},
+		"conditions": {
+			"placement_pass": "first_pass",
+			"minecraft:biome_filter": {
+				"test": "has_biome_tag",
+				"operator": "==",
+				"value": "jungle"
+			}
+		},
+		"distribution": {
+			"scatter_chance": {
+				"numerator": 1,
+				"denominator": 100
+			},
+			"iterations": 1,
+			"x": {
+				"extent": [ 0, 32],
+				"distribution": "uniform"
+			},
+			"y": "query.heightmap(variable.worldx, variable.worldz) - 26",
+			"z": {
+				"extent": [ 0, 32],
+				"distribution": "uniform"
+			}
+		}
+	}
+}
