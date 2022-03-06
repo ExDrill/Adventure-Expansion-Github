@@ -1,6 +1,19 @@
 {
 	"format_version": "1.10.0",
 	"animation_controllers": {
+		"controller.animation.soul_puff": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"particle_effects": [
+						{
+							"effect": "soul_flame",
+							"locator": "emitter"
+						}
+					]
+				}
+			}
+		},
 		"controller.animation.revenant": {
 			"initial_state": "idle",
 			"states": {

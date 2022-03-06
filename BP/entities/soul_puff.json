@@ -2,7 +2,7 @@
 	"format_version": "1.17.0",
 	"minecraft:entity": {
 		"description": {
-			"identifier": "exdrill:explosive_ball",
+			"identifier": "exdrill:soul_puff",
 			"is_summonable": true,
 			"is_spawnable": false,
 			"runtime_identifier": "minecraft:arrow"
@@ -10,64 +10,54 @@
 		"component_groups": {
 			"scale": {
 				"minecraft:scale": {
-					"value": 0.5
+					"value": 1
 				}
 			},
-			"explode": {
-				"minecraft:explode": {
-					"breaks_blocks": false,
-					"causes_fire": false,
-					"fuse_lit": true,
-					"fuse_length": 0,
-					"power": 1
-				}
+			"despawn": {
+				"minecraft:instant_despawn": {}
 			}
 		},
 		"components": {
 			"minecraft:collision_box": {
-				"height": 0.1,
-				"width": 0.1
+				"height": 0.3,
+				"width": 0.3
 			},
 			"minecraft:physics": {},
 			"minecraft:projectile": {
-				"gravity": 0.01,
+				"power": 1,
+				"should_bounce": true,
+				"gravity": 0,
 				"on_hit": {
-					"definition_event": {
-						"affect_projectile": true,
-						"event_trigger": {
-							"event": "explode",
-							"target": "self"
-						}
-					},
 					"impact_damage": {
-						"damage": 2,
+						"damage": 3,
 						"knockback": false,
-						"destroy_on_hit": false
+						"destroy_on_hit": false,
+						"should_bounce": true
 					}
 				},
 				"offset": [ 0, 0.7, 0 ]
 			},
 			"minecraft:timer": {
 				"looping": true,
-				"time": 0.5,
+				"time": 3,
 				"time_down_event": {
-					"event": "explode",
+					"event": "despawn",
 					"target": "self"
 				}
 			}
 		},
 		"events": {
-			"explode": {
-				"add": {
-					"component_groups": [
-						"explode"
-					]
-				}
-			},
 			"minecraft:entity_spawned": {
 				"add": {
 					"component_groups": [
 						"scale"
+					]
+				}
+			},
+			"despawn": {
+				"add": {
+					"component_groups": [
+						"despawn"
 					]
 				}
 			}
