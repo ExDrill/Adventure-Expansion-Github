@@ -1,0 +1,193 @@
+func westStart => {
+    $isWest = true
+
+    if (!$stop && ?"query.scoreboard('west_count') >= 3") => {
+            $stop = true
+            $room = true
+            addscore()
+            delay(1) => {
+                 placestructure()
+             }
+    }
+    if (!$stop && ?"query.scoreboard('west_count') <= 2") => {
+         delay(1) => {
+             if (?"query.scoreboard('west_count') >= 1") => {
+                rc("tp @s ~-16 ~ ~")
+            }
+            rc("event entity @s west_start")
+            addscore()
+            delay(1) => {
+                placestructure()
+            }
+        }
+    }
+
+    delay(1) => {
+        if ($room && ?"query.scoreboard('west_count') >= 4") => {
+            $room = false
+            rc("tp @s ~-16 ~ ~")
+            rc("event entity @s west_start_room")
+            addscore()
+            $westStartDone = true
+            $isWest = false
+            $stop = false
+            delay(1) => {
+                placestructure()
+            }
+        }
+    }
+}
+
+
+
+
+func eastStart => {
+        $isEast = true
+
+        if (!$stop && ?"query.scoreboard('east_count') >= 3") => {
+                $stop = true
+                $room = true
+                addscore()
+                delay(1) => {
+                    placestructure()
+                }
+        }
+        if (!$stop && ?"query.scoreboard('east_count') <= 2") => {
+             delay(1) => {
+                if (?"query.scoreboard('east_count') >= 1") => {
+                        rc("tp @s ~16 ~ ~")
+                }
+                rc("event entity @s east_start")
+                addscore()
+                delay(1) => {
+                        placestructure()
+                }
+            }
+        }
+
+        delay(1) => {
+
+            if ($room) => {
+                 rc("say Room True")
+            }
+
+
+            if ($room && ?"query.scoreboard('east_count') >= 4") => {
+                rc("tp @s ~16 ~ ~")
+                rc("event entity @s east_start_room")
+                addscore()
+                $room = false
+                $eastStartDone = true
+                $isEast = false
+                $stop = false
+                rc("tp @s ~-63 ~ ~-3")
+                delay(1) => {
+                     placestructure()
+                }
+            }
+        }
+}
+
+
+
+func northStart => {
+
+     $isNorth = true
+
+     if (!$stop && ?"query.scoreboard('north_count') >= 3") => {
+            $stop = true
+            $room = true
+            addscore()
+            delay(1) => {
+                placestructure()
+            }
+    }
+
+    if (!$stop && ?"query.scoreboard('north_count') <= 2") => {
+        delay(1) => {
+            if (?"query.scoreboard('north_count') >= 1") => {
+                rc("tp @s ~ ~ ~-16")
+            }
+            rc("event entity @s north_start")
+            addscore()
+            delay(1) => {
+                placestructure()
+            }
+        }
+    }
+
+    if ($room && ?"query.scoreboard('north_count') >= 4") => {
+        rc("tp @s ~ ~ ~-16")
+        rc("event entity @s north_start_room")
+        addscore()
+        $room = false
+        $northStartDone = true
+        $isNorth = false
+        $stop = false
+        rc("tp @s ~6 ~ ~57")
+        delay(1) => {
+            placestructure()
+        }
+    }
+}
+
+
+
+
+func placestructure => {
+    rc("function structure/debug")
+   
+    delay(1) => {
+        delay(1) => {
+            if (!$northStartDone) => {
+                northStart()
+            }
+
+            if (!$eastStartDone && $northStartDone) => {
+                eastStart()
+            }
+            if (!$westStartDone && $eastStartDone) => {
+                westStart()
+            }
+        }
+    }
+}
+
+
+func addscore => {
+    rc("scoreboard players add @s count 1")
+
+    if ($isNorth) => {
+        rc("scoreboard players add @s north_count 1")
+    }
+
+    if ($isEast) => {
+        rc("scoreboard players add @s east_count 1")
+    }
+
+    if ($isWest) => {
+        rc("scoreboard players add @s west_count 1")
+    }
+}
+
+func setup => {
+    rc("function structure/structure_setup")
+    delay(1) => {
+        placestructure()
+    }
+}
+
+func start => {
+    $stop = false
+    $room = false
+    $northStartDone = false
+    $eastStartDone = false
+    $westStartDone = false
+    $southStartDone = false
+    $isNorth = false
+    $isEast = false
+    $isWest = false
+    $isSouth = false
+    rc("tp @s ~ ~ ~-5")
+    setup()
+}

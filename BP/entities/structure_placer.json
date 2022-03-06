@@ -1,0 +1,83 @@
+{
+	"format_version": "1.18.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "fl:structure_placer",
+			"is_summonable": true,
+			"is_spawnable": true
+		},
+		"component_groups": {
+			"fl:despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"components": {
+			"minecraft:collision_box": {
+				"height": 0,
+				"width": 0
+			},
+			"minecraft:damage_sensor": {
+				"triggers": {
+					"cause": "all",
+					"deals_damage": false
+				}
+			},
+			"minecraft:physics": {
+				"has_collision": false,
+				"has_gravity": false
+			},
+			"frw:structure_placer": {}
+		},
+		"events": {
+			"despawn": {
+				"add": {
+					"component_groups": [
+						"fl:despawn"
+					]
+				}
+			},
+			"north_start": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:hallway_0\" ~-9 ~-1 ~-16"
+					]
+				}
+			},
+			"north_start_room": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:feast_room\" ~-9 ~-1 ~-16"
+					]
+				}
+			},
+			"east_start": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:hallway_0\" ~1 ~-1 ~-9 90_degrees"
+					]
+				}
+			},
+			"east_start_room": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:feast_room\" ~1 ~-1 ~-9 90_degrees"
+					]
+				}
+			},
+			"west_start": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:hallway_0\" ~-16 ~-1 ~-6 270_degrees"
+					]
+				}
+			},
+			"west_start_room": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:feast_room\" ~-16 ~-1 ~-6 270_degrees"
+					]
+				}
+			}
+		}
+	}
+}

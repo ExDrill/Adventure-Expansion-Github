@@ -1,0 +1,10 @@
+scoreboard objectives add count dummy count
+scoreboard objectives add north_count dummy north_count
+scoreboard objectives add east_count dummy east_count
+scoreboard objectives add south_count dummy south_count
+scoreboard objectives add west_count dummy west_count
+scoreboard players set @s count 0
+scoreboard players set @s north_count 0
+scoreboard players set @s east_count 0
+scoreboard players set @s south_count 0
+scoreboard players set @s west_count 0
