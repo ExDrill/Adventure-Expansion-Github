@@ -36,6 +36,13 @@
 					]
 				}
 			},
+			"main_start": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:start_room\" ~-9 ~-1 ~-16"
+					]
+				}
+			},
 			"north_start": {
 				"run_command": {
 					"command": [
@@ -47,6 +54,13 @@
 				"run_command": {
 					"command": [
 						"structure load \"exdrill/jungle_sanctuary:feast_room\" ~-9 ~-1 ~-16"
+					]
+				}
+			},
+			"north_stage_two_room": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:corner_hallway\" ~-9 ~-1 ~-16 90_degrees"
 					]
 				}
 			},
@@ -64,6 +78,13 @@
 					]
 				}
 			},
+			"east_stage_two_room": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:corner_hallway\" ~1 ~-1 ~-9 180_degrees"
+					]
+				}
+			},
 			"west_start": {
 				"run_command": {
 					"command": [
@@ -75,6 +96,27 @@
 				"run_command": {
 					"command": [
 						"structure load \"exdrill/jungle_sanctuary:feast_room\" ~-16 ~-1 ~-6 270_degrees"
+					]
+				}
+			},
+			"west_stage_two_room": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:corner_hallway\" ~-16 ~-1 ~-6 0_degrees"
+					]
+				}
+			},
+			"south_start": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:hallway\" ~-6 ~-1 ~1 0_degrees"
+					]
+				}
+			},
+			"south_stage_two_room": {
+				"run_command": {
+					"command": [
+						"structure load \"exdrill/jungle_sanctuary:corner_hallway\" ~-6 ~-1 ~1 270_degrees"
 					]
 				}
 			}
