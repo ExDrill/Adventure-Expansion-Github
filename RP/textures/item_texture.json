@@ -2,11 +2,11 @@
 	"resource_pack_name": "Adventure Expansion",
 	"texture_name": "atlas.items",
 	"texture_data": {
-		"crumbled_rock": {
-			"textures": "textures/items/crumbled_rock"
+		"stalwart_rock": {
+			"textures": "textures/items/stalwart_rock"
 		},
-		"crumbled_hammer": {
-			"textures": "textures/items/crumbled_hammer"
+		"stalwart_hammer": {
+			"textures": "textures/items/stalwart_hammer"
 		},
 		"adventure_expansion_spawn_egg": {
 			"textures": [

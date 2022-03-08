@@ -7,12 +7,12 @@
 	"structure_void": {
 		"blockshape": "lantern"
 	},
-	"exdrill:crumbled_rock_block": {
-		"textures": "crumbled_rock_block",
-		"sound": "deepslate"
+	"exdrill:stalwart_rock_block": {
+		"textures": "stalwart_rock_block",
+		"sound": "basalt"
 	},
 	"exdrill:soul_sanctum": {
-		"sound": "deepslate_bricks"
+		"sound": "shroomlight"
 	},
 	"exdrill:chorus_bed": {
 		"sound": "cave_vines"

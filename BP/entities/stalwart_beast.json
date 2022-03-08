@@ -2,25 +2,11 @@
 	"format_version": "1.17.0",
 	"minecraft:entity": {
 		"description": {
-			"identifier": "exdrill:crumbles",
+			"identifier": "exdrill:stalwart_beast",
 			"is_summonable": true,
 			"is_spawnable": true
 		},
 		"component_groups": {
-			"decider": {
-				"minecraft:target_nearby_sensor": {
-					"inside_range": 7,
-					"outside_range": 8,
-					"on_inside_range": {
-						"event": "melee_attack",
-						"target": "self"
-					},
-					"on_outside_range": {
-						"event": "blocking",
-						"target": "self"
-					}
-				}
-			},
 			"melee_attack": {
 				"minecraft:behavior.melee_attack": {
 					"priority": 0,
@@ -28,7 +14,7 @@
 						"event": "grab_entity",
 						"target": "self"
 					},
-					"speed_multiplier": 1.5
+					"speed_multiplier": 2
 				}
 			},
 			"knockback_attack": {
@@ -58,18 +44,6 @@
 					"damage_per_tick": 3,
 					"damage_range": 3
 				}
-			},
-			"blocking": {
-				"minecraft:behavior.melee_attack": {
-					"priority": 0,
-					"on_attack": {
-						"event": "grab_entity",
-						"target": "self"
-					},
-					"reach_multiplier": 0,
-					"track_target": true,
-					"speed_multiplier": 3
-				}
 			}
 		},
 		"components": {
@@ -78,7 +52,7 @@
 				"max": 150
 			},
 			"minecraft:knockback_resistance": {
-				"value": 0.5
+				"value": 0.7
 			},
 			"minecraft:attack": {
 				"damage": 5
@@ -94,7 +68,7 @@
 				}
 			},
 			"minecraft:movement": {
-				"value": 0.15
+				"value": 0.1
 			},
 			"minecraft:physics": {},
 			"minecraft:pushable": {
@@ -107,7 +81,7 @@
 				}
 			},
 			"minecraft:loot": {
-				"table": "loot_tables/entities/crumbles.json"
+				"table": "loot_tables/entities/stalwart_beast.json"
 			},
 			"minecraft:rideable": {
 				"family_types": [
@@ -149,7 +123,7 @@
 			},
 			"minecraft:type_family": {
 				"family": [
-					"crumbles",
+					"stalwart_beast",
 					"mob",
 					"monster"
 				]
@@ -162,7 +136,7 @@
 					"filters": {
 						"test": "is_family",
 						"subject": "other",
-						"value": "crumbles"
+						"value": "stalwart_beast"
 					}
 				}
 			},
@@ -205,7 +179,7 @@
 			"minecraft:entity_spawned": {
 				"add": {
 					"component_groups": [
-						"decider"
+						"melee_attack"
 					]
 				}
 			},
@@ -217,20 +191,6 @@
 				},
 				"remove": {
 					"component_groups": [
-						"knockback_attack",
-						"blocking"
-					]
-				}
-			},
-			"blocking": {
-				"add": {
-					"component_groups": [
-						"blocking"
-					]
-				},
-				"remove": {
-					"component_groups": [
-						"melee_attack",
 						"knockback_attack"
 					]
 				}

@@ -2,7 +2,7 @@
 	"format_version": "1.12",
 	"minecraft:recipe_shaped": {
 		"description": {
-			"identifier": "exdrill:crumbled_rock_block"
+			"identifier": "exdrill:stalwart_rock_block"
 		},
 		"tags": ["crafting_table"],
 		"pattern": [
@@ -10,10 +10,10 @@
 			"XX"
 		],
 		"key": {
-			"X": {"item": "exdrill:crumbled_rock"}
+			"X": {"item": "exdrill:stalwart_rock"}
 		},
 		"result": {
-			"item": "exdrill:crumbled_rock_block",
+			"item": "exdrill:stalwart_rock_block",
 			"count": 1
 		}
 	}

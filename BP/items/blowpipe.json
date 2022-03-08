@@ -80,7 +80,7 @@
                         "damage": {
                             "amount": 1,
                             "target": "holder",
-                            "type": "void"
+                            "type": "magic"
                         },
                         "condition": "query.is_item_name_any('slot.weapon.offhand', 0, 'exdrill:bottled_soul')"
                     }

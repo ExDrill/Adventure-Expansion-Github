@@ -2,7 +2,7 @@
 	"format_version": "1.12",
 	"minecraft:recipe_shaped": {
 		"description": {
-			"identifier": "exdrill:crumbled_hammer"
+			"identifier": "exdrill:stalwart_hammer"
 		},
 		"tags": ["crafting_table"],
 		"pattern": [
@@ -12,10 +12,10 @@
 		],
 		"key": {
 			"A": {"item": "minecraft:stick"},
-			"X": {"item": "exdrill:crumbled_rock"}
+			"X": {"item": "exdrill:stalwart_rock"}
 		},
 		"result": {
-			"item": "exdrill:crumbled_hammer",
+			"item": "exdrill:stalwart_hammer",
 			"count": 1
 		}
 	}
