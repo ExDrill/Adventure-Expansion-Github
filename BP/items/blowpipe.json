@@ -71,6 +71,18 @@
                             ]
                         },
                         "condition": "query.is_item_name_any('slot.weapon.offhand', 0, 'exdrill:cactus_spine')"
+                    },
+                    {
+                        "shoot": {
+                            "projectile": "exdrill:soul_puff",
+                            "launch_power": 0.35
+                        },
+                        "damage": {
+                            "amount": 1,
+                            "target": "holder",
+                            "type": "magic"
+                        },
+                        "condition": "query.is_item_name_any('slot.weapon.offhand', 0, 'exdrill:bottled_soul')"
                     }
                 ]
             }

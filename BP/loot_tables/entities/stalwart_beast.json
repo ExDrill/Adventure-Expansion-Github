@@ -5,7 +5,7 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "exdrill:crumbled_rock",
+                    "name": "exdrill:stalwart_rock",
                     "functions": [
                         {
                             "function": "set_count",

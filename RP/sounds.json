@@ -10,7 +10,7 @@
                     "death": "mob.revenant.death"
                 }
             },
-            "exdrill:crumbles": {
+            "exdrill:stalwart_beast": {
                 "pitch": 0.8,
                 "volume": 1,
                 "events": {

@@ -2,11 +2,11 @@
 	"format_version": "1.17.0",
 	"minecraft:item": {
 		"description": {
-			"identifier": "exdrill:crumbled_rock"
+			"identifier": "exdrill:stalwart_rock"
 		},
 		"components": {
 			"minecraft:icon": {
-				"texture": "crumbled_rock"
+				"texture": "stalwart_rock"
 			},
 			"minecraft:max_stack_size": 64
 		}

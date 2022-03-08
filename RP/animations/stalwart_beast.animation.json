@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.crumbles.move.arms": {
+		"animation.stalwart_beast.move.arms": {
 			"loop": true,
 			"bones": {
 				"leftArm": {
@@ -12,7 +12,7 @@
 				}
 			}
 		},
-		"animation.crumbles.move.legs": {
+		"animation.stalwart_beast.move.legs": {
 			"loop": true,
 			"bones": {
 				"leftLeg": {
@@ -23,7 +23,7 @@
 				}
 			}
 		},
-		"animation.crumbles.move.body": {
+		"animation.stalwart_beast.move.body": {
 			"loop": true,
 			"bones": {
 				"body": {
@@ -31,7 +31,7 @@
 				}
 			}
 		},
-		"animation.crumbles.holding": {
+		"animation.stalwart_beast.holding": {
 			"loop": true,
 			"bones": {
 				"leftArm": {
@@ -44,7 +44,7 @@
 				}
 			}
 		},
-		"animation.crumbles.attack.rotations": {
+		"animation.stalwart_beast.attack.rotations": {
 			"loop": true,
 			"bones": {
 				"leftarm": {
@@ -55,7 +55,7 @@
 				}
 			}
 		},
-		"animation.crumbles.block": {
+		"animation.stalwart_beast.block": {
 			"loop": true,
 			"bones": {
 				"leftArm": {

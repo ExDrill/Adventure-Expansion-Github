@@ -2,14 +2,16 @@
 	"format_version": "1.16.100",
 	"minecraft:block": {
 		"description": {
-			"identifier": "exdrill:crumbled_rock_block"
+			"identifier": "exdrill:stalwart_rock_block"
 		},
 		"components": {
 			"minecraft:destroy_time": 1,
 			"minecraft:creative_category": {
 				"category": "construction"
 			},
-			"tag:exdrill:solid_block": {}
+			"tag:exdrill:solid_block": {},
+			"tag:stone": {},
+			"tag:iron_pick_diggable": {}
 		}
 	}
 }

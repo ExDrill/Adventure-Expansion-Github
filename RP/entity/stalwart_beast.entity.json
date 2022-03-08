@@ -1,0 +1,43 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "exdrill:stalwart_beast",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/stalwart_beast"
+			},
+			"geometry": {
+				"default": "geometry.stalwart_beast"
+			},
+			"animations": {
+				"move.arms": "animation.stalwart_beast.move.arms",
+				"move.legs": "animation.stalwart_beast.move.legs",
+				"move.body": "animation.stalwart_beast.move.body",
+				"holding": "animation.stalwart_beast.holding",
+				"attack": "animation.stalwart_beast.attack.rotations",
+				"controller": "controller.animation.stalwart_beast",
+				"block": "animation.stalwart_beast.block"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"scripts": {
+				"pre_animation": [
+					"variable.tcos0 = (math.cos(query.modified_distance_moved * 70) * query.modified_move_speed / variable.gliding_speed_value) * 30;",
+					"variable.tcos1 = (math.cos(query.modified_distance_moved * 70) * query.modified_move_speed / variable.gliding_speed_value) * 40;"
+				],
+				"animate": [
+					"move.legs",
+					"controller"
+				]
+			},
+			"spawn_egg": {
+				"texture": "adventure_expansion_spawn_egg",
+				"texture_index": 1
+			}
+		}
+	}
+}

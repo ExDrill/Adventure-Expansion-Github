@@ -4,8 +4,8 @@
 	"resource_pack_name": "Adventure Expansion",
 	"texture_name": "atlas.terrain",
 	"texture_data": {
-		"crumbled_rock_block": {
-			"textures": "textures/blocks/crumbled_rock"
+		"stalwart_rock_block": {
+			"textures": "textures/blocks/stalwart_rock"
 		},
 		"soul_sanctum": {
 			"textures": "textures/blocks/soul_sanctum"

@@ -12,6 +12,23 @@
 				"minecraft:scale": {
 					"value": 0.5
 				}
+			},
+			"player_made": {
+				"minecraft:projectile": {
+					"gravity": 0.01,
+					"angle_offset": -10,
+					"offset": [ 0, 0.4, 0 ],
+					"crit_particle_on_hurt": true,
+					"anchor": 1,
+					"power": 1,
+					"on_hit": {
+						"remove_on_hit": {},
+						"impact_damage": {
+							"destroy_on_hit": true,
+							"damage": [ 3, 4 ]
+						}
+					}
+				}
 			}
 		},
 		"components": {
@@ -35,11 +52,27 @@
 		},
 		"events": {
 			"minecraft:entity_spawned": {
-				"add": {
-					"component_groups": [
-						"scale_down"
-					]
-				}
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"scale_down"
+							]
+						}
+					},
+					{
+						"add": {
+							"component_groups": [
+								"player_made"
+							]
+						},
+						"filters": {
+							"test": "is_family",
+							"subject": "other",
+							"value": "player"
+						}
+					}
+				]	
 			}
 		}
 	}
