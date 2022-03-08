@@ -32,6 +32,9 @@
 		},
 		"vine_staff": {
 			"textures": "textures/items/vine_staff"
+		},
+		"sweet_bread": {
+			"textures": "textures/items/sweet_bread"
 		}
 	}
 }
