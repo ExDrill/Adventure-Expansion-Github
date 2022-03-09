@@ -253,7 +253,7 @@
 							{
 								"test": "is_family",
 								"subject": "other",
-								"value": "adult_piglin"
+								"value": "piglin"
 							},
 							{
 								"test": "is_family",
@@ -269,6 +269,11 @@
 								"test": "is_family",
 								"subject": "other",
 								"value": "piglin_brute"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "enderman"
 							}
 						]
 					}
