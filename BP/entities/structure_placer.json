@@ -51,11 +51,32 @@
 				}
 			},
 			"north_start_room": {
-				"run_command": {
-					"command": [
-						"structure load \"exdrill/jungle_sanctuary:feast_room\" ~-9 ~-1 ~-16"
-					]
-				}
+				"randomize": [
+					{
+						"weight": 25,
+						"run_command": {
+							"command": [
+								"structure load \"exdrill/jungle_sanctuary:feast_room\" ~-9 ~-1 ~-16"
+							]
+						}
+					},
+					{
+						"weight": 25,
+						"run_command": {
+							"command": [
+								"structure load \"exdrill/jungle_sanctuary:alternate_prison_room\" ~-9 ~-1 ~-16 90_degrees"
+							]
+						}
+					},
+					{
+						"weight": 25,
+						"run_command": {
+							"command": [
+								"structure load \"exdrill/jungle_sanctuary:living_room\" ~-9 ~-1 ~-16"
+							]
+						}
+					}
+				]
 			},
 			"north_stage_two_room": {
 				"run_command": {
@@ -72,11 +93,32 @@
 				}
 			},
 			"east_start_room": {
-				"run_command": {
-					"command": [
-						"structure load \"exdrill/jungle_sanctuary:feast_room\" ~1 ~-1 ~-9 90_degrees"
-					]
-				}
+				"randomize": [
+					{
+						"weight": 25,
+						"run_command": {
+							"command": [
+								"structure load \"exdrill/jungle_sanctuary:feast_room\" ~1 ~-1 ~-9 90_degrees"
+							]
+						}
+					},
+					{
+						"weight": 25,
+						"run_command": {
+							"command": [
+								"structure load \"exdrill/jungle_sanctuary:alternate_prison_room\" ~1 ~-1 ~-9 180_degrees"
+							]
+						}
+					},
+					{
+						"weight": 25,
+						"run_command": {
+							"command": [
+								"structure load \"exdrill/jungle_sanctuary:living_room\" ~1 ~-1 ~-9 90_degrees"
+							]
+						}
+					}
+				]
 			},
 			"east_stage_two_room": {
 				"run_command": {
@@ -93,11 +135,32 @@
 				}
 			},
 			"west_start_room": {
-				"run_command": {
-					"command": [
-						"structure load \"exdrill/jungle_sanctuary:feast_room\" ~-16 ~-1 ~-6 270_degrees"
-					]
-				}
+				"randomize": [
+					{
+						"weight": 25,
+						"run_command": {
+							"command": [
+								"structure load \"exdrill/jungle_sanctuary:feast_room\" ~-16 ~-1 ~-6 270_degrees"
+							]
+						}
+					},
+					{
+						"weight": 25,
+						"run_command": {
+							"command": [
+								"structure load \"exdrill/jungle_sanctuary:alternate_prison_room\" ~-16 ~-1 ~-6 270_degrees"
+							]
+						}
+					},
+					{
+						"weight": 25,
+						"run_command": {
+							"command": [
+								"structure load \"exdrill/jungle_sanctuary:living_room\" ~-16 ~-1 ~-6 270_degrees"
+							]
+						}
+					}
+				]
 			},
 			"west_stage_two_room": {
 				"run_command": {
