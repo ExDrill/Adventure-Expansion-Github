@@ -1,0 +1,55 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "exdrill:goose",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/goose"
+			},
+			"geometry": {
+				"default": "geometry.goose"
+			},
+			"animations": {
+				"look_at_target": "animation.common.look_at_target",
+				"walk": "animation.goose.walk",
+				"walk_angry": "animation.chicken.move",
+				"idle": "animation.goose.idle",
+				"attack": "animation.goose.attack",
+				"angry": "animation.goose.has_target",
+				"hide_legs": "animation.goose.hide_legs",
+				"baby_setup": "animation.goose.baby_setup"
+			},
+			"scripts": {
+				"animate": [
+					{
+						"idle": "query.ground_speed == 0"
+					},
+					{
+						"walk": "query.modified_move_speed * 2"
+					},
+					{
+						"angry": "query.is_angry"
+					},
+					{
+						"hide_legs": "query.is_in_water"
+					},
+					{
+						"baby_setup": "query.is_baby"
+					},
+					"attack",
+					"look_at_target"
+				]
+			},
+			"render_controllers": [
+				"controller.render.default"
+			],
+			"spawn_egg": {
+				"texture": "adventure_expansion_spawn_egg",
+				"texture_index": 6
+			}
+		}
+	}
+}

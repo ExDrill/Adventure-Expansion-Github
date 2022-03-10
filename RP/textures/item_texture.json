@@ -15,7 +15,8 @@
 				"textures/items/egg_sailorager",
 				"textures/items/egg_flupper",
 				"textures/items/egg_sky_dragon",
-				"textures/items/egg_inhabitant"
+				"textures/items/egg_inhabitant",
+				"textures/items/egg_goose"
 			]
 		},
 		"bottled_soul": {

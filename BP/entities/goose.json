@@ -1,0 +1,276 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:goose",
+			"is_summonable": true,
+			"is_spawnable": true
+		},
+		"component_groups": {
+			"adult_goose": {
+				"minecraft:behavior.breed": {
+					"priority": 0
+				},
+				"minecraft:breedable": {
+					"require_tame": false,
+					"breeds_with": {
+						"mate_type": "exdrill:goose",
+						"baby_type": "exdrill:goose",
+						"breed_event": {
+							"event": "minecraft:entity_born",
+							"target": "baby"
+						}
+					},
+					"breed_items": [
+						"sweet_berries",
+						"wheat_seeds",
+						"pumpkin_seeds",
+						"melon_seeds",
+						"beetroot_seeds",
+						"hanging_roots"
+					]
+				},
+				"minecraft:behavior.nearest_attackable_target": {
+					"priority": 1,
+					"entity_types": {
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "silverfish"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "endermite"
+								}
+							]
+						}
+					}
+				},
+				"minecraft:behavior.hurt_by_target": {
+					"priority": 1
+				}
+			},
+			"baby_goose": {
+				"minecraft:is_baby": {},
+				"minecraft:scale": {
+					"value": 0.5
+				},
+				"minecraft:ageable": {
+					"duration": 1200,
+					"feed_items": [
+						"sweet_berries",
+						"wheat_seeds",
+						"pumpkin_seeds",
+						"melon_seeds",
+						"beetroot_seeds",
+						"hanging_roots"	
+					],
+					"grow_up": {
+						"event": "minecraft:ageable_grow_up",
+						"target": "self"
+					}
+				},
+				"minecraft:behavior.panic": {
+					"priority": 1,
+					"prefer_water": true,
+					"speed_multiplier": 1.35
+				},
+				"minecraft:behavior.follow_parent": {
+					"priority": 1,
+					"speed_multiplier": 1.25
+				}
+			},
+			"calm_goose": {
+				"minecraft:on_target_acquired": {
+					"event": "minecraft:become_angry",
+					"target": "self"
+				}
+			},
+			"angry_goose": {
+				"minecraft:angry": {
+					"broadcast_anger": true,
+					"duration": 10,
+					"broadcast_filters": {
+						"all_of": [
+							{
+								"test": "is_family",
+								"value": "goose"
+							},
+							{
+								"test": "has_component",
+								"operator": "not",
+								"value": "minecraft:is_baby"
+							}
+						]
+					},
+					"broadcast_range": 15,
+					"calm_event": {
+						"event": "minecraft:on_calm",
+						"target": "self"
+					}
+				}
+			}
+		},
+		"components": {
+			"minecraft:health": {
+				"value": 8,
+				"max": 8
+			},
+			"minecraft:collision_box": {
+				"width": 0.6,
+				"height": 0.6
+			},
+			"minecraft:behavior.tempt": {
+				"priority": 1,
+				"items": [
+					"sweet_berries",
+					"wheat_seeds",
+					"pumpkin_seeds",
+					"melon_seeds",
+					"beetroot_seeds",
+					"hanging_roots"
+				],
+				"within_radius": 10
+			},
+			"minecraft:movement": {
+				"value": 0.2
+			},
+			"minecraft:jump.static": {},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 4
+					}
+				]
+			},
+			"minecraft:nameable": {},
+			"minecraft:leashable": {},
+			"minecraft:type_family": {
+				"family": [
+					"mob",
+					"goose"
+				]
+			},
+			"minecraft:behavior.melee_attack": {
+				"priority": 1,
+				"speed_multiplier": 1.75
+			},
+			"minecraft:attack": {
+				"damage": 2
+			},
+			"minecraft:follow_range": {
+				"value": 64
+			},
+			"minecraft:breathable": {
+				"total_supply": 20,
+				"suffocate_time": 15
+			},
+			"minecraft:navigation.walk": {
+				"avoid_damage_blocks": true,
+				"can_jump": true,
+				"can_sink": false
+			},
+			"minecraft:buoyant": {
+				"base_buoyancy": 0.5,
+				"simulate_waves": false,
+				"apply_gravity": false,
+				"liquid_blocks": [
+					"minecraft:water"
+				]
+			},
+			"minecraft:movement.generic": {},
+			"minecraft:behavior.random_stroll": {
+				"priority": 1
+			},
+			"minecraft:behavior.look_at_player": {
+				"priority": 3
+			},
+			"minecraft:behavior.random_look_around": {
+				"priority": 2
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"randomize": [
+					{
+						"add": {
+							"component_groups": [
+								"adult_goose",
+								"calm_goose"
+							]
+						},
+						"weight": 19
+					},
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"baby_goose",
+								"calm_goose"
+							]
+						}
+					}
+				]
+			},
+			"minecraft:ageable_grow_up": {
+				"add": {
+					"component_groups": [
+						"adult_goose"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"baby_goose"
+					]
+				}
+			},
+			"minecraft:become_angry": {
+				"add": {
+					"component_groups": [
+						"angry_goose"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"calm_goose"
+					]
+				}
+			},
+			"minecraft:on_calm": {
+				"add": {
+					"component_groups": [
+						"calm_goose"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"angry_goose"
+					]
+				}
+			},
+			"minecraft:entity_born": {
+				"add": {
+					"component_groups": [
+						"baby_goose",
+						"calm_goose"
+					]
+				}
+			}
+		}
+	}
+}

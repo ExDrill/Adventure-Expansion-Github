@@ -67,7 +67,7 @@
                         },
                         "run_command": {
                             "command": [
-                                "clear @s exdrill:cactus_spine 0 1"
+                                "clear @s[m=!c] exdrill:cactus_spine 0 1"
                             ]
                         },
                         "condition": "query.is_item_name_any('slot.weapon.offhand', 0, 'exdrill:cactus_spine')"

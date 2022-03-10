@@ -18,6 +18,7 @@ entity.exdrill:sailorager.name=Sailorager
 entity.exdrill:flupper.name=Flupper
 entity.exdrill:inhabitant.name=Inhabitant
 entity.exdrill:sky_dragon.name=Sky Dragon
+entity.exdrill:goose.name=Goose
 ## Spawn Egg
 item.spawn_egg.entity.exdrill:revenant.name=Spawn Revenant
 item.spawn_egg.entity.exdrill:stalwart_beast.name=Spawn Stalwart Beast
@@ -25,6 +26,7 @@ item.spawn_egg.entity.exdrill:sailorager.name=Spawn Sailorager
 item.spawn_egg.entity.exdrill:flupper.name=Spawn Flupper
 item.spawn_egg.entity.exdrill:inhabitant.name=Spawn Inhabitant
 item.spawn_egg.entity.exdrill:sky_dragon.name=Spawn Sky Dragon
+item.spawn_egg.entity.exdrill:goose.name=Spawn Goose
 ## Misc
 action.interact.collect_soul=Collect
 action.hint.exit.exdrill:flupper=Tap sneak to dismount

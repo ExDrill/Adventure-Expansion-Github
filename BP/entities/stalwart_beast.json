@@ -80,6 +80,7 @@
 					"cooldown": 0
 				}
 			},
+			"minecraft:persistent": {},
 			"minecraft:loot": {
 				"table": "loot_tables/entities/stalwart_beast.json"
 			},
