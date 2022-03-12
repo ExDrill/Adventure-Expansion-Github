@@ -94,10 +94,10 @@
                     params: [],
             
                     asMolang (params) {
-                        return `(math.random(0, 1) >= 0.5)`
+                        return `(math.random(0, 1) >= 0.23)`
                     },
 
-                    dynamic: true
+                    dynamic: true,
                 },
 
                 {
@@ -106,14 +106,16 @@
                     ],
             
                     asMolang (params) {
-                        return `(math.random(0, 1) >= ${1 / variableToMolang(params[0]).value * 0.5})`
+                        return `(math.random(0, 1) >= ${1 / variableToMolang(params[0]).value * 0.23})`
                     },
 
                     dynamic: true
                 }
             ],
 
-            supports: 'molang'
+            supports: 'molang',
+            
+            returns: 'BOOLEAN'
         }
     };
 
@@ -169,7 +171,11 @@
         let pTemplate = [];
 
         for(const i in params){
-            pTemplate.push(params[i].token);
+            if(params[i].token == 'CALL'){
+                pTemplate.push(getReturnType(params[i].value[0].value, params[i].value.slice(1)));
+            }else {
+                pTemplate.push(params[i].token);
+            }
         }
 
         if(template.length != pTemplate.length){
@@ -220,6 +226,21 @@
                 }
             }
         }
+    }
+
+    function getReturnType(name, params){
+        if(!doesFunctionExist(name)){
+            console.warn('Function does not exist: ' + name);
+            return null
+        }
+
+        if(!doesFunctionExistWithTemplate(name, params)){
+            console.warn('Function does not exist with template: ' + name);
+            console.log(params);
+            return null
+        }
+
+        return functions[name].returns
     }
 
     function getIsFunctionDynamic(name, params){
@@ -388,6 +409,33 @@
             }
         },
 
+        '!=': {
+            params: [
+                'ANY',
+                'ANY'
+            ],
+
+            optimize(params){
+                if(params[0].token != params[1].token){
+                    return {
+                        value: 'true',
+                        token: 'BOOLEAN',
+                        line: params[0].line
+                    }
+                }
+
+                return {
+                    value: (tokenToUseable(params[0]) != tokenToUseable(params[1])).toString(),
+                    token: 'BOOLEAN',
+                    line: params[0].line
+                }
+            },
+
+            toMolang(params){
+                return `${variableToMolang(params[0]).value} != ${variableToMolang(params[1]).value}`
+            }
+        },
+
         '>': {
             params: [
                 'INTEGER',
@@ -526,7 +574,11 @@
         let pParams = [];
 
         for(const i in params){
-            pParams.push(params[i].token);
+            if(params[i].token == 'CALL'){
+                pParams.push(getReturnType(params[i].value[0].value, params[i].value.slice(1)));
+            }else {
+                pParams.push(params[i].token);
+            }
         }
 
         for(const i in pParams){
@@ -669,6 +721,8 @@
     */
 
     function Compile(tree, config, source){
+        console.log(JSON.parse(JSON.stringify(tree)));
+
         //#region NOTE: Setup json values for editing
         let worldRuntime = source;
 
@@ -757,7 +811,7 @@
                                 return new Error(`fFlag '${tree[i].value[0].value}' can only be assigned to a boolean value! It was assigned to '${tree[i].value[1].token}'.`, tree[i].line)
                             }
 
-                            let deep = indexFlag(tree[i].value[1].value);
+                            let deep = indexFlag(tree[i].value[0].value);
 
                             if(deep instanceof Error){
                                 return deep
@@ -777,6 +831,12 @@
                         }
 
                         deep = searchForFlags(tree[i].value[1].value);
+
+                        if(deep instanceof Error){
+                            return deep
+                        }
+                    }else if(tree[i].token == 'ELSE'){
+                        let deep = searchForFlags(tree[i].value[0]);
 
                         if(deep instanceof Error){
                             return deep
@@ -928,6 +988,12 @@
                     if(deep instanceof Error){
                         return deep
                     }
+                }else if(tree[i].token == 'ELSE'){
+                    let deep = searchForExpressions(tree[i].value[0].value);
+
+                    if(deep instanceof Error){
+                        return deep
+                    }
                 }else if(tree[i].token == 'DELAY'){
                     let deep = undefined;
 
@@ -996,6 +1062,12 @@
                     tree[i].value[0] = indexDynamicValues(uuidv4(), tree[i].value[0]);
 
                     deep = searchForDyncamicValues(tree[i].value[1].value);
+
+                    if(deep instanceof Error){
+                        return deep
+                    }
+                }else if(tree[i].token == 'ELSE'){
+                    deep = searchForDyncamicValues(tree[i].value[0].value);
 
                     if(deep instanceof Error){
                         return deep
@@ -1149,10 +1221,10 @@
                         commands.push(`event entity @s frw_${name}`);
                     }
                 }else if(value[i].token == 'ASSIGN'){
-                    if(value[i].value[0].value == 'true'){
-                        commands.push(`event entity @s frw_${name}_true`);
+                    if(value[i].value[1].value == 'true'){
+                        commands.push(`event entity @s frw_${value[i].value[0].value}_true`);
                     }else {
-                        commands.push(`event entity @s frw_${name}_false`);
+                        commands.push(`event entity @s frw_${value[i].value[0].value}_false`);
                     }
                 }else if(value[i].token == 'IF'){
                     const valueID = value[i].value[0].value;
@@ -1160,6 +1232,12 @@
                     compileCodeBlock('frwb_' + valueID, value[i].value[1].value);
 
                     commands.push(`event entity @s[tag=frwb_dv_${valueID}] frw_frwb_${valueID}`);
+                }else if(value[i].token == 'ELSE'){
+                    const valueID = value[i - 1].value[0].value;
+
+                    compileCodeBlock('frwb_else_' + valueID, value[i].value[0].value);
+
+                    commands.push(`event entity @s[tag=!frwb_dv_${valueID}] frw_frwb_else_${valueID}`);
                 }else if(value[i].token == 'DELAY'){
                     const delayID = uuidv4();
                     const delay = tokenToUseable(value[i].value[0]);
@@ -1168,7 +1246,7 @@
 
                     let triggerCommands = [];
 
-                    for(let j = 0; j < 3; j++){
+                    for(let j = 0; j < config.delayChannels; j++){
                         triggerCommands.push(`event entity @s[tag=!frwb_delay_added] frwb_delay_trigger_channel_${j}_${delayID}`);
 
                         worldRuntime['minecraft:entity'].events[`frwb_delay_trigger_channel_${j}_${delayID}`] = {
@@ -1231,7 +1309,11 @@
         for(const i in functionNames){
             const name = functionNames[i];
 
-            compileCodeBlock(name, functions[name]);
+            let deep = compileCodeBlock(name, functions[name]);
+
+            if(deep instanceof Error){
+                return deep
+            }
         }
 
         worldRuntime['minecraft:entity'].events.frwb_delay = {
@@ -1615,7 +1697,7 @@
                 let prevToken = tokens[i - 1];
 
                 if(prevToken && nextToken){
-                    if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION')){
+                    if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION' || nextToken.token == 'CALL') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'CALL')){
                         return new Error(`Can not do operation '${token.value}' with '${nextToken.token}' and '${prevToken.token}'!`, token.line)
                     }
 
@@ -1635,7 +1717,7 @@
                 let prevToken = tokens[i - 1];
 
                 if(prevToken && nextToken){
-                    if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION')){
+                    if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION' || nextToken.token == 'CALL') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'CALL')){
                         return new Error(`Can not do operation '${token.value}' with '${nextToken.token}' and '${prevToken.token}'!`, token.line)
                     }
                     
@@ -1649,12 +1731,13 @@
         //Create Expressions !
         for(let i = 0; i < tokens.length; i++){
             const token = tokens[i];
+            const nextToken = tokens[i + 1];
 
-            if(token.token == 'SYMBOL' && token.value == '!'){
+            if(token.token == 'SYMBOL' && token.value == '!' && (!nextToken || !(nextToken.token == 'SYMBOL' && nextToken.value == '='))){
                 let nextToken = tokens[i + 1];
 
                 if(nextToken){
-                    if(!(nextToken.token == 'EXPRESSION' || nextToken.token == 'FLAG' || nextToken.token == 'BOOLEAN' || nextToken.token == 'MOLANG')){
+                    if(!(nextToken.token == 'EXPRESSION' || nextToken.token == 'FLAG' || nextToken.token == 'BOOLEAN' || nextToken.token == 'MOLANG' || nextToken.token == 'CALL')){
                         return new Error(`Can not do operation '${token.value}' with '${nextToken.token}'!`, token.line)
                     }
 
@@ -1663,12 +1746,12 @@
             }
         }
 
-        //Create Expressions == > < >= <=
+        //Create Expressions == != > < >= <=
         for(let i = 0; i < tokens.length; i++){
             const token = tokens[i];
             const nextToken = tokens[i + 1];
 
-            if(token.token == 'SYMBOL' && (token.value == '=' || token.value == '>' || token.value == '<')){
+            if(token.token == 'SYMBOL' && (token.value == '=' || token.value == '!' || token.value == '>' || token.value == '<')){
                 let prevToken = tokens[i - 1];
 
                 if(prevToken && nextToken){
@@ -1676,7 +1759,7 @@
                         let nextNextToken = tokens[i + 2];
 
                         if(token.value == '>' || token.value == '<'){
-                            if(!(nextNextToken.token == 'INTEGER' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'NAME') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'NAME')){
+                            if(!(nextNextToken.token == 'INTEGER' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'NAME' || nextNextToken.token == 'CALL') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'NAME' || prevToken.token == 'CALL')){
                                 return new Error(`Can not do operation '${token.value + nextToken.value}' with '${nextNextToken.token}' and '${prevToken.token}'!`, token.line)
                             }
                             
@@ -1686,7 +1769,7 @@
 
                             i--;
                         }else {
-                            if(!(nextNextToken.token == 'INTEGER' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'BOOLEAN' || nextNextToken.token == 'FLAG' || nextNextToken.token == 'MOLANG' || nextNextToken.token == 'NAME') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'BOOLEAN' || prevToken.token == 'FLAG' || prevToken.token == 'MOLANG' || prevToken.token == 'NAME')){
+                            if(!(nextNextToken.token == 'INTEGER' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'BOOLEAN' || nextNextToken.token == 'FLAG' || nextNextToken.token == 'MOLANG' || nextNextToken.token == 'NAME'  || nextNextToken.token == 'CALL') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'BOOLEAN' || prevToken.token == 'FLAG' || prevToken.token == 'MOLANG' || prevToken.token == 'NAME' || prevToken.token == 'CALL')){
                                 return new Error(`Can not do operation '${token.value + nextToken.value}' with '${nextNextToken.token}' and '${prevToken.token}'!`, token.line)
                             }
 
@@ -1697,7 +1780,7 @@
                             i--;
                         }
                     }else if(token.value == '>' || token.value == '<'){
-                        if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION' || nextNextToken.token == 'NAME') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'NAME')){
+                        if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION' || nextNextToken.token == 'NAME' || nextNextToken.token == 'CALL') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'NAME' || prevToken.token == 'CALL')){
                             return new Error(`Can not do operation '${token.value}' with '${nextToken.token}' and '${prevToken.token}'!`, token.line)
                         }
 
@@ -1866,7 +1949,7 @@
 
                     groups.unshift(prevToken);
 
-                    tokens.splice(i - 1, endIndex - i + 2, { value: groups, token: 'CALL' });
+                    tokens.splice(i - 1, endIndex - i + 2, { value: groups, token: 'CALL', line: prevToken.line });
                 }
             }
         }
@@ -1940,23 +2023,51 @@
 
             //Build Ifs And Delays
             for(let i = 0; i < tokens[l].length; i++){
-                const token = tokens[l][i];
-                const nextToken = tokens[l][i + 1];
-                const nextNextToken = tokens[l][i + 2];
-                const nextNextNextToken = tokens[l][i + 3];
-                const nextNextNextNextToken = tokens[l][i + 4];
-                const nextNextNextNextNextToken = tokens[l][i + 5];
+                const token = tokens[l][i]; //if
+                const nextToken = tokens[l][i + 1]; //(
+                const nextNextToken = tokens[l][i + 2]; //Expression
+                const nextNextNextToken = tokens[l][i + 3]; //)
+                const nextNextNextNextToken = tokens[l][i + 4]; // =>
+                const nextNextNextNextNextToken = tokens[l][i + 5]; // Block
 
                 if(token.token == 'KEYWORD' && token.value == 'if' && nextToken && nextToken.token == 'SYMBOL' && nextToken.value == '(' && nextNextToken && nextNextNextToken && nextNextNextToken.token == 'SYMBOL' && nextNextNextToken.value == ')' && nextNextNextNextToken && nextNextNextNextToken.token == 'ARROW' && nextNextNextNextNextToken && nextNextNextNextNextToken.token == 'BLOCK'){
                     if(!(nextNextToken.token == 'FLAG' || nextNextToken.token == 'NAME' || nextNextToken.token == 'BOOLEAN' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'MOLANG' || nextNextToken.token == 'CALL')){
                         return new Error(`If condition can't be ${nextNextToken.token}!`, token.line)
                     }
-                    
+
                     for(let j = 0; j < nextNextNextNextNextToken.value.length; j++){
-                        nextNextNextNextNextToken.value[j] = nextNextNextNextNextToken.value[j][0];
+                        if(nextNextNextNextNextToken.value[j].length != 1){
+                            return new Error('Unexpected symbol (06A) ' + nextNextNextNextNextToken.value[j][0].value, nextNextNextNextNextToken.value[j][0].line)
+                        }else if(nextNextNextNextNextToken.value[j].length == 0){
+                            nextNextNextNextNextToken.value[j].splice(l, 1);
+                            l--;
+                        }else {
+                            nextNextNextNextNextToken.value[j] = nextNextNextNextNextToken.value[j][0];
+                        }
                     }
                     
                     tokens[l].splice(i, 6, { value: [nextNextToken, nextNextNextNextNextToken], token: 'IF', line: token.line });
+                }
+            }
+            
+            for(let i = 0; i < tokens[l].length; i++){
+                const token = tokens[l][i]; //else
+                const nextToken = tokens[l][i + 1]; // =>
+                const nextNextToken = tokens[l][i + 2]; //BLOCK
+
+                if(token.token == 'KEYWORD' && token.value == 'else' && nextToken && nextToken.token == 'ARROW' && nextNextToken && nextNextToken.token == 'BLOCK'){
+                    for(let j = 0; j < nextNextToken.value.length; j++){
+                        if(nextNextToken.value[j].length != 1){
+                            return new Error('Unexpected symbol (06C) ' + nextNextToken.value[j][0].value, nextNextToken.value[j][0].line)
+                        }else if(nextNextToken.value[j].length == 0){
+                            nextNextToken.value[j].splice(l, 1);
+                            l--;
+                        }else {
+                            nextNextToken.value[j] = nextNextToken.value[j][0];
+                        }
+                    }
+                    
+                    tokens[l].splice(i, 6, { value: [nextNextToken], token: 'ELSE', line: token.line });
                 }
             }
 
@@ -1972,9 +2083,16 @@
                     if(nextNextToken.token != 'INTEGER'){
                         return new Error(`Delay must be an integer!`, token.line)
                     }
-                    
+
                     for(let j = 0; j < nextNextNextNextNextToken.value.length; j++){
-                        nextNextNextNextNextToken.value[j] = nextNextNextNextNextToken.value[j][0];
+                        if(nextNextNextNextNextToken.value[j].length != 1){
+                            return new Error('Unexpected symbol (06B) ' + nextNextNextNextNextToken.value[j][0].value, nextNextNextNextNextToken.value[j][0].line)
+                        }else if(nextNextNextNextNextToken.value[j].length == 0){
+                            nextNextNextNextNextToken.value[j].splice(l, 1);
+                            l--;
+                        }else {
+                            nextNextNextNextNextToken.value[j] = nextNextNextNextNextToken.value[j][0];
+                        }
                     }
                     
                     tokens[l].splice(i, 6, { value: [nextNextToken, nextNextNextNextNextToken], token: 'DELAY', line: token.line });
@@ -2034,6 +2152,125 @@
                     
                     tokens[l].splice(i, 3, { value: [token, nextNextToken], token: 'ASSIGN', line: token.line });
                 }
+            }
+        }
+
+        return tokens
+    }
+
+    /* 
+        INTEGER
+        SYMBOL
+        KEYWORD
+        BOOLEAN
+        NAME
+        STRING
+        BLOCK
+        FLAG
+        MOLANG
+        ARROW
+        CALL
+        EXPRESSION
+        ASSIGN
+        IF
+        DELAY
+        DEFINITON
+        ELSE
+    */
+
+    function validateTree(tokens, gloabalScope){
+        for(let l = 0; l < tokens.length; l++){
+            let deep = null;
+
+            switch(tokens[l].token){
+                case 'BLOCK':
+                    return new Error('Blocks may not exist by themselves!', tokens[l].line)
+                case 'DEFINITION':
+                    if(!gloabalScope){
+                        return new Error('Can\'t define function not in the global scope!', tokens[l].line)
+                    }
+
+                    deep = validateTree(tokens[l].value[1].value, false);
+
+                    if(deep instanceof Error){
+                        return deep
+                    }
+
+                    break
+                case 'ASSIGN':
+                    if(gloabalScope){
+                        if(tokens[l].value[0].token == 'FLAG'){
+                            return new Error('Can\'t assign flags in the global scope!', tokens[l].line)
+                        }
+                    }
+                    break
+                case 'IF':
+                    if(gloabalScope){
+                        return new Error('Can\'t use if statements in the global scope!', tokens[l].line)
+                    }
+
+                    deep = validateTree(tokens[l].value[1].value, false);
+
+                    if(deep instanceof Error){
+                        return deep
+                    }
+                    
+                    break
+                case 'ELSE':
+                        if(gloabalScope){
+                            return new Error('Can\'t use else statements in the global scope!', tokens[l].line)
+                        }
+
+                        if(!tokens[l - 1] || tokens[l - 1].token != 'IF'){
+                            return new Error('Else statements must be after an if statement!', tokens[l].line)
+                        }
+        
+                        deep = validateTree(tokens[l].value[0].value, false);
+        
+                        if(deep instanceof Error){
+                            return deep
+                        }
+                        
+                        break
+                case 'DELAY':
+                    if(gloabalScope){
+                        return new Error('Can\'t use delay statements in the global scope!', tokens[l].line)
+                    }
+
+                    deep = validateTree(tokens[l].value[1].value, false);
+
+                    if(deep instanceof Error){
+                        return deep
+                    }
+
+                    break
+                case 'CALL':
+                    if(gloabalScope){
+                        return new Error('Can\'t use calls in the global scope!', tokens[l].line)
+                    }
+                    break
+                case 'EXPRESSION':
+                    return new Error('Expressions may not exist by themselves!', tokens[l].line)
+                case 'INTEGER':
+                    return new Error('Integers may not exist by themselves!', tokens[l].line)
+                case 'SYMBOL':
+                    return new Error('Symbols may not exist by themselves!', tokens[l].line)
+                case 'KEYWORD':
+                    return new Error('Keywords may not exist by themselves!', tokens[l].line)
+                case 'BOOLEAN':
+                    return new Error('Booleans may not exist by themselves!', tokens[l].line)
+                case 'NAME':
+                    return new Error('Names may not exist by themselves!', tokens[l].line)
+                case 'STRING':
+                    return new Error('Strings may not exist by themselves!', tokens[l].line)
+                case 'FLAG':
+                    return new Error('Flags may not exist by themselves!', tokens[l].line)
+                case 'MOLANG':
+                    return new Error('Molangs may not exist by themselves!', tokens[l].line)
+                case 'ARROW':
+                    return new Error('Arrows may not exist by themselves!', tokens[l].line)
+                default:
+                    return new Error('Unknown token type: ' + tokens[l].token, tokens[l].line)
             }
         }
 
@@ -2120,6 +2357,12 @@
             }
         }
 
+        tokens = validateTree(tokens, true);
+
+        if(tokens instanceof Error){
+            return tokens
+        }
+
         return tokens
     }
 
@@ -2171,7 +2414,8 @@
         'if',
         'dyn',
         'func',
-        'delay'
+        'delay',
+        'else'
     ];
 
     function Tokenize(input) {
@@ -2426,9 +2670,15 @@
 
     								console.log(filePath + ' : ' + script);
 
-    								const compiled = Compile(tree, {
+    								let config = {
     									delayChannels: 3  
-    								}, fileContent);
+    								};
+
+    								if(options.delayChannels){
+    									config.delayChannels = options.delayChannels;
+    								}
+
+    								const compiled = Compile(tree, config, fileContent);
 
     								if(compiled instanceof Error){
     									throw compiled.message + ' on line ' + tree.line + ' in ' + script

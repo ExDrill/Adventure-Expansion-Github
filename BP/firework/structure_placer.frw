@@ -1,31 +1,71 @@
 func placeNorthHallway => {
     delay(1) => {
-        rc("scoreboard players add @s north_count 1")
-        rc("execute @s[scores={north_count=0..5}] ~ ~ ~ function structure/north_start")
-        rc("execute @s[scores={north_count=6..15}] ~ ~ ~ function structure/north_stage_two")
+        if ($left || $right) => {
+            if ($left) => {
+                rc("execute @s[scores={north_count=6..15}] ~ ~ ~ function structure/north_split_room_left")
+            }
+            if ($right) => {
+                rc("execute @s[scores={north_count=6..15}] ~ ~ ~ function structure/north_split_room_right")
+            }
+        }
+        else => {
+            rc("scoreboard players add @s north_count 1")
+            rc("execute @s[scores={north_count=0..5}] ~ ~ ~ function structure/north_start")
+            rc("execute @s[scores={north_count=6..15}] ~ ~ ~ function structure/north_stage_two")
+        }
     }
 }
 
 func placeEastHallway => {
     delay(1) => {
-        rc("scoreboard players add @s east_count 1")
-        rc("execute @s[scores={east_count=0..5}] ~ ~ ~ function structure/east_start")
-        rc("execute @s[scores={east_count=6..15}] ~ ~ ~ function structure/east_stage_two")
+        if ($left || $right) => {
+            if ($left) => {
+                rc("execute @s[scores={east_count=6..15}] ~ ~ ~ function structure/east_split_room_left")
+            }
+            if ($right) => {
+                rc("execute @s[scores={east_count=6..15}] ~ ~ ~ function structure/east_split_room_right")
+            }
+        }
+        else => {
+            rc("scoreboard players add @s east_count 1")
+            rc("execute @s[scores={east_count=0..5}] ~ ~ ~ function structure/east_start")
+            rc("execute @s[scores={east_count=6..15}] ~ ~ ~ function structure/east_stage_two")
+        }
     }
 }
 
 func placeWestHallway => {
     delay(1) => {   
-        rc("scoreboard players add @s west_count 1")
-        rc("execute @s[scores={west_count=0..5}] ~ ~ ~ function structure/west_start")
-        rc("execute @s[scores={west_count=6..20}] ~ ~ ~ function structure/west_stage_two")
+        if ($left || $right) => {
+            if ($left) => {
+                rc("execute @s[scores={west_count=6..20}] ~ ~ ~ function structure/west_split_room_left")
+            }
+            if ($right) => {
+                rc("execute @s[scores={west_count=6..20}] ~ ~ ~ function structure/west_split_room_right")
+            }
+        }
+        else => {
+            rc("scoreboard players add @s west_count 1")
+            rc("execute @s[scores={west_count=0..5}] ~ ~ ~ function structure/west_start")
+            rc("execute @s[scores={west_count=6..20}] ~ ~ ~ function structure/west_stage_two")
+        }
     }
 }
 
 func placeSouthHallway => {
     delay(1) => {
-        rc("scoreboard players add @s south_count 1")
-        rc("execute @s[scores={south_count=0..15}] ~ ~ ~ function structure/south_stage_two")
+        if ($left || $right) => {
+            if ($left) => {
+                rc("execute @s[scores={south_count=0..15}] ~ ~ ~ function structure/south_split_room_left")
+            }
+            if ($right) => {
+                rc("execute @s[scores={south_count=0..15}] ~ ~ ~ function structure/south_split_room_right")
+            }
+        }
+        else => {
+            rc("scoreboard players add @s south_count 1")
+            rc("execute @s[scores={south_count=0..15}] ~ ~ ~ function structure/south_stage_two")
+        }
     }   
 }
 
@@ -67,6 +107,8 @@ func goToWestStageTwo => {
 }
 
 func start => {
+    $left = false
+    $right = false
     rc("function structure/structure_setup")
     rc("tp @s ~ ~ ~-5")
     placeNorthHallway()

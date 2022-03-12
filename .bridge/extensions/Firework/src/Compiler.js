@@ -20,6 +20,8 @@ import * as Native from './Native.js'
 */
 
 export function Compile(tree, config, source){
+    console.log(JSON.parse(JSON.stringify(tree)))
+
     //#region NOTE: Setup json values for editing
     let worldRuntime = source
 
@@ -108,7 +110,7 @@ export function Compile(tree, config, source){
                             return new Backend.Error(`fFlag '${tree[i].value[0].value}' can only be assigned to a boolean value! It was assigned to '${tree[i].value[1].token}'.`, tree[i].line)
                         }
 
-                        let deep = indexFlag(tree[i].value[1].value)
+                        let deep = indexFlag(tree[i].value[0].value)
 
                         if(deep instanceof Backend.Error){
                             return deep
@@ -128,6 +130,12 @@ export function Compile(tree, config, source){
                     }
 
                     deep = searchForFlags(tree[i].value[1].value)
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+                }else if(tree[i].token == 'ELSE'){
+                    let deep = searchForFlags(tree[i].value[0])
 
                     if(deep instanceof Backend.Error){
                         return deep
@@ -281,6 +289,12 @@ export function Compile(tree, config, source){
                 if(deep instanceof Backend.Error){
                     return deep
                 }
+            }else if(tree[i].token == 'ELSE'){
+                let deep = searchForExpressions(tree[i].value[0].value)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
             }else if(tree[i].token == 'DELAY'){
                 let deep = undefined
 
@@ -349,6 +363,12 @@ export function Compile(tree, config, source){
                 tree[i].value[0] = indexDynamicValues(Backend.uuidv4(), tree[i].value[0])
 
                 deep = searchForDyncamicValues(tree[i].value[1].value)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+            }else if(tree[i].token == 'ELSE'){
+                deep = searchForDyncamicValues(tree[i].value[0].value)
 
                 if(deep instanceof Backend.Error){
                     return deep
@@ -502,10 +522,10 @@ export function Compile(tree, config, source){
                     commands.push(`event entity @s frw_${name}`)
                 }
             }else if(value[i].token == 'ASSIGN'){
-                if(value[i].value[0].value == 'true'){
-                    commands.push(`event entity @s frw_${name}_true`)
+                if(value[i].value[1].value == 'true'){
+                    commands.push(`event entity @s frw_${value[i].value[0].value}_true`)
                 }else{
-                    commands.push(`event entity @s frw_${name}_false`)
+                    commands.push(`event entity @s frw_${value[i].value[0].value}_false`)
                 }
             }else if(value[i].token == 'IF'){
                 const valueID = value[i].value[0].value
@@ -513,6 +533,12 @@ export function Compile(tree, config, source){
                 compileCodeBlock('frwb_' + valueID, value[i].value[1].value)
 
                 commands.push(`event entity @s[tag=frwb_dv_${valueID}] frw_frwb_${valueID}`)
+            }else if(value[i].token == 'ELSE'){
+                const valueID = value[i - 1].value[0].value
+
+                compileCodeBlock('frwb_else_' + valueID, value[i].value[0].value)
+
+                commands.push(`event entity @s[tag=!frwb_dv_${valueID}] frw_frwb_else_${valueID}`)
             }else if(value[i].token == 'DELAY'){
                 const delayID = Backend.uuidv4()
                 const delay = Native.tokenToUseable(value[i].value[0])
@@ -521,7 +547,7 @@ export function Compile(tree, config, source){
 
                 let triggerCommands = []
 
-                for(let j = 0; j < 3; j++){
+                for(let j = 0; j < config.delayChannels; j++){
                     triggerCommands.push(`event entity @s[tag=!frwb_delay_added] frwb_delay_trigger_channel_${j}_${delayID}`)
 
                     worldRuntime['minecraft:entity'].events[`frwb_delay_trigger_channel_${j}_${delayID}`] = {
@@ -584,7 +610,11 @@ export function Compile(tree, config, source){
     for(const i in functionNames){
         const name = functionNames[i]
 
-        compileCodeBlock(name, functions[name])
+        let deep = compileCodeBlock(name, functions[name])
+
+        if(deep instanceof Backend.Error){
+            return deep
+        }
     }
 
     worldRuntime['minecraft:entity'].events.frwb_delay = {
