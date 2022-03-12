@@ -1,0 +1,13 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "exdrill:goose_feather"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "goose_feather"
+			}
+		}
+	}
+}

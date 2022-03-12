@@ -2,34 +2,34 @@
 	"format_version": "1.10.0",
 	"minecraft:client_entity": {
 		"description": {
-			"identifier": "exdrill:sky_dragon",
+			"identifier": "exdrill:deepfish",
 			"materials": {
 				"default": "entity_alphatest"
 			},
 			"textures": {
-				"default": "textures/entity/sky_dragon"
+				"default": "textures/entity/deepfish"
 			},
 			"geometry": {
-				"default": "geometry.sky_dragon"
+				"default": "geometry.deepfish"
 			},
 			"animations": {
-				"base_pose": "animation.sky_dragon.base_pose",
-				"flap": "animation.sky_dragon.flap"
+				"move": "animation.deepfish.move",
+				"attack": "animation.deepfish.attack"
 			},
 			"scripts": {
 				"animate": [
-					"base_pose"
+					{
+						"move": "query.modified_move_speed * query.is_in_water"
+					},
+					"attack"
 				]
-			},
-			"particle_effects": {
-				"z": "exdrill:z"
 			},
 			"render_controllers": [
 				"controller.render.default"
 			],
 			"spawn_egg": {
 				"texture": "adventure_expansion_spawn_egg",
-				"texture_index": 4
+				"texture_index": 7
 			}
 		}
 	}

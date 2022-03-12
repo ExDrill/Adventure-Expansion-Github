@@ -1,0 +1,22 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.goose": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [
+                        {
+						    "walk": "math.min(1.0, query.modified_move_speed * (10 + query.is_angry * 25 ))"
+					    }
+                    ]
+                },
+                "angry": {
+                    "animations": [
+                        "run"
+                    ]
+                }
+            }
+        }
+    }
+}

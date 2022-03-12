@@ -48,7 +48,7 @@
                     "command": [
                         "camerashake add @s 0.5 0.3 rotational",
                         "playsound mob.zombie.woodbreak @a ~ ~ ~",
-                        "clear @s gunpowder 0 1"
+                        "clear @s[m=!c] gunpowder 0 1"
                     ]
                 },
                 "damage": {

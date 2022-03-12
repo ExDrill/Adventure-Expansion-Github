@@ -50,6 +50,23 @@
 			"sounds": [
 				"sounds/mob/inhabitant/death"
 			]
+		},
+		"mob.goose.honk": {
+			"category": "neutral",
+			"max_distance": 12,
+			"sounds": [
+				"sounds/mob/goose/honk"
+			]
+		},
+		"mob.deepfish.ambient": {
+			"sounds": [
+				"sounds/mob/deepfish/ambient"
+			]
+		},
+		"mob.deepfish.ambient_land": {
+			"sounds": [
+				"sounds/mob/deepfish/ambient_land"
+			]
 		}
 	}
 }

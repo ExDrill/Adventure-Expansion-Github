@@ -213,7 +213,6 @@
 			"minecraft:block_light_absorption": 0,
 			"minecraft:block_light_emission": 0.1,
 			"minecraft:breathability": "air",
-			"minecraft:breakonpush": true,
 			"minecraft:destroy_time": 0,
 			"minecraft:geometry": "geometry.flat",
 			"minecraft:entity_collision": false,

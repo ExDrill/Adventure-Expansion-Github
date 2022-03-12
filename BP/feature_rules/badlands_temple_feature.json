@@ -1,0 +1,40 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:feature_rules": {
+        "description": {
+            "identifier": "exdrill:badlands_temple_feature",
+            "places_feature": "exdrill:badlands_temple"
+        },
+        "conditions": {
+            "placement_pass": "first_pass",
+            "minecraft:biome_filter": {
+                "all_of": [
+                    {
+                        "test": "has_biome_tag",
+                        "value": "mesa"
+                    },
+                    {
+                        "test": "has_biome_tag",
+                        "operator": "not",
+                        "value": "plateau"
+                    },
+                    {
+                        "test": "has_biome_tag",
+                        "operator": "not",
+                        "value": "mutated"
+                    }
+                ]
+            }
+        },
+        "distribution": {
+            "scatter_chance": {
+                "numerator": 1,
+                "denominator": 180
+            },
+            "iterations": 1,
+            "x": 16,
+            "y": "query.above_top_solid( variable.worldx, variable.worldz ) - 12",
+            "z": 16
+        }
+    }
+}

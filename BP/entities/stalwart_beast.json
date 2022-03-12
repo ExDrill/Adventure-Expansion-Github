@@ -54,6 +54,9 @@
 			"minecraft:knockback_resistance": {
 				"value": 0.7
 			},
+			"minecraft:experience_reward": {
+				"on_death": "query.last_hit_by_player ? 20 : 0"
+			},
 			"minecraft:attack": {
 				"damage": 5
 			},
@@ -80,6 +83,7 @@
 					"cooldown": 0
 				}
 			},
+			"minecraft:persistent": {},
 			"minecraft:loot": {
 				"table": "loot_tables/entities/stalwart_beast.json"
 			},
