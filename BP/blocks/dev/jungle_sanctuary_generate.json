@@ -5,6 +5,10 @@
             "identifier": "dev_random:jungle_sanctuary_generate"
         },
         "components": {
+            "minecraft:on_placed": {
+                "event": "summon_mob",
+                "target": "self"
+            }
         },
         "events": {
             "summon_mob": {
