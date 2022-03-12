@@ -27,6 +27,34 @@
 				"minecraft:knockback_resistance": {
 					"value": 1
 				},
+				"minecraft:damage_sensor": {
+					"triggers": {
+						"cause": "all",
+						"deals_damage": false
+					}
+				},
+				"minecraft:inside_block_notifier": {
+					"block_list": [
+						{
+							"block": {
+								"name": "lava"
+							},
+							"entered_block_event": {
+								"event": "despawn",
+								"target": "self"
+							}
+						},
+						{
+							"block": {
+								"name": "flowing_lava"
+							},
+							"entered_block_event": {
+								"event": "despawn",
+								"target": "self"
+							}
+						}
+					]
+				},
 				"minecraft:target_nearby_sensor": {
 					"inside_range": 4,
 					"outside_range": 5,
@@ -61,6 +89,26 @@
 				}
 			},
 			"finished_emerging": {
+				"minecraft:damage_sensor": {
+					"triggers": [
+						{
+							"cause": "fire",
+							"deals_damage": false
+						},
+						{
+							"cause": "lava",
+							"deals_damage": false
+						},
+						{
+							"cause": "fire_tick",
+							"deals_damage": false
+						},
+						{
+							"cause": "magma",
+							"deals_damage": false
+						}
+					]
+				},
 				"minecraft:variant": {
 					"value": 2
 				},
@@ -197,6 +245,13 @@
 						}
 					}
 				]
+			},
+			"despawn": {
+				"add": {
+					"component_groups": [
+						"instant_despawn"
+					]
+				}
 			},
 			"exdrill:on_death": {
 				"run_command": {

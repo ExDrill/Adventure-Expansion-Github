@@ -1,0 +1,289 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:deepfish",
+			"is_summonable": true,
+			"is_spawnable": true
+		},
+		"component_groups": {
+			"scale_small": {
+				"minecraft:scale": {
+					"value": 1
+				}
+			},
+			"scale_medium": {
+				"minecraft:scale": {
+					"value": 1.25
+				}
+			},
+			"scale_big": {
+				"minecraft:scale": {
+					"value": 1.5
+				}
+			},
+			"underwater": {
+				"minecraft:physics": {
+					"has_gravity": false
+				}
+			},
+			"out_of_water": {
+				"minecraft:physics": {
+					"has_gravity": true
+				}
+			}
+		},
+		"components": {
+			"minecraft:is_hidden_when_invisible": {},
+			"minecraft:experience_reward": {
+				"on_death": "query.last_hit_by_player ? math.random(4,5) : 0"
+			},
+			"minecraft:type_family": {
+				"family": [
+					"fish",
+					"mob",
+					"deepfish"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0.65,
+				"height": 0.65
+			},
+			"minecraft:health": {
+				"value": 15,
+				"max": 15
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 4
+					}
+				]
+			},
+			"minecraft:scale": {
+				"value": 1.0
+			},
+			"minecraft:breathable": {
+				"total_supply": 15,
+				"suffocate_time": 0,
+				"breathes_air": false,
+				"breathes_water": true
+			},
+			"minecraft:movement": {
+				"value": 0.15
+			},
+			"minecraft:underwater_movement": {
+				"value": 0.15
+			},
+			"minecraft:navigation.generic": {
+				"is_amphibious": false,
+				"can_path_over_water": false,
+				"can_swim": true,
+				"can_walk": false,
+				"can_breach": false,
+				"can_sink": false
+			},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:movement.sway": {
+				"sway_amplitude": 0.0
+			},
+			"minecraft:despawn": {
+				"despawn_from_distance": {
+					"min_distance": 32,
+					"max_distance": 40
+				}
+			},
+			"minecraft:behavior.swim_idle": {
+				"priority": 5,
+				"idle_time": 5.0,
+				"success_rate": 0.1
+			},
+			"minecraft:behavior.random_swim": {
+				"priority": 3,
+				"speed_multiplier": 1.0,
+				"xz_dist": 16,
+				"y_dist": 4,
+				"interval": 0
+			},
+			"minecraft:behavior.swim_wander": {
+				"priority": 4,
+				"interval": 0.1,
+				"look_ahead": 2.0,
+				"speed_multiplier": 1.0,
+				"wander_time": 5.0
+			},
+			"minecraft:behavior.avoid_mob_type": {
+				"priority": 0,
+				"entity_types": [
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "axolotl"
+								}
+							]
+						},
+						"max_dist": 12,
+						"walk_speed_multiplier": 2.5,
+						"sprint_speed_multiplier": 3.0
+					}
+				]
+			},
+			"minecraft:scheduler": {
+				"scheduled_events": [
+					{
+						"event": "underwater",
+						"filters": {
+							"test": "is_underwater",
+							"value": true
+						},
+						"target": "self"
+					},
+					{
+						"event": "out_of_water",
+						"filters": {
+							"test": "is_underwater",
+							"value": false
+						},
+						"target": "self"
+					}
+				]
+			},
+			"minecraft:attack": {
+				"damage": 4
+			},
+			"minecraft:behavior.melee_attack": {
+				"priority": 2
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"entity_types": {
+					"filters": {
+						"any_of": [
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "player"
+							}
+						]
+					}
+				}
+			},
+			"minecraft:knockback_resistance": {
+				"value": 0.5
+			},
+			"minecraft:nameable": {},
+			"minecraft:behavior.equip_item": {
+				"priority": 1
+			},
+			"minecraft:behavior.pickup_items": {
+				"can_pickup_any_item": false,
+				"pickup_based_on_chance": false,
+				"priority": 1,
+				"max_dist": 30,
+				"goal_radius": 3
+			},
+			"minecraft:equip_item": {},
+			"minecraft:shareables": {
+				"items": [
+					{
+						"item": "raw_iron",
+						"want_amount": 1,
+						"surplus_amount": 1,
+						"priority": 0
+					},
+					{
+						"item": "raw_gold",
+						"want_amount": 1,
+						"surplus_amount": 1,
+						"priority": 0
+					},
+					{
+						"item": "coal",
+						"want_amount": 1,
+						"surplus_amount": 1,
+						"priority": 0
+					},
+					{
+						"item": "diamond",
+						"want_amount": 1,
+						"surplus_amount": 1,
+						"priority": 0
+					},
+					{
+						"item": "lapis_lazuli",
+						"want_amount": 1,
+						"surplus_amount": 1,
+						"priority": 0
+					},
+					{
+						"item": "redstone",
+						"want_amount": 1,
+						"surplus_amount": 1,
+						"priority": 0
+					}
+				]
+			},
+			"minecraft:conditional_bandwidth_optimization": {}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"randomize": [
+					{
+						"add": {
+							"component_groups": [ "scale_small" ]
+						},
+						"weight": 1
+					},
+					{
+						"add": {
+							"component_groups": [ "scale_medium" ]
+						},
+						"weight": 1
+					},
+					{
+						"add": {
+							"component_groups": [ "scale_big" ]
+						},
+						"weight": 1
+					}
+				]
+			},
+			"underwater": {
+				"add": {
+					"component_groups": [
+						"underwater"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"out_of_water"
+					]
+				}
+			},
+			"out_of_water": {
+				"add": {
+					"component_groups": [
+						"out_of_water"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"underwater"
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,94 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "exdrill:goose_egg"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "goose_egg"
+			},
+			"minecraft:on_use_on": {
+				"on_use_on": {
+					"event": "hatch",
+					"target": "self"
+				}
+			}
+		},
+		"events": {
+			"hatch": {
+				"sequence": [
+					{
+						"decrement_stack": {}
+					},
+					{
+						"condition": "query.block_face == 1.0",
+						"run_command": {
+							"command": [
+								"particle minecraft:egg_destroy_emitter ~ ~1 ~",
+								"playsound block.turtle_egg.crack @a ~ ~ ~",
+								"summon exdrill:goose ~ ~1 ~ minecraft:entity_born"
+							],
+							"target": "block"
+						}
+					},
+					{
+						"condition": "query.block_face == 0.0",
+						"run_command": {
+							"command": [
+								"particle minecraft:egg_destroy_emitter ~ ~-1 ~",
+								"playsound block.turtle_egg.crack @a ~ ~ ~",
+								"summon exdrill:goose ~ ~-1 ~ minecraft:entity_born"
+							],
+							"target": "block"
+						}
+					},
+					{
+						"condition": "query.block_face == 2.0",
+						"run_command": {
+							"command": [
+								"particle minecraft:egg_destroy_emitter ~ ~ ~-1",
+								"playsound block.turtle_egg.crack @a ~ ~ ~",
+								"summon exdrill:goose ~ ~ ~-1 minecraft:entity_born"
+							],
+							"target": "block"
+						}
+					},
+					{
+						"condition": "query.block_face == 3.0",
+						"run_command": {
+							"command": [
+								"particle minecraft:egg_destroy_emitter ~ ~ ~1",
+								"playsound block.turtle_egg.crack @a ~ ~ ~",
+								"summon exdrill:goose ~ ~ ~1 minecraft:entity_born"
+							],
+							"target": "block"
+						}
+					},
+					{
+						"condition": "query.block_face == 4.0",
+						"run_command": {
+							"command": [
+								"particle minecraft:egg_destroy_emitter ~-1 ~ ~",
+								"playsound block.turtle_egg.crack @a ~ ~ ~",
+								"summon exdrill:goose ~-1 ~ ~ minecraft:entity_born"
+							],
+							"target": "block"
+						}
+					},
+					{
+						"condition": "query.block_face == 5.0",
+						"run_command": {
+							"command": [
+								"particle minecraft:egg_destroy_emitter ~1 ~ ~",
+								"playsound block.turtle_egg.crack @a ~ ~ ~",
+								"summon exdrill:goose ~1 ~ ~ minecraft:entity_born"
+							],
+							"target": "block"
+						}
+					}
+				]			
+			}
+		}
+	}
+}

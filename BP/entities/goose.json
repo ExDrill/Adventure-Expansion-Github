@@ -11,6 +11,18 @@
 				"minecraft:behavior.breed": {
 					"priority": 0
 				},
+				"minecraft:experience_reward": {
+					"on_death": 2,
+					"on_bred": 2
+				},
+				"minecraft:spawn_entity": {
+					"entities": {
+						"min_wait_time": 400,
+						"max_wait_time": 800,
+						"spawn_sound": "plop",
+						"spawn_item": "exdrill:goose_egg"
+					}
+				},
 				"minecraft:breedable": {
 					"require_tame": false,
 					"breeds_with": {
@@ -44,6 +56,25 @@
 									"test": "is_family",
 									"subject": "other",
 									"value": "endermite"
+								},
+								{
+									"all_of": [
+										{
+											"test": "is_family",
+											"subject": "other",
+											"value": "zombie"
+										},
+										{
+											"test": "has_component",
+											"subject": "other",
+											"value": "minecraft:is_baby"
+										}
+									]
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "cavespider"
 								}
 							]
 						}
@@ -121,7 +152,7 @@
 			},
 			"minecraft:collision_box": {
 				"width": 0.6,
-				"height": 0.6
+				"height": 0.8
 			},
 			"minecraft:behavior.tempt": {
 				"priority": 1,
@@ -133,7 +164,7 @@
 					"beetroot_seeds",
 					"hanging_roots"
 				],
-				"within_radius": 10
+				"within_radius": 15
 			},
 			"minecraft:movement": {
 				"value": 0.2
@@ -186,7 +217,7 @@
 				"can_sink": false
 			},
 			"minecraft:buoyant": {
-				"base_buoyancy": 0.5,
+				"base_buoyancy": 0.65,
 				"simulate_waves": false,
 				"apply_gravity": false,
 				"liquid_blocks": [

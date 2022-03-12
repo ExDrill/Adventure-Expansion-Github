@@ -50,6 +50,13 @@
 			"sounds": [
 				"sounds/mob/inhabitant/death"
 			]
+		},
+		"mob.goose.honk": {
+			"category": "neutral",
+			"max_distance": 12,
+			"sounds": [
+				"sounds/mob/goose/honk"
+			]
 		}
 	}
 }

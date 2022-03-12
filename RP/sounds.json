@@ -61,6 +61,21 @@
                         "volume": 1
                     }
                 }
+            },
+            "exdrill:goose": {
+                "pitch": [ 0.9, 1.2 ],
+                "volume": 1,
+                "events": {
+                    "ambient": "mob.goose.honk",
+                    "hurt": {
+                        "sound": "mob.goose.honk",
+                        "pitch": 0.8
+                    },
+                    "death": {
+                        "sound": "mob.goose.honk",
+                        "pitch": 0.7
+                    }
+                }
             }
         }
     }
