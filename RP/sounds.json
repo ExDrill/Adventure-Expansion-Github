@@ -76,6 +76,16 @@
                         "pitch": 0.7
                     }
                 }
+            },
+            "exdrill:deepfish": {
+                "volume": 1,
+                "pitch": [ 0.9, 1.1 ],
+                "events": {
+                    "ambient.in.water": "mob.deepfish.ambient",
+                    "ambient": "mob.deepfish.ambient_land",
+                    "hurt": "dig.stone",
+                    "death": "damage.fallbig"
+                }
             }
         }
     }

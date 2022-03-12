@@ -40,6 +40,9 @@
 		},
 		"goose_egg": {
 			"textures": "textures/items/goose_egg"
+		},
+		"goose_feather": {
+			"textures": "textures/items/goose_feather"
 		}
 	}
 }

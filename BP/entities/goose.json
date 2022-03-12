@@ -12,16 +12,23 @@
 					"priority": 0
 				},
 				"minecraft:experience_reward": {
-					"on_death": 2,
+					"on_death": "query.last_hit_by_player ? 2 : 0",
 					"on_bred": 2
 				},
 				"minecraft:spawn_entity": {
-					"entities": {
-						"min_wait_time": 400,
-						"max_wait_time": 800,
-						"spawn_sound": "plop",
-						"spawn_item": "exdrill:goose_egg"
-					}
+					"entities": [
+						{
+							"min_wait_time": 1000,
+							"max_wait_time": 1200,
+							"spawn_sound": "plop",
+							"spawn_item": "exdrill:goose_egg"
+						},
+						{
+							"min_wait_time": 400,
+							"max_wait_time": 600,
+							"spawn_item": "exdrill:goose_feather"
+						}
+					]
 				},
 				"minecraft:breedable": {
 					"require_tame": false,

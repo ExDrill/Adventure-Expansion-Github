@@ -100,7 +100,7 @@
 				"max": 20
 			},
 			"minecraft:experience_reward": {
-				"on_death": "math.die_roll_integer(1, 1, 6) * 2"
+				"on_death": "query.last_hit_by_player ? math.die_roll_integer(1, 1, 6) * 2 : 0"
 			},
 			"minecraft:collision_box": {
 				"width": 0.4,

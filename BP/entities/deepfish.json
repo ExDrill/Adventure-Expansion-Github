@@ -122,6 +122,24 @@
 				"speed_multiplier": 1.0,
 				"wander_time": 5.0
 			},
+			"minecraft:behavior.avoid_block": {
+				"priority": 0,
+				"search_height": 4,
+				"search_range": 10,
+				"target_blocks": [
+					"minecraft:prismarine",
+					"minecraft:prismarine_stairs",
+					"minecraft:dark_prismarine_stairs",
+					"stone_slab2:2",
+					"stone_slab2:3",
+					"stone_slab2:4",
+					"minecraft:seaLantern",
+					"cobblestone_wall:11"
+
+				],
+				"walk_speed_modifier": 2.5,
+				"sprint_speed_modifier": 3.0
+			},
 			"minecraft:behavior.avoid_mob_type": {
 				"priority": 0,
 				"entity_types": [
@@ -132,6 +150,16 @@
 									"test": "is_family",
 									"subject": "other",
 									"value": "axolotl"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "guardian"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "guardian_elder"
 								}
 							]
 						},
