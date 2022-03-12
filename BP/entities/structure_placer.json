@@ -2,7 +2,7 @@
 	"format_version": "1.18.0",
 	"minecraft:entity": {
 		"description": {
-			"identifier": "fl:structure_placer",
+			"identifier": "exdrill:jungle_sanctuary_placer",
 			"is_summonable": true,
 			"is_spawnable": true
 		},
@@ -51,10 +51,12 @@
 				"run_command": {
 					"command": [
 						"execute @s[scores={north_count=0..6}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary:hallway\" ~-9 ~-1 ~-16",
-						"event entity @s[scores={north_count=7..8,n_split_count=0..4}] north_split_half",
+						"event entity @s[scores={north_count=7,n_split_count=0..4}] north_split_half",
+						"event entity @s[scores={north_count=8,n_split_count=0..4}] north_split_confirm",
 						"execute @s[scores={north_count=9}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary:hallway\" ~-9 ~-1 ~-16",
 						"execute @s[scores={north_count=6..14,n_split_count=5..10}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary:hallway\" ~-9 ~-1 ~-16",
-						"event entity @s[scores={north_count=10..14,n_split_count=0..4}] north_split_confirm"
+						"event entity @s[scores={north_count=10..13,n_split_count=0..4}] north_split_confirm",
+						"event entity @s[scores={north_count=14}] despawn"
 					]
 				}
 			},
@@ -124,10 +126,123 @@
 					}
 				]
 			},
+			"north_rare_room_left": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=1}] ~ ~ ~ event entity @s north_rare_room_left",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:catacombs_room\" ~-25 ~-1 ~ 90_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!1}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ scoreboard players set @s rare_id 1"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=2}] ~ ~ ~ event entity @s north_rare_room_left",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:deepslate_room\" ~-25 ~-1 ~ 90_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!2}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ scoreboard players set @s rare_id 2"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=3}] ~ ~ ~ event entity @s north_rare_room_left",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:high_room\" ~-25 ~-1 ~ 90_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!3}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ scoreboard players set @s rare_id 3"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=4}] ~ ~ ~ event entity @s north_rare_room_left",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:portal_room\" ~-25 ~-1 ~ 90_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!4}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ scoreboard players set @s rare_id 4"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"north_rare_room_right": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=1}] ~ ~ ~ event entity @s north_rare_room_right",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:catacombs_room\" ~7 ~-1 ~ 270_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!1}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ scoreboard players set @s rare_id 1"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=2}] ~ ~ ~ event entity @s north_rare_room_right",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:deepslate_room\" ~7 ~-1 ~ 270_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!2}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ scoreboard players set @s rare_id 2"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=3}] ~ ~ ~ event entity @s north_rare_room_right",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:high_room\" ~7 ~-1 ~ 270_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!3}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ scoreboard players set @s rare_id 3"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=4}] ~ ~ ~ event entity @s north_rare_room_right",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:portal_room\" ~7 ~-1 ~ 270_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!4}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ scoreboard players set @s rare_id 4"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
 			"north_left_room_split": {
 				"sequence": [
 					{
 						"randomize": [
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_count=!3}] ~ ~ ~ event entity @s north_rare_room_left",
+										"execute @s[scores={rare_count=3}] ~ ~ ~ event entity @s north_left_room_split"
+									]
+								}
+							},
 							{
 								"weight": 25,
 								"run_command": {
@@ -164,22 +279,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:flower_valley_room\" ~-25 ~-1 ~ 90_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:fountain_room\" ~-25 ~-1 ~ 90_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:inhabitant_room\" ~-25 ~-1 ~ 90_degrees"
 									]
 								}
@@ -204,22 +303,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:pillars_room\" ~-25 ~-1 ~ 90_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:prison_room\" ~-25 ~-1 ~ 90_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:shrine_room\" ~-25 ~-1 ~ 90_degrees"
 									]
 								}
@@ -229,14 +312,6 @@
 								"run_command": {
 									"command": [
 										"structure load \"exdrill/jungle_sanctuary:silverfish_room\" ~-25 ~-1 ~ 90_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:storage_room\" ~-25 ~-1 ~ 90_degrees"
 									]
 								}
 							},
@@ -264,6 +339,15 @@
 				"sequence": [
 					{
 						"randomize": [
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_count=!3}] ~ ~ ~ event entity @s north_rare_room_right",
+										"execute @s[scores={rare_count=3}] ~ ~ ~ event entity @s north_right_room_split"
+									]
+								}
+							},
 							{
 								"weight": 25,
 								"run_command": {
@@ -300,22 +384,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:flower_valley_room\" ~7 ~-1 ~ 270_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:fountain_room\" ~7 ~-1 ~ 270_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:inhabitant_room\" ~7 ~-1 ~ 270_degrees"
 									]
 								}
@@ -340,22 +408,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:pillars_room\" ~7 ~-1 ~ 270_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:prison_room\" ~7 ~-1 ~ 270_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:shrine_room\" ~7 ~-1 ~ 270_degrees"
 									]
 								}
@@ -365,14 +417,6 @@
 								"run_command": {
 									"command": [
 										"structure load \"exdrill/jungle_sanctuary:silverfish_room\" ~7 ~-1 ~ 270_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:storage_room\" ~7 ~-1 ~ 270_degrees"
 									]
 								}
 							},
@@ -536,10 +580,123 @@
 					}
 				]
 			},
+			"east_rare_room_left": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=1}] ~ ~ ~ event entity @s east_rare_room_left",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:catacombs_room\" ~-15 ~-1 ~-25 180_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!1}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ scoreboard players set @s rare_id 1"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=2}] ~ ~ ~ event entity @s east_rare_room_left",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:deepslate_room\" ~-15 ~-1 ~-25 180_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!2}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ scoreboard players set @s rare_id 2"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=3}] ~ ~ ~ event entity @s east_rare_room_left",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:high_room\" ~-15 ~-1 ~-25 180_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!3}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ scoreboard players set @s rare_id 3"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=4}] ~ ~ ~ event entity @s east_rare_room_left",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:portal_room\" ~-15 ~-1 ~-25 180_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!4}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ scoreboard players set @s rare_id 4"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"east_rare_room_right": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=1}] ~ ~ ~ event entity @s east_rare_room_right",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:catacombs_room\" ~-15 ~-1 ~7",
+										"execute @s[scores={rare_count=0..3,rare_id=!1}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ scoreboard players set @s rare_id 1"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=2}] ~ ~ ~ event entity @s east_rare_room_right",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:deepslate_room\" ~-15 ~-1 ~7",
+										"execute @s[scores={rare_count=0..3,rare_id=!2}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ scoreboard players set @s rare_id 2"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=3}] ~ ~ ~ event entity @s east_rare_room_right",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:high_room\" ~-15 ~-1 ~7",
+										"execute @s[scores={rare_count=0..3,rare_id=!3}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ scoreboard players set @s rare_id 3"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=4}] ~ ~ ~ event entity @s east_rare_room_right",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:portal_room\" ~-15 ~-1 ~7",
+										"execute @s[scores={rare_count=0..3,rare_id=!4}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ scoreboard players set @s rare_id 4"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
 			"east_left_room_split": {
 				"sequence": [
 					{
 						"randomize": [
+							{
+								"weight": 100,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_count=!3}] ~ ~ ~ event entity @s east_rare_room_left",
+										"execute @s[scores={rare_count=3}] ~ ~ ~ event entity @s east_left_room_split"
+									]
+								}
+							},
 							{
 								"weight": 25,
 								"run_command": {
@@ -576,22 +733,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:flower_valley_room\" ~-15 ~-1 ~-25 180_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:fountain_room\" ~-15 ~-1 ~-25 180_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:inhabitant_room\" ~-15 ~-1 ~-25 180_degrees"
 									]
 								}
@@ -616,22 +757,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:pillars_room\" ~-15 ~-1 ~-25 180_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:prison_room\" ~-15 ~-1 ~-25 180_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:shrine_room\" ~-15 ~-1 ~-25 180_degrees"
 									]
 								}
@@ -641,14 +766,6 @@
 								"run_command": {
 									"command": [
 										"structure load \"exdrill/jungle_sanctuary:silverfish_room\" ~-15 ~-1 ~-25 180_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:storage_room\" ~-15 ~-1 ~-25 180_degrees"
 									]
 								}
 							},
@@ -676,6 +793,15 @@
 				"sequence": [
 					{
 						"randomize": [
+							{
+								"weight": 100,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_count=!3}] ~ ~ ~ event entity @s east_rare_room_right",
+										"execute @s[scores={rare_count=3}] ~ ~ ~ event entity @s east_left_room_split"
+									]
+								}
+							},
 							{
 								"weight": 25,
 								"run_command": {
@@ -712,22 +838,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:flower_valley_room\" ~-15 ~-1 ~7"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:fountain_room\" ~-15 ~-1 ~7"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:inhabitant_room\" ~-15 ~-1 ~7"
 									]
 								}
@@ -752,22 +862,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:pillars_room\" ~-15 ~-1 ~7"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:prison_room\" ~-15 ~-1 ~7"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:shrine_room\" ~-15 ~-1 ~7"
 									]
 								}
@@ -777,14 +871,6 @@
 								"run_command": {
 									"command": [
 										"structure load \"exdrill/jungle_sanctuary:silverfish_room\" ~-15 ~-1 ~7"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:storage_room\" ~-15 ~-1 ~7"
 									]
 								}
 							},
@@ -926,10 +1012,123 @@
 					]
 				}
 			},
+			"west_rare_room_left": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=1}] ~ ~ ~ event entity @s west_rare_room_left",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:catacombs_room\" ~ ~-1 ~10",
+										"execute @s[scores={rare_count=0..3,rare_id=!1}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ scoreboard players set @s rare_id 1"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=2}] ~ ~ ~ event entity @s west_rare_room_left",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:deepslate_room\" ~ ~-1 ~10",
+										"execute @s[scores={rare_count=0..3,rare_id=!2}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ scoreboard players set @s rare_id 2"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=3}] ~ ~ ~ event entity @s west_rare_room_left",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:high_room\" ~ ~-1 ~10",
+										"execute @s[scores={rare_count=0..3,rare_id=!3}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ scoreboard players set @s rare_id 3"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=4}] ~ ~ ~ event entity @s west_rare_room_left",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:portal_room\" ~ ~-1 ~10",
+										"execute @s[scores={rare_count=0..3,rare_id=!4}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ scoreboard players set @s rare_id 4"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"west_rare_room_right": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=1}] ~ ~ ~ event entity @s west_rare_room_right",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:catacombs_room\" ~ ~-1 ~-22 180_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!1}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ scoreboard players set @s rare_id 1"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=2}] ~ ~ ~ event entity @s west_rare_room_right",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:deepslate_room\" ~ ~-1 ~-22 180_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!2}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ scoreboard players set @s rare_id 2"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=3}] ~ ~ ~ event entity @s west_rare_room_right",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:high_room\" ~ ~-1 ~-22 180_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!3}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ scoreboard players set @s rare_id 3"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=4}] ~ ~ ~ event entity @s west_rare_room_right",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:portal_room\" ~ ~-1 ~-22 180_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!4}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ scoreboard players set @s rare_id 4"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
 			"west_left_room_split": {
 				"sequence": [
 					{
 						"randomize": [
+							{
+								"weight": 600,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_count=!3}] ~ ~ ~ event entity @s west_rare_room_left",
+										"execute @s[scores={rare_count=3}] ~ ~ ~ event entity @s west_left_room_split"
+									]
+								}
+							},
 							{
 								"weight": 25,
 								"run_command": {
@@ -966,22 +1165,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:flower_valley_room\" ~ ~-1 ~10"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:fountain_room\" ~ ~-1 ~10"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:inhabitant_room\" ~ ~-1 ~10"
 									]
 								}
@@ -1006,22 +1189,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:pillars_room\" ~ ~-1 ~10"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:prison_room\" ~ ~-1 ~10"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:shrine_room\" ~ ~-1 ~10"
 									]
 								}
@@ -1031,14 +1198,6 @@
 								"run_command": {
 									"command": [
 										"structure load \"exdrill/jungle_sanctuary:silverfish_room\" ~ ~-1 ~10"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:storage_room\" ~ ~-1 ~10"
 									]
 								}
 							},
@@ -1066,6 +1225,15 @@
 				"sequence": [
 					{
 						"randomize": [
+							{
+								"weight": 450,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_count=!3}] ~ ~ ~ event entity @s west_rare_room_right",
+										"execute @s[scores={rare_count=3}] ~ ~ ~ event entity @s west_right_room_split"
+									]
+								}
+							},
 							{
 								"weight": 25,
 								"run_command": {
@@ -1102,22 +1270,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:flower_valley_room\" ~ ~-1 ~-22 180_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:fountain_room\" ~ ~-1 ~-22 180_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:inhabitant_room\" ~ ~-1 ~-22 180_degrees"
 									]
 								}
@@ -1142,22 +1294,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:pillars_room\" ~ ~-1 ~-22 180_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:prison_room\" ~ ~-1 ~-22 180_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:shrine_room\" ~ ~-1 ~-22 180_degrees"
 									]
 								}
@@ -1167,14 +1303,6 @@
 								"run_command": {
 									"command": [
 										"structure load \"exdrill/jungle_sanctuary:silverfish_room\" ~ ~-1 ~-22 180_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:storage_room\" ~ ~-1 ~-22 180_degrees"
 									]
 								}
 							},
@@ -1273,10 +1401,123 @@
 					}
 				]
 			},
+			"south_rare_room_left": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=1}] ~ ~ ~ event entity @s south_rare_room_left",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:catacombs_room\" ~10 ~-1 ~-15 270_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!1}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ scoreboard players set @s rare_id 1"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=2}] ~ ~ ~ event entity @s south_rare_room_left",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:deepslate_room\" ~10 ~-1 ~-15 270_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!2}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ scoreboard players set @s rare_id 2"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=3}] ~ ~ ~ event entity @s south_rare_room_left",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:high_room\" ~10 ~-1 ~-15 270_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!3}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ scoreboard players set @s rare_id 3"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=4}] ~ ~ ~ event entity @s south_rare_room_left",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:portal_room\" ~10 ~-1 ~-15 270_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!4}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ scoreboard players set @s rare_id 4"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"south_rare_room_right": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=1}] ~ ~ ~ event entity @s south_rare_room_right",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:catacombs_room\" ~-22 ~-1 ~-15 90_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!1}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!1}] ~ ~ ~ scoreboard players set @s rare_id 1"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=2}] ~ ~ ~ event entity @s south_rare_room_right",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:deepslate_room\" ~-22 ~-1 ~-15 90_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!2}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!2}] ~ ~ ~ scoreboard players set @s rare_id 2"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=3}] ~ ~ ~ event entity @s south_rare_room_right",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:high_room\" ~-22 ~-1 ~-15 90_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!3}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!3}] ~ ~ ~ scoreboard players set @s rare_id 3"
+									]
+								}
+							},
+							{
+								"weight": 25,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_id=4}] ~ ~ ~ event entity @s south_rare_room_right",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary/rare:portal_room\" ~-22 ~-1 ~-15 90_degrees",
+										"execute @s[scores={rare_count=0..3,rare_id=!4}] ~ ~ ~ scoreboard players add @s rare_count 1",
+										"execute @s[scores={rare_id=!4}] ~ ~ ~ scoreboard players set @s rare_id 4"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
 			"south_left_room_split": {
 				"sequence": [
 					{
 						"randomize": [
+							{
+								"weight": 450,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_count=!3}] ~ ~ ~ event entity @s south_rare_room_left",
+										"execute @s[scores={rare_count=3}] ~ ~ ~ event entity @s south_left_room_split"
+									]
+								}
+							},
 							{
 								"weight": 25,
 								"run_command": {
@@ -1313,22 +1554,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:flower_valley_room\" ~10 ~-1 ~-15 270_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:fountain_room\" ~10 ~-1 ~-15 270_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:inhabitant_room\" ~10 ~-1 ~-15 270_degrees"
 									]
 								}
@@ -1353,22 +1578,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:pillars_room\" ~10 ~-1 ~-15 270_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:prison_room\" ~10 ~-1 ~-15 270_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:shrine_room\" ~10 ~-1 ~-15 270_degrees"
 									]
 								}
@@ -1378,14 +1587,6 @@
 								"run_command": {
 									"command": [
 										"structure load \"exdrill/jungle_sanctuary:silverfish_room\" ~10 ~-1 ~-15 270_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:storage_room\" ~10 ~-1 ~-15 270_degrees"
 									]
 								}
 							},
@@ -1413,6 +1614,15 @@
 				"sequence": [
 					{
 						"randomize": [
+							{
+								"weight": 450,
+								"run_command": {
+									"command": [
+										"execute @s[scores={rare_count=!3}] ~ ~ ~ event entity @s south_rare_room_right",
+										"execute @s[scores={rare_count=3}] ~ ~ ~ event entity @s south_right_room_split"
+									]
+								}
+							},
 							{
 								"weight": 25,
 								"run_command": {
@@ -1449,22 +1659,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:flower_valley_room\" ~-22 ~-1 ~-15 90_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:fountain_room\" ~-22 ~-1 ~-15 90_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:inhabitant_room\" ~-22 ~-1 ~-15 90_degrees"
 									]
 								}
@@ -1489,22 +1683,6 @@
 								"weight": 25,
 								"run_command": {
 									"command": [
-										"structure load \"exdrill/jungle_sanctuary:pillars_room\" ~-22 ~-1 ~-15 90_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:prison_room\" ~-22 ~-1 ~-15 90_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
 										"structure load \"exdrill/jungle_sanctuary:shrine_room\" ~-22 ~-1 ~-15 90_degrees"
 									]
 								}
@@ -1514,14 +1692,6 @@
 								"run_command": {
 									"command": [
 										"structure load \"exdrill/jungle_sanctuary:silverfish_room\" ~-22 ~-1 ~-15 90_degrees"
-									]
-								}
-							},
-							{
-								"weight": 25,
-								"run_command": {
-									"command": [
-										"structure load \"exdrill/jungle_sanctuary:storage_room\" ~-22 ~-1 ~-15 90_degrees"
 									]
 								}
 							},

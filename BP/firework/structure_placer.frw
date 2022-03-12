@@ -13,6 +13,7 @@ func placeNorthHallway => {
             rc("execute @s[scores={north_count=0..5}] ~ ~ ~ function structure/north_start")
             rc("execute @s[scores={north_count=6..15}] ~ ~ ~ function structure/north_stage_two")
         }
+        rc("fill ~ ~-2 ~ ~ ~-45 ~ log 3 replace air")
     }
 }
 
@@ -31,6 +32,7 @@ func placeEastHallway => {
             rc("execute @s[scores={east_count=0..5}] ~ ~ ~ function structure/east_start")
             rc("execute @s[scores={east_count=6..15}] ~ ~ ~ function structure/east_stage_two")
         }
+        rc("fill ~ ~-2 ~ ~ ~-45 ~ log 3 replace air")
     }
 }
 
@@ -49,6 +51,7 @@ func placeWestHallway => {
             rc("execute @s[scores={west_count=0..5}] ~ ~ ~ function structure/west_start")
             rc("execute @s[scores={west_count=6..20}] ~ ~ ~ function structure/west_stage_two")
         }
+        rc("fill ~ ~-2 ~ ~ ~-45 ~ log 3 replace air")
     }
 }
 
@@ -66,6 +69,7 @@ func placeSouthHallway => {
             rc("scoreboard players add @s south_count 1")
             rc("execute @s[scores={south_count=0..15}] ~ ~ ~ function structure/south_stage_two")
         }
+        rc("fill ~ ~-2 ~ ~ ~-45 ~ log 3 replace air")
     }   
 }
 
