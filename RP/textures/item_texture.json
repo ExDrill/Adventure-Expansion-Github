@@ -43,6 +43,9 @@
 		},
 		"goose_feather": {
 			"textures": "textures/items/goose_feather"
+		},
+		"dart": {
+			"textures": "textures/items/dart"
 		}
 	}
 }

@@ -4,7 +4,7 @@
 		"description": {
 			"identifier": "exdrill:jungle_sanctuary_placer",
 			"is_summonable": true,
-			"is_spawnable": true
+			"is_spawnable": false
 		},
 		"component_groups": {
 			"fl:despawn": {

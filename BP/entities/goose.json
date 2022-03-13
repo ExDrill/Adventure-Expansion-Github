@@ -18,14 +18,14 @@
 				"minecraft:spawn_entity": {
 					"entities": [
 						{
-							"min_wait_time": 1000,
-							"max_wait_time": 1200,
+							"min_wait_time": 600,
+							"max_wait_time": 700,
 							"spawn_sound": "plop",
 							"spawn_item": "exdrill:goose_egg"
 						},
 						{
-							"min_wait_time": 400,
-							"max_wait_time": 600,
+							"min_wait_time": 200,
+							"max_wait_time": 300,
 							"spawn_item": "exdrill:goose_feather"
 						}
 					]
@@ -105,6 +105,9 @@
 						"melon_seeds",
 						"beetroot_seeds",
 						"hanging_roots"	
+					],
+					"drop_items": [
+						"exdrill:goose_feather"
 					],
 					"grow_up": {
 						"event": "minecraft:ageable_grow_up",

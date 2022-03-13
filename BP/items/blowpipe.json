@@ -74,6 +74,18 @@
                     },
                     {
                         "shoot": {
+                            "projectile": "exdrill:dart",
+                            "launch_power": 0.75
+                        },
+                        "run_command": {
+                            "command": [
+                                "clear @s[m=!c] exdrill:dart 0 1"
+                            ]
+                        },
+                        "condition": "query.is_item_name_any('slot.weapon.offhand', 0, 'exdrill:dart')"
+                    },
+                    {
+                        "shoot": {
                             "projectile": "exdrill:soul_puff",
                             "launch_power": 0.35
                         },

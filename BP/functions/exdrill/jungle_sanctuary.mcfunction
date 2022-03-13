@@ -1,2 +1,2 @@
-structure load "exdrill:jungle_sanctuary/start_room" ~-8 ~-6 ~13
-fill ~ ~ ~  ~2 ~ ~1 air
+structure load "exdrill:jungle_sanctuary/start_room" ~-7 ~-6 ~-28
+fill ~ ~ ~  ~-2 ~ ~-1 air

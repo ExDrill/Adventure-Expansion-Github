@@ -1,0 +1,25 @@
+{
+	"format_version": "",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "exdrill:dart"
+		},
+		"tags": [ "crafting_table" ],
+		"pattern": [
+			" I",
+			"G "
+		],
+		"key": {
+			"I": {
+				"item": "iron_ingot"
+			},
+			"G": {
+				"item": "exdrill:goose_feather"
+			}
+		},
+		"result": {
+			"item": "exdrill:dart",
+			"count": 2
+		}
+	}
+}

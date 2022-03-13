@@ -16,14 +16,14 @@
 		"distribution": {
 			"scatter_chance": {
 				"numerator": 1,
-				"denominator": 100
+				"denominator": 300
 			},
 			"iterations": 1,
 			"x": {
 				"extent": [ 0, 32],
 				"distribution": "uniform"
 			},
-			"y": "query.heightmap(variable.worldx, variable.worldz) - 26",
+			"y": "query.above_top_solid(variable.worldx, variable.worldz) - 28",
 			"z": {
 				"extent": [ 0, 32],
 				"distribution": "uniform"
