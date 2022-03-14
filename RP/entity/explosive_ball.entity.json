@@ -4,19 +4,29 @@
 		"description": {
 			"identifier": "exdrill:explosive_ball",
 			"materials": {
-				"default": "entity"
+				"default": "entity_alphatest"
 			},
 			"textures": {
 				"default": "textures/entity/explosive_ball"
 			},
 			"geometry": {
-				"default": "geometry.explosive_ball"
+				"default": "geometry.billboard"
+			},
+			"animations": {
+				"fly": "animation.actor.billboard",
+				"controller": "controller.animation.explosive_ball"
+			},
+			"particle_effects": {
+				"smoke": "exdrill:explosive_smoke_particle"
 			},
 			"scripts": {
-				"scale": 0.5
+				"animate": [
+					"fly",
+					"controller"
+				]
 			},
 			"render_controllers": [
-				"controller.render.default"
+				"controller.render.item_sprite"
 			]
 		}
 	}

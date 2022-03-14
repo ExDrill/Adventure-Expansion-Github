@@ -4,7 +4,7 @@
 		"description": {
 			"identifier": "exdrill:revenant",
 			"materials": {
-				"default": "entity_alphatest"
+				"default": "entity_emissive"
 			},
 			"textures": {
 				"default": "textures/entity/revenant"
@@ -29,7 +29,7 @@
 				"emerge": "dig.soul_sand"
 			},
 			"render_controllers": [
-				"controller.render.default_emissive"
+				"controller.render.default"
 			],
 			"particle_effects": {
 				"soul_flame": "exdrill:soul_flame"

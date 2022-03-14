@@ -29,7 +29,7 @@
                 ]
             },
             "minecraft:cooldown": {
-                "duration": 5,
+                "duration": 3,
                 "category": "flintlock"
             },
             "minecraft:durability": {

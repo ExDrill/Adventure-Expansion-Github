@@ -18,27 +18,26 @@
 					"breaks_blocks": false,
 					"causes_fire": false,
 					"fuse_lit": true,
-					"power": 1,
+					"power": 1.2,
 					"fuse_length": 0
 				}
 			}
 		},
 		"components": {
 			"minecraft:collision_box": {
-				"height": 0.1,
-				"width": 0.1
+				"height": 0.25,
+				"width": 0.25
 			},
 			"minecraft:physics": {},
 			"minecraft:projectile": {
 				"power": 1,
 				"should_bounce": true,
-				"gravity": 0,
+				"gravity": 0.02,
 				"on_hit": {
 					"impact_damage": {
 						"damage": 2,
 						"knockback": false,
-						"destroy_on_hit": false,
-						"should_bounce": true
+						"destroy_on_hit": false
 					}
 				},
 				"offset": [ 0, 0.7, 0 ]

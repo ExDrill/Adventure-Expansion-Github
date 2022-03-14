@@ -151,6 +151,14 @@
 				"value": 40,
 				"max": 40
 			},
+			"minecraft:type_family": {
+				"family": [
+					"mob",
+					"monster",
+					"undead",
+					"revenant"
+				]
+			},
 			"minecraft:lava_movement": {
 				"value": 0.2
 			},
