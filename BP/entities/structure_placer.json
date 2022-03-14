@@ -1330,7 +1330,7 @@
 				"run_command": {
 					"command": [
 						"event entity @s[scores={south_count=1..5,s_split_count=0..4}] south_split_half",
-						"execute @s[scores={south_count=1..11,s_split_count=5..10}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary:hallway\" ~-6 ~-1 ~1",
+						"execute @s[scores={south_count=1..11,s_split_count=4..10}] ~ ~ ~ structure load \"exdrill/jungle_sanctuary:hallway\" ~-6 ~-1 ~1",
 						"event entity @s[scores={south_count=7..10,s_split_count=0..4}] south_split_confirm"
 					]
 				}
