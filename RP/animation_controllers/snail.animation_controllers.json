@@ -1,0 +1,30 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.snail": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"animations": [
+						"move"
+					],
+					"transitions": [
+						{
+							"hide": "query.is_stunned"
+						}
+					]
+				},
+				"hide": {
+					"animations": [
+						"hide"
+					],
+					"transitions": [
+						{
+							"default": "!query.is_stunned"
+						}
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,95 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:snail",
+			"is_summonable": true,
+			"is_spawnable": true
+		},
+		"component_groups": {
+			"default": {},
+			"hide": {
+				"minecraft:is_stunned": {},
+				"minecraft:damage_sensor": {
+					"triggers": [
+						{
+							"cause": "entity_attack",
+							"deals_damage": false
+						},
+						{
+							"cause": "projectile",
+							"deals_damage": false
+						},
+						{
+							"cause": "lightning",
+							"deals_damage": false
+						},
+						{
+							"cause": "block_explosion",
+							"deals_damage": false
+						},
+						{
+							"cause": "entity_explosion",
+							"deals_damage": false
+						},
+						{
+							"cause": "thorns",
+							"deals_damage": false
+						},
+						{
+							"cause": "stalactite",
+							"deals_damage": false
+						},
+						{
+							"cause": "stalagmite",
+							"deals_damage": false
+						},
+						{
+							"cause": "fireworks",
+							"deals_damage": false
+						}
+					]
+				}
+			}
+		},
+		"components": {
+			"minecraft:health": {
+				"value": 20,
+				"max": 20
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"default"
+					]
+				}
+			},
+			"hide": {
+				"add": {
+					"component_groups": [
+						"hide"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"default"
+					]
+				}
+			},
+			"stop_hiding": {
+				"add": {
+					"component_groups": [
+						"default"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"hide"
+					]
+				}
+			}
+		}
+	}
+}
