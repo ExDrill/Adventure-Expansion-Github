@@ -16,6 +16,15 @@
 				"minecraft:variant": {
 					"value": 0
 				},
+				"minecraft:behavior.avoid_block": {
+					"priority": 1,
+					"search_height": 4,
+					"search_range": 2,
+					"target_blocks": [
+						"water",
+						"flowing_water"
+					]
+				},
 				"minecraft:damage_sensor": {
 					"triggers": [
 						{
@@ -102,10 +111,32 @@
 								"event": "summon_xp",
 								"target": "self",
 								"filters": {
-									"test": "has_equipment",
-									"subject": "other",
-									"domain": "hand",
-									"value": "rotten_flesh"
+									"any_of": [
+										{
+											"test": "has_equipment",
+											"subject": "other",
+											"domain": "hand",
+											"value": "leaves"
+										},
+										{
+											"test": "has_equipment",
+											"subject": "other",
+											"domain": "hand",
+											"value": "leaves2"
+										},
+										{
+											"test": "has_equipment",
+											"subject": "other",
+											"domain": "hand",
+											"value": "azalea_leaves"
+										},
+										{
+											"test": "has_equipment",
+											"subject": "other",
+											"domain": "hand",
+											"value": "azalea_leaves_flowered"
+										}
+									]
 								}
 							},
 							"use_item": true,
@@ -236,6 +267,12 @@
 				}
 			},
 			"hide": {
+				"run_command": {
+					"command": [
+						"playsound block.beehive.exit @a ~ ~ ~"
+					],
+					"target": "self"
+				},
 				"add": {
 					"component_groups": [
 						"hide"
@@ -248,6 +285,12 @@
 				}
 			},
 			"stop_hiding": {
+				"run_command": {
+					"command": [
+						"playsound block.beehive.exit @a ~ ~ ~"
+					],
+					"target": "self"
+				},
 				"add": {
 					"component_groups": [
 						"default"
@@ -276,7 +319,8 @@
 			"summon_xp": {
 				"run_command": {
 					"command": [
-						"summon xp_orb ~ ~ ~"
+						"summon xp_orb ~ ~ ~",
+						"playsound random.eat @a ~ ~ ~"
 					]
 				}
 			}

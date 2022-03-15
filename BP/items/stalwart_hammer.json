@@ -74,7 +74,7 @@
 						"run_command": {
 							"command": [
 								"scoreboard players add @s stalwart_hammer 1",
-								"particle exdrill:small_crumbled_rock_particle ^ ^1 ^2",
+								"particle exdrill:small_crumbled_rock_particle ^ ^2 ^2",
 								"playsound break.tuff @a ~ ~ ~"
 							],
 							"target": "self"

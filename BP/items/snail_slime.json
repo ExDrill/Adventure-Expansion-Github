@@ -8,9 +8,8 @@
 			"minecraft:icon": {
 				"texture": "snail_slime"
 			},
-			"minecraft:block_placer": {
-				"block": "exdrill:snail_slime_block"
-			}
+			"minecraft:allow_off_hand": true,
+			"tag:exdrill:blowpipe_ammo": {}
 		}
 	}
 }

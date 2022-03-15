@@ -1,0 +1,30 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "exdrill:thrown_snail_slime",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/snail_slime"
+			},
+			"geometry": {
+				"default": "geometry.thrown_snail_slime"
+			},
+			"animations": {
+				"fly": "animation.arrow.move",
+				"general": "animation.snail_slime.fly"
+			},
+			"scripts": {
+				"animate": [
+					"fly",
+					"general"
+				]
+			},
+			"render_controllers": [
+				"controller.render.default"
+			]
+		}
+	}
+}

@@ -5,16 +5,28 @@
 			"identifier": "exdrill:snail_slime_block"
 		},
 		"components": {
+			"minecraft:ticking": {
+				"looping": true,
+				"range": [ 1, 1 ],
+				"on_tick": {
+					"event": "die",
+					"target": "self"
+				}
+			},
+			"minecraft:on_placed": {
+				"event": "on_placed",
+				"target": "self"
+			},
 			"minecraft:destroy_time": 0,
 			"minecraft:geometry": "geometry.snail_slime",
 			"minecraft:entity_collision": false,
 			"minecraft:breathability": "air",
 			"minecraft:block_light_absorption": 1,
 			"minecraft:pick_collision": {
-				"origin": [ -7, 0, -7 ],
-				"size": [ 14, 2, 14 ]
+				"origin": [ -6, 0, -6 ],
+				"size": [ 12, 2, 12 ]
 			},
-			"minecraft:loot": "loot_tables/entities/feed_snail.json",
+			"minecraft:loot": "loot_tables/empty.json",
 			"minecraft:material_instances": {
 				"up": {
 					"texture": "snail_slime_top",
@@ -39,6 +51,21 @@
 				"west": {
 					"texture": "snail_slime",
 					"render_method": "opaque"
+				}
+			}
+		},
+		"events": {
+			"on_placed": {
+				"run_command": {
+					"command": [
+						"effect @e[r=1.5] slowness 1 6 false"
+					],
+					"target": "self"
+				}
+			},
+			"die": {
+				"set_block": {
+					"block_type": "air"
 				}
 			}
 		}

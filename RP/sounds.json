@@ -74,7 +74,8 @@
                     "death": {
                         "sound": "mob.goose.honk",
                         "pitch": 0.7
-                    }
+                    },
+                    "step": "mob.chicken.step"
                 }
             },
             "exdrill:deepfish": {
@@ -85,6 +86,15 @@
                     "ambient": "mob.deepfish.ambient_land",
                     "hurt": "dig.stone",
                     "death": "damage.fallbig"
+                }
+            },
+            "exdrill:snail": {
+                "volume": 1,
+                "pitch": 1,
+                "events": {
+                    "hurt": "mob.magmacube.small",
+                    "death": "mob.slime.death",
+                    "step": "mob.squid.ambient"
                 }
             }
         }

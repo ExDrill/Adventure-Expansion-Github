@@ -1,0 +1,91 @@
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:thrown_snail_slime",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"runtime_identifier": "snowball"
+		},
+		"component_groups": {
+			"scale_down": {
+				"minecraft:scale": {
+					"value": 1
+				}
+			},
+			"despawn": {
+				"minecraft:instant_despawn": {}
+			},
+			"player_made": {
+				"minecraft:projectile": {
+					"angle_offset": 15,
+					"gravity": 0.09,
+					"offset": [
+						0,
+						0.3,
+						0
+					],
+					"on_hit": {
+						"stick_in_ground": {}
+					},
+					"anchor": 1,
+					"power": 1.5
+				}
+			}
+		},
+		"components": {
+			"minecraft:physics": {},
+			"minecraft:collision_box": {
+				"height": 0.25,
+				"width": 0.25
+			},
+			"minecraft:environment_sensor": {
+				"triggers": {
+					"event": "set_block",
+					"filters": {
+						"test": "on_ground",
+						"value": true
+					}
+				}
+			}
+		},
+		"events": {
+			"set_block": {
+				"run_command": {
+					"command": [
+						"fill ~ ~ ~ ~ ~ ~ exdrill:snail_slime_block 0 replace air"
+					],
+					"target": "self"
+				},
+				"add": {
+					"component_groups": [
+						"despawn"
+					]
+				}
+			},
+			"minecraft:entity_spawned": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"scale_down"
+							]
+						}
+					},
+					{
+						"add": {
+							"component_groups": [
+								"player_made"
+							]
+						},
+						"filters": {
+							"test": "is_family",
+							"subject": "other",
+							"value": "player"
+						}
+					}
+				]
+			}
+		}
+	}
+}
