@@ -5,7 +5,7 @@
 	"authors": [
 		"ExDrill"
 	],
-	"targetVersion": "1.17.40",
+	"targetVersion": "1.18.10",
 	"description": "",
 	"experimentalGameplay": {
 		"cavesAndCliffs": true,
