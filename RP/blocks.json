@@ -16,5 +16,8 @@
 	},
 	"exdrill:chorus_bed": {
 		"sound": "cave_vines"
+	},
+	"exdrill:snail_slime_block": {
+		"sound": "honey_block"
 	}
 }

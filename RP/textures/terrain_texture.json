@@ -12,6 +12,12 @@
 		},
 		"chorus_bed": {
 			"textures": "textures/blocks/chorus_bed"
+		},
+		"snail_slime": {
+			"textures": "textures/blocks/snail_slime"
+		},
+		"snail_slime_top": {
+			"textures": "textures/blocks/snail_slime_top"
 		}
 	}
 }

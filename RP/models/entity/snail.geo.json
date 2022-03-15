@@ -15,7 +15,9 @@
 					"name": "root",
 					"pivot": [0, 0, 0],
 					"locators": {
-						"locator": [0, 8, 3]
+						"locator": [0, 8, 3],
+						"snail_slime_trail": [ 0, 0, 5 ],
+						"lead": [ 0, 5, 0 ]
 					}
 				},
 				{

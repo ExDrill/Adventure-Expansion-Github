@@ -1,0 +1,46 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "exdrill:snail_slime_block"
+		},
+		"components": {
+			"minecraft:destroy_time": 0,
+			"minecraft:geometry": "geometry.snail_slime",
+			"minecraft:entity_collision": false,
+			"minecraft:breathability": "air",
+			"minecraft:block_light_absorption": 1,
+			"minecraft:pick_collision": {
+				"origin": [ -7, 0, -7 ],
+				"size": [ 14, 2, 14 ]
+			},
+			"minecraft:loot": "loot_tables/entities/feed_snail.json",
+			"minecraft:material_instances": {
+				"up": {
+					"texture": "snail_slime_top",
+					"render_method": "opaque"
+				},
+				"down": {
+					"texture": "snail_slime_top",
+					"render_method": "opaque"
+				},
+				"north": {
+					"texture": "snail_slime",
+					"render_method": "opaque"
+				},
+				"south": {
+					"texture": "snail_slime",
+					"render_method": "opaque"
+				},
+				"east": {
+					"texture": "snail_slime",
+					"render_method": "opaque"
+				},
+				"west": {
+					"texture": "snail_slime",
+					"render_method": "opaque"
+				}
+			}
+		}
+	}
+}

@@ -7,9 +7,131 @@
 			"is_spawnable": true
 		},
 		"component_groups": {
-			"default": {},
+			"can_walk": {
+				"minecraft:navigation.walk": {},
+				"minecraft:movement.basic": {},
+				"minecraft:jump.static": {}
+			},
+			"default": {
+				"minecraft:variant": {
+					"value": 0
+				},
+				"minecraft:damage_sensor": {
+					"triggers": [
+						{
+							"cause": "entity_attack",
+							"on_damage": {
+								"event": "hide",
+								"target": "self"
+							}
+						},
+						{
+							"cause": "projectile",
+							"on_damage": {
+								"event": "hide",
+								"target": "self"
+							}
+						},
+						{
+							"cause": "lightning",
+							"on_damage": {
+								"event": "hide",
+								"target": "self"
+							}
+						},
+						{
+							"cause": "block_explosion",
+							"on_damage": {
+								"event": "hide",
+								"target": "self"
+							}
+						},
+						{
+							"cause": "entity_explosion",
+							"on_damage": {
+								"event": "hide",
+								"target": "self"
+							}
+						},
+						{
+							"cause": "thorns",
+							"on_damage": {
+								"event": "hide",
+								"target": "self"
+							}
+						},
+						{
+							"cause": "stalactite",
+							"on_damage": {
+								"event": "hide",
+								"target": "self"
+							}
+						},
+						{
+							"cause": "stalagmite",
+							"on_damage": {
+								"event": "hide",
+								"target": "self"
+							}
+						},
+						{
+							"cause": "fireworks",
+							"on_damage": {
+								"event": "hide",
+								"target": "self"
+							}
+						}
+					]
+				},
+				"minecraft:behavior.random_stroll": {
+					"priority": 1,
+					"xz_dist": 15,
+					"interval": 3,
+					"y_dist": 4
+				},
+				"minecraft:movement": {
+					"value": 0.1
+				},
+				"minecraft:interact": {
+					"interactions": [
+						{
+							"interact_text": "action.interact.feed",
+							"cooldown": 120,
+							"swing": true,
+							"on_interact": {
+								"event": "summon_xp",
+								"target": "self",
+								"filters": {
+									"test": "has_equipment",
+									"subject": "other",
+									"domain": "hand",
+									"value": "rotten_flesh"
+								}
+							},
+							"use_item": true,
+							"spawn_items": {
+								"table": "loot_tables/entities/feed_snail.json"
+							}
+						}
+					]
+				}
+			},
 			"hide": {
+				"minecraft:variant": {
+					"value": 1
+				},
 				"minecraft:is_stunned": {},
+				"minecraft:timer": {
+					"looping": true,
+					"time": 5,
+					"time_down_event": {
+						"event": "stop_hiding",
+						"target": "self"
+					}
+				},
+				"minecraft:movement": {
+					"value": 0.0
+				},
 				"minecraft:damage_sensor": {
 					"triggers": [
 						{
@@ -56,6 +178,53 @@
 			"minecraft:health": {
 				"value": 20,
 				"max": 20
+			},
+			"minecraft:collision_box": {
+				"width": 1,
+				"height": 1
+			},
+			"minecraft:experience_reward": {
+				"on_death": "query.last_hit_by_player ? 5 : 0"
+			},
+			"minecraft:breathable": {
+				"total_supply": 20,
+				"suffocate_time": 15
+			},
+			"minecraft:scheduler": {
+				"scheduled_events": [
+					{
+						"event": "cannot_walk",
+						"filters": {
+							"test": "is_variant",
+							"subject": "self",
+							"value": 1
+						},
+						"target": "self"
+					},
+					{
+						"event": "can_walk",
+						"filters": {
+							"test": "is_variant",
+							"subject": "self",
+							"value": 0
+						},
+						"target": "self"
+					}
+				]
+			},
+			"minecraft:type_family": {
+				"family": [
+					"arthropod",
+					"mob",
+					"snail"
+				]
+			},
+			"minecraft:nameable": {},
+			"minecraft:leashable": {},
+			"minecraft:pushable": {},
+			"minecraft:physics": {},
+			"minecraft:knockback_resistance": {
+				"value": 1
 			}
 		},
 		"events": {
@@ -87,6 +256,27 @@
 				"remove": {
 					"component_groups": [
 						"hide"
+					]
+				}
+			},
+			"can_walk": {
+				"add": {
+					"component_groups": [
+						"can_walk"
+					]
+				}
+			},
+			"cannot_walk": {
+				"remove": {
+					"component_groups": [
+						"can_walk"
+					]
+				}
+			},
+			"summon_xp": {
+				"run_command": {
+					"command": [
+						"summon xp_orb ~ ~ ~"
 					]
 				}
 			}

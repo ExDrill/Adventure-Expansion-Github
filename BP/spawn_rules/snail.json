@@ -1,0 +1,68 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:spawn_rules": {
+		"description": {
+			"identifier": "exdrill:snail",
+			"population_control": "animal"
+		},
+		"conditions": [
+			{
+				"minecraft:weight": {
+					"default": 10
+				},
+				"minecraft:height_filter": {
+					"min": 10,
+					"max": 45
+				},
+				"minecraft:biome_filter": {
+					"test": "has_biome_tag",
+					"operator": "not",
+					"value": "dripstone_caves"
+				},
+				"minecraft:spawns_underground": {}
+			},
+			{
+				"minecraft:weight": {
+					"default": 15
+				},
+				"minecraft:height_filter": {
+					"min": 10,
+					"max": 45
+				},
+				"minecraft:herd": {
+					"min_size": 1,
+					"max_size": 2
+				},
+				"minecraft:biome_filter": {
+					"test": "has_biome_tag",
+					"value": "dripstone_caves"
+				},
+				"minecraft:spawns_underground": {}
+			},
+			{
+				"minecraft:weight": {
+					"default": 15
+				},
+				"minecraft:herd": {
+					"min_size": 1,
+					"max_size": 2
+				},
+				"minecraft:biome_filter": {
+					"test": "has_biome_tag",
+					"value": "flower_forest"
+				},
+				"minecraft:spawns_on_surface": {}
+			},
+			{
+				"minecraft:weight": {
+					"default": 10
+				},
+				"minecraft:biome_filter": {
+					"test": "has_biome_tag",
+					"value": "forest"
+				},
+				"minecraft:spawns_on_surface": {}
+			}
+		]
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "exdrill:snail_slime"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "snail_slime"
+			},
+			"minecraft:block_placer": {
+				"block": "exdrill:snail_slime_block"
+			}
+		}
+	}
+}

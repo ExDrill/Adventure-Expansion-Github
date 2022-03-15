@@ -62,6 +62,11 @@
 								{
 									"test": "is_family",
 									"subject": "other",
+									"value": "snail"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
 									"value": "endermite"
 								},
 								{

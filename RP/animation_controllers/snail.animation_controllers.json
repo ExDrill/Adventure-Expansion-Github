@@ -6,7 +6,15 @@
 			"states": {
 				"default": {
 					"animations": [
-						"move"
+						{
+							"move": "query.modified_move_speed * 4"
+						}
+					],
+					"particle_effects": [
+						{
+							"effect": "snail_slime_trail",
+							"locator": "snail_slime_trail"
+						}
 					],
 					"transitions": [
 						{
@@ -22,7 +30,8 @@
 						{
 							"default": "!query.is_stunned"
 						}
-					]
+					],
+					"blend_transition": 0.1
 				}
 			}
 		}

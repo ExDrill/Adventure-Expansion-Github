@@ -34,6 +34,13 @@
 				"should_bounce": true,
 				"gravity": 0.02,
 				"on_hit": {
+					"definition_event": {
+						"affect_projectile": true,
+						"event_trigger": {
+							"event": "explode",
+							"target": "self"
+						}
+					},
 					"impact_damage": {
 						"damage": 2,
 						"knockback": false,

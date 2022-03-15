@@ -17,7 +17,8 @@
 				"textures/items/egg_sky_dragon",
 				"textures/items/egg_inhabitant",
 				"textures/items/egg_goose",
-				"textures/items/egg_deepfish"
+				"textures/items/egg_deepfish",
+				"textures/items/egg_snail"
 			]
 		},
 		"bottled_soul": {
@@ -46,6 +47,9 @@
 		},
 		"dart": {
 			"textures": "textures/items/dart"
+		},
+		"snail_slime": {
+			"textures": "textures/items/snail_slime"
 		}
 	}
 }
