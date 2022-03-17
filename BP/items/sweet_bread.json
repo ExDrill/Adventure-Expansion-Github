@@ -2,7 +2,8 @@
 	"format_version": "1.17.0",
 	"minecraft:item": {
 		"description": {
-			"identifier": "exdrill:sweet_bread"
+			"identifier": "exdrill:sweet_bread",
+			"category": "equipment"
 		},
 		"components": {
 			"minecraft:icon": {
@@ -16,6 +17,9 @@
 					"event": "on_consume",
 					"target": "self"
 				}
+			},
+			"minecraft:creative_category": {
+				"parent": "itemGroup.name.miscFood"
 			},
 			"minecraft:use_animation": "eat",
 			"minecraft:use_duration": 1.6

@@ -11,6 +11,9 @@
 					"render_method": "alpha_test"
 				}
 			},
+			"minecraft:creative_category": {
+				"category": "nature"
+			},
 			"minecraft:placement_filter": {
 				"conditions": [
 					{

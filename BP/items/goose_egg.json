@@ -2,11 +2,15 @@
 	"format_version": "1.16.100",
 	"minecraft:item": {
 		"description": {
-			"identifier": "exdrill:goose_egg"
+			"identifier": "exdrill:goose_egg",
+			"category": "nature"
 		},
 		"components": {
 			"minecraft:icon": {
 				"texture": "goose_egg"
+			},
+			"minecraft:creative_category": {
+				"parent":"nature"
 			},
 			"minecraft:on_use_on": {
 				"on_use_on": {

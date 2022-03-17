@@ -25,6 +25,11 @@ entity.exdrill:sky_dragon.name=Sky Dragon
 entity.exdrill:goose.name=Goose
 entity.exdrill:deepfish.name=Deepfish
 entity.exdrill:snail.name=Snail
+entity.exdrill:dart.name=Dart
+entity.exdrill:thrown_snail_slime.name=Snail Slime
+entity.exdrill:soul_puff.name=Soul Puff
+entity.exdrill:explosive_ball.name=Explosive Ball
+entity.exdrill:vine_whip.name=Vine Whip
 ## Spawn Egg
 item.spawn_egg.entity.exdrill:revenant.name=Spawn Revenant
 item.spawn_egg.entity.exdrill:stalwart_beast.name=Spawn Stalwart Beast

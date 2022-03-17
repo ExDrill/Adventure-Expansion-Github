@@ -26,8 +26,8 @@
 			],
 			"scripts": {
 				"pre_animation": [
-					"variable.tcos0 = (math.cos(query.modified_distance_moved * 70) * query.modified_move_speed / variable.gliding_speed_value) * 30;",
-					"variable.tcos1 = (math.cos(query.modified_distance_moved * 70) * query.modified_move_speed / variable.gliding_speed_value) * 40;"
+					"variable.tcos0 = (math.cos(query.modified_distance_moved * 65) * query.modified_move_speed / variable.gliding_speed_value) * 25;",
+					"variable.tcos1 = (math.cos(query.modified_distance_moved * 65) * query.modified_move_speed / variable.gliding_speed_value) * 80;"
 				],
 				"animate": [
 					"move.legs",

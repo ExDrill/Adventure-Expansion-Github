@@ -37,7 +37,7 @@
 					"slot_drop_chance": [
 						{
 							"slot": "slot.weapon.mainhand",
-							"drop_chance": 0
+							"drop_chance": 0.1
 						}
 					]
 				},

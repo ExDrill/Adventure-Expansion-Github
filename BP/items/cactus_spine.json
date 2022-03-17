@@ -2,11 +2,15 @@
 	"format_version": "1.16.100",
 	"minecraft:item": {
 		"description": {
-			"identifier": "exdrill:cactus_spine"
+			"identifier": "exdrill:cactus_spine",
+			"category": "equipment"
 		},
 		"components": {
 			"minecraft:icon": {
 				"texture": "cactus_spine"
+			},
+			"minecraft:creative_category": {
+				"parent":"equipment"
 			},
 			"minecraft:allow_off_hand": true,
 			"tag:exdrill:blowpipe_ammo": {},

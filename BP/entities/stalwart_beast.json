@@ -7,6 +7,14 @@
 			"is_spawnable": true
 		},
 		"component_groups": {
+			"player_created": {
+				"minecraft:loot": {
+					"table": "loot_tables/entities/stalwart_beast_player_created.json"
+				},
+				"minecraft:experience_reward": {
+				    "on_death": "0"
+			    }
+			},
 			"melee_attack": {
 				"minecraft:behavior.melee_attack": {
 					"priority": 0,
@@ -14,6 +22,7 @@
 						"event": "grab_entity",
 						"target": "self"
 					},
+					"reach_multiplier": 1.25,
 					"speed_multiplier": 2
 				}
 			},
@@ -61,8 +70,8 @@
 				"damage": 5
 			},
 			"minecraft:collision_box": {
-				"width": 1.25,
-				"height": 3
+				"width": 1,
+				"height": 2.7
 			},
 			"minecraft:damage_sensor": {
 				"triggers": {
@@ -196,6 +205,14 @@
 				"remove": {
 					"component_groups": [
 						"knockback_attack"
+					]
+				}
+			},
+			"minecraft:from_player": {
+				"add": {
+					"component_groups": [
+						"player_created",
+						"melee_attack"
 					]
 				}
 			},

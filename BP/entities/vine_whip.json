@@ -82,7 +82,7 @@
 				"run_command": {
 					"command": [
 						"playsound block.sweet_berry_bush.hurt @a ~ ~ ~",
-						"damage @a[r=1] 1"
+						"damage @a[r=1] 1 entity_attack"
 					]
 				}
 			},

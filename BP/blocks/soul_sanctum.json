@@ -25,7 +25,8 @@
 				}
 			},
 			"minecraft:creative_category": {
-				"category": "equipment"
+				"category": "items",
+				"group": "itemGroup.name.craftingTables"
 			}
 		},
 		"events": {

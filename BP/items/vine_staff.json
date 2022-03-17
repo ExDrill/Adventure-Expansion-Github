@@ -2,7 +2,8 @@
 	"format_version": "1.16.100",
 	"minecraft:item": {
 		"description": {
-			"identifier": "exdrill:vine_staff"
+			"identifier": "exdrill:vine_staff",
+			"category": "equipment"
 		},
 		"components": {
 			"minecraft:icon": {
@@ -19,6 +20,9 @@
 					"max": 100
 				},
 				"max_durability": 64
+			},
+			"minecraft:creative_category": {
+				"parent": "equipment"
 			},
 			"minecraft:enchantable": {
                 "slot": "elytra",

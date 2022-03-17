@@ -2,11 +2,15 @@
 	"format_version": "1.16.100",
 	"minecraft:item": {
 		"description": {
-			"identifier": "exdrill:snail_slime"
+			"identifier": "exdrill:snail_slime",
+			"category": "items"
 		},
 		"components": {
 			"minecraft:icon": {
 				"texture": "snail_slime"
+			},
+			"minecraft:creative_category": {
+				"parent":"items"
 			},
 			"minecraft:allow_off_hand": true,
 			"tag:exdrill:blowpipe_ammo": {}
