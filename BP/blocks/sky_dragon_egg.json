@@ -1,0 +1,62 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "exdrill:sky_dragon_egg"
+		},
+		"components": {
+			"minecraft:ticking": {
+				"looping": true,
+				"range": [ 1, 1 ],
+				"on_tick": {
+					"event": "particle",
+					"target": "self"
+				}
+			},
+			"minecraft:on_player_destroyed": {
+				"event": "on_player_destroyed",
+				"target": "self"
+			},
+			"minecraft:block_light_emission": 0.1,
+			"minecraft:explosion_resistance": 999,
+			"minecraft:destroy_time": 5,
+			"minecraft:geometry": "geometry.sky_dragon_egg",
+			"minecraft:material_instances": {
+				"up": {
+					"texture": "sky_dragon_egg_top",
+					"render_method": "opaque"
+				},
+				"down": {
+					"texture": "sky_dragon_egg_top",
+					"render_method": "opaque"
+				},
+				"north": {
+					"texture": "sky_dragon_egg",
+					"render_method": "opaque"
+				},
+				"south": {
+					"texture": "sky_dragon_egg",
+					"render_method": "opaque"
+				},
+				"east": {
+					"texture": "sky_dragon_egg",
+					"render_method": "opaque"
+				},
+				"west": {
+					"texture": "sky_dragon_egg",
+					"render_method": "opaque"
+				}
+			}
+		},
+		"events": {
+			"particle": {
+				"run_command": {
+					"command": [
+						"particle exdrill:wave_particle ~ ~ ~"
+					],
+					"target": "self"
+				}
+			}
+		}
+	}
+}

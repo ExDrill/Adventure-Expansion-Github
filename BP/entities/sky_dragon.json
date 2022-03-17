@@ -6,24 +6,15 @@
 			"is_summonable": true,
 			"is_spawnable": true
 		},
-		"component_groups": {
-			"sleeping": {
-				
-			},
-			"initial_roar": {
-				"minecraft:damage_sensor": {
-					"triggers": {
-						"cause": "all",
-						"damage_multiplier": 0.1
-					}
-				},
-				"minecraft:is_ignited": {}
-			}
-		},
+		"component_groups": {},
 		"components": {
 			"minecraft:health": {
 				"value": 400,
 				"max": 400
+			},
+			"minecraft:boss": {
+				"name": "entity.exdrill:sky_dragon.name",
+				"hud_range": 25
 			},
 			"minecraft:knockback_resistance": {
 				"value": 1
@@ -32,37 +23,8 @@
 			"minecraft:collision_box": {
 				"width": 7,
 				"height": 5
-			},
-			"minecraft:interact": {
-					"interactions": {
-						"on_interact": {
-							"event": "wake_up",
-							"target": "self"
-						},
-						"swing": true
-					}
-				}
-		},
-		"events": {
-			"minecraft:entity_spawned": {
-				"add": {
-					"component_groups": [
-						"sleeping"
-					]
-				}
-			},
-			"wake_up": {
-				"add": {
-					"component_groups": [
-						"initial_roar"
-					]
-				},
-				"remove": {
-					"component_groups": [
-						"sleeping"
-					]
-				}
 			}
-		}
+		},
+		"events": {}
 	}
 }

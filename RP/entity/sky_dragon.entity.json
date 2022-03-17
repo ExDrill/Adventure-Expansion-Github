@@ -18,7 +18,12 @@
 			},
 			"scripts": {
 				"animate": [
-					"base_pose"
+					{
+						"base_pose": "query.is_on_ground"
+					},
+					{
+						"flap": "!query.is_on_ground"
+					}
 				]
 			},
 			"particle_effects": {

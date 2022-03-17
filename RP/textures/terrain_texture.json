@@ -18,6 +18,12 @@
 		},
 		"snail_slime_top": {
 			"textures": "textures/blocks/snail_slime_top"
+		},
+		"sky_dragon_egg": {
+			"textures": "textures/blocks/sky_dragon_egg"
+		},
+		"sky_dragon_egg_top": {
+			"textures": "textures/blocks/sky_dragon_egg_top"
 		}
 	}
 }

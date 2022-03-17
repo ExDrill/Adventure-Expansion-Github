@@ -19,5 +19,8 @@
 	},
 	"exdrill:snail_slime_block": {
 		"sound": "honey_block"
+	},
+	"exdrill:sky_dragon_egg": {
+		"sound": "shroomlight"
 	}
 }

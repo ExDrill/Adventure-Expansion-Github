@@ -15,6 +15,7 @@ item.exdrill:snail_slime=Snail Slime
 tile.exdrill:stalwart_rock_block.name=Stalwart Rock Block
 tile.exdrill:soul_sanctum.name=Soul Sanctum
 tile.exdrill:chorus_bed.name=Chorus Bed
+tile.exdrill:sky_dragon_egg.name=Sky Dragon Egg
 ## Entity
 entity.exdrill:revenant.name=Revenant
 entity.exdrill:stalwart_beast.name=Crumbles

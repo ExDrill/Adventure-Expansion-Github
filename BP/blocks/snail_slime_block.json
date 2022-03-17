@@ -17,7 +17,7 @@
 				"event": "on_placed",
 				"target": "self"
 			},
-			"minecraft:destroy_time": 0,
+			"minecraft:destroy_time": 9999,
 			"minecraft:geometry": "geometry.snail_slime",
 			"minecraft:entity_collision": false,
 			"minecraft:breathability": "air",
@@ -58,7 +58,8 @@
 			"on_placed": {
 				"run_command": {
 					"command": [
-						"effect @e[r=1.5] slowness 1 6 false"
+						"effect @e[r=1.5] slowness 3 6 false",
+						"playsound step.slime @a ~ ~ ~"
 					],
 					"target": "self"
 				}

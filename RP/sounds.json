@@ -16,7 +16,8 @@
                 "events": {
                     "hurt": "mob.ravager.bite",
                     "ambient": "mob.ravager.celebrate",
-                    "death": "mob.ravager.death"
+                    "death": "mob.ravager.death",
+                    "step": "mob.ravager.step"
                 }
             },
             "exdrill:sailorager": {
@@ -55,6 +56,7 @@
                 "events": {
                     "ambient": "mob.inhabitant.idle",
                     "hurt": "mob.inhabitant.hurt",
+                    "step": "mob.chicken.step",
                     "death": {
                         "sound": "mob.inhabitant.death",
                         "pitch": [ 0.8, 1.2 ],
