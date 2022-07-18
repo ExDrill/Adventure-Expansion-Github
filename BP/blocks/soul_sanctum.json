@@ -1,5 +1,5 @@
 {
-	"format_version": "1.16.100",
+	"format_version": "1.19.20",
 	"minecraft:block": {
 		"description": {
 			"identifier": "exdrill:soul_sanctum"
@@ -12,13 +12,15 @@
 					"render_method": "alpha_test"
 				}
 			},
-			"minecraft:destroy_time": 0.5,
-			"minecraft:block_light_absorption": 0,
-			"minecraft:block_light_emission": 0.4,
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 0.5
+			},
+			"minecraft:light_dampening": 0,
+			"minecraft:light_emission": 4,
 			"minecraft:breathability": "air",
-			"minecraft:ticking": {
+			"minecraft:queued_ticking": {
 				"looping": true,
-				"range": [ 5, 5 ],
+				"interval_range": [ 100, 100 ],
 				"on_tick": {
 					"event": "soul",
 					"target": "self"

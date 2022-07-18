@@ -54,15 +54,14 @@
 							"weight": 1,
 							"sequence": [
 								{
-									"shape": "line",
-									"target": "self",
+									"shape": "circle",
+									"target": "target",
 									"base_delay": 0,
 									"sound_event": "prepare.summon",
 									"delay_per_summon": 0.05,
 									"num_entities_spawned": 16,
-									"entity_type": "exdrill:vine_whip",
-									"size": 20,
-									"entity_lifespan": 1.1
+									"entity_type": "exdrill:giant_thorn",
+									"size": 3
 								}
 							]
 						}

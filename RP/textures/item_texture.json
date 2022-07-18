@@ -50,6 +50,9 @@
 		},
 		"snail_slime": {
 			"textures": "textures/items/snail_slime"
+		},
+		"boots_of_grace": {
+			"textures": "textures/items/boots_of_grace"
 		}
 	}
 }

@@ -1,1 +1,0 @@
-event entity @s south_left_room_split

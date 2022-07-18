@@ -1,3 +1,3 @@
-execute @a[c=1,tag=!finished] ~ ~ ~ gamerule commandblockoutput false
-execute @a[c=1,tag=!finished] ~ ~ ~ scoreboard objectives add stalwart_hammer dummy
+execute as @a[c=1,tag=!finished] run gamerule commandblockoutput false
+execute as @a[c=1,tag=!finished] run scoreboard objectives add stalwart_hammer dummy
 tag @a[c=1,tag=!finished] add finished

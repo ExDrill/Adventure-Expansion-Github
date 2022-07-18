@@ -1,44 +1,20 @@
 {
-	"format_version": "1.16.100",
+	"format_version": "1.19.20",
 	"minecraft:block": {
 		"description": {
 			"identifier": "exdrill:stalwart_rock_block"
 		},
 		"components": {
-			"minecraft:destroy_time": 1,
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 1
+			},
 			"minecraft:creative_category": {
 				"category": "construction"
-			},
-			"minecraft:ticking": {
-				"looping": true,
-				"range": [ 0, 0 ],
-				"on_tick": {
-					"event": "construct",
-					"target": "self"
-				}
 			},
 			"tag:exdrill:solid_block": {},
 			"tag:stone": {},
 			"tag:iron_pick_diggable": {},
 			"tag:exdrill:stalwart_rock_block": {}
-		},
-		"events": {
-			"construct": {
-				"sequence": [
-					{
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ air",
-								"setblock ~ ~1 ~ air",
-								"setblock ~ ~2 ~ air",
-								"summon exdrill:stalwart_beast ~ ~ ~ minecraft:from_player"
-							],
-							"target": "self"
-						},
-						"condition": "query.block_neighbor_has_any_tag(0,1,0, 'pumpkin') && query.block_neighbor_has_any_tag(0,2,0, 'exdrill:stalwart_rock_block')"
-					}
-				]
-			}
 		}
 	}
 }

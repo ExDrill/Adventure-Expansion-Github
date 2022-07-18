@@ -15,9 +15,17 @@
 					"max": 45
 				},
 				"minecraft:biome_filter": {
-					"test": "has_biome_tag",
-					"operator": "not",
-					"value": "dripstone_caves"
+					"all_of": [
+						{
+							"test": "has_biome_tag",
+							"operator": "not",
+							"value": "dripstone_caves"
+						},
+						{
+							"test": "has_biome_tag",
+							"value": "overworld"
+						}
+					]
 				},
 				"minecraft:spawns_underground": {}
 			},

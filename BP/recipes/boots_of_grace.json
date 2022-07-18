@@ -1,0 +1,25 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "exdrill:boots_of_grace"
+        },
+        "pattern": [
+            "M M",
+            "P P"
+        ],
+        "tags": [ "crafting_table" ],
+        "key": {
+            "M": {
+                "item": "minecraft:phantom_membrane"
+            },
+            "P": {
+                "item": "minecraft:popped_chorus_fruit"
+            }
+        },
+        "result": {
+            "count": 1,
+            "item": "exdrill:boots_of_grace"
+        }
+    }
+}

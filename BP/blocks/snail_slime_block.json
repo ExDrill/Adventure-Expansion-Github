@@ -1,13 +1,13 @@
 {
-	"format_version": "1.16.100",
+	"format_version": "1.19.10",
 	"minecraft:block": {
 		"description": {
 			"identifier": "exdrill:snail_slime_block"
 		},
 		"components": {
-			"minecraft:ticking": {
+			"minecraft:queued_ticking": {
 				"looping": true,
-				"range": [ 1, 1 ],
+				"interval_range": [ 20, 20 ],
 				"on_tick": {
 					"event": "die",
 					"target": "self"
@@ -17,12 +17,12 @@
 				"event": "on_placed",
 				"target": "self"
 			},
-			"minecraft:destroy_time": 9999,
+			"minecraft:destructible_by_mining": false,
 			"minecraft:geometry": "geometry.snail_slime",
-			"minecraft:entity_collision": false,
+			"minecraft:collision_box": false,
 			"minecraft:breathability": "air",
-			"minecraft:block_light_absorption": 1,
-			"minecraft:pick_collision": {
+			"minecraft:light_dampening": 1,
+			"minecraft:selection_box": {
 				"origin": [ -6, 0, -6 ],
 				"size": [ 12, 2, 12 ]
 			},

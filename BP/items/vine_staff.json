@@ -21,6 +21,7 @@
 				},
 				"max_durability": 64
 			},
+			"minecraft:hand_equipped": true,
 			"minecraft:creative_category": {
 				"parent": "equipment"
 			},
@@ -58,9 +59,9 @@
 					{
 						"run_command": {
 							"command": [
-								"summon exdrill:vine_whip ~ ~1 ~-2",
-								"summon exdrill:vine_whip ~ ~1 ~-1",
-								"summon exdrill:vine_whip ~ ~1 ~"
+								"summon exdrill:giant_thorn ~ ~ ~-2",
+								"summon exdrill:giant_thorn ~ ~ ~-1",
+								"summon exdrill:giant_thorn ~ ~ ~"
 							],
 							"target": "block"
 						},
@@ -69,9 +70,9 @@
 					{
 						"run_command": {
 							"command": [
-								"summon exdrill:vine_whip ~ ~1 ~2",
-								"summon exdrill:vine_whip ~ ~1 ~1",
-								"summon exdrill:vine_whip ~ ~1 ~"
+								"summon exdrill:giant_thorn ~ ~ ~2",
+								"summon exdrill:giant_thorn ~ ~ ~1",
+								"summon exdrill:giant_thorn ~ ~ ~"
 							],
 							"target": "block"
 						},
@@ -80,9 +81,9 @@
 					{
 						"run_command": {
 							"command": [
-								"summon exdrill:vine_whip ~-2 ~1 ~",
-								"summon exdrill:vine_whip ~-1 ~1 ~",
-								"summon exdrill:vine_whip ~ ~1 ~"
+								"summon exdrill:giant_thorn ~-2 ~ ~",
+								"summon exdrill:giant_thorn ~-1 ~ ~",
+								"summon exdrill:giant_thorn ~ ~ ~"
 							],
 							"target": "block"
 						},
@@ -91,9 +92,9 @@
 					{
 						"run_command": {
 							"command": [
-								"summon exdrill:vine_whip ~2 ~1 ~",
-								"summon exdrill:vine_whip ~1 ~1 ~",
-								"summon exdrill:vine_whip ~ ~1 ~"
+								"summon exdrill:giant_thorn ~2 ~ ~",
+								"summon exdrill:giant_thorn ~1 ~ ~",
+								"summon exdrill:giant_thorn ~ ~ ~"
 							],
 							"target": "block"
 						},

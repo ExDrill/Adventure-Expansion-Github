@@ -1,0 +1,14 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.giant_thorn.pierce": {
+			"timeline": {
+				"0.0": [
+					"/damage @e[r=1] 1 thorns"
+				]
+			},
+			"loop": true,
+			"animation_length": 0.5
+		}
+	}
+}

@@ -1,0 +1,31 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "exdrill:boots_of_grace",
+            "materials": {
+                "default": "armor",
+                "enchanted": "armor_enchanted"
+            },
+            "textures": {
+                "default": "textures/models/armor/boots_of_grace",
+                "enchanted": "textures/misc/enchanted_item_glint"
+            },
+            "geometry": {
+                "default": "geometry.player.armor.boots"
+            },
+            "scripts": {
+                "parent_setup": "variable.boot_layer_visible = 0.0;",
+                "animate": [
+                    "offset"
+                ]
+            },
+            "animations": {
+                "offset": "animation.armor.boots.offset"
+            },
+            "render_controllers": [
+                "controller.render.armor"
+            ]
+        }
+    }
+}

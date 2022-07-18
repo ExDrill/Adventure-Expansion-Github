@@ -1,0 +1,18 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.giant_thorn.move": {
+			"animation_length": 5,
+			"bones": {
+				"body": {
+					"position": {
+						"0.0": [ 0, -32, 0 ],
+						"0.1": [ 0, 0, 0 ],
+						"2.6": [ 0, 0, 0 ],
+						"2.7": [ 0, -32, 0 ]
+					}
+				}
+			}
+		}
+	}
+}

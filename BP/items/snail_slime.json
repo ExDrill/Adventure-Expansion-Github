@@ -12,8 +12,28 @@
 			"minecraft:creative_category": {
 				"parent":"items"
 			},
+			"minecraft:food": {
+				"can_always_eat": false,
+				"nutrition": 6,
+				"saturation_modifier": "normal",
+				"on_consume": {
+					"event": "exdrill:on_consume",
+					"target": "self"
+				}
+			},
+			"minecraft:use_animation": "eat",
+			"minecraft:use_duration": 1.6,
 			"minecraft:allow_off_hand": true,
 			"tag:exdrill:blowpipe_ammo": {}
+		},
+		"events": {
+			"exdrill:on_consume": {
+				"add_mob_effect": {
+					"amplifier": 0,
+					"effect": "nausea",
+					"duration": 100
+				}
+			}
 		}
 	}
 }

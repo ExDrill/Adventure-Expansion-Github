@@ -1,0 +1,2 @@
+execute as @a run tag @s[hasitem={item=exdrill:boots_of_grace,quantity=1,location=slot.armor.feet}] add bootsOfGrace
+execute as @a run tag @s[hasitem={item=exdrill:boots_of_grace,quantity=0,location=slot.armor.feet}] remove bootsOfGrace

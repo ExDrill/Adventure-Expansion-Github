@@ -5,7 +5,7 @@
 	"authors": [
 		"ExDrill"
 	],
-	"targetVersion": "1.18.10",
+	"targetVersion": "1.19.10",
 	"description": "",
 	"experimentalGameplay": {
 		"cavesAndCliffs": true,
@@ -36,7 +36,8 @@
 				{
 					"packName": "Adventure-Expansion-Github"
 				}
-			]
+			],
+			"formatVersionCorrection"
 		]
 	}
 }

@@ -1,0 +1,36 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:item": {
+        "description": {
+            "identifier": "exdrill:boots_of_grace"
+        },
+        "components": {
+            "minecraft:armor": {
+                "protection": 2
+            },
+            "minecraft:wearable": {
+                "slot": "slot.armor.feet",
+                "dispensable": true
+            },
+            "minecraft:icon": {
+                "texture": "boots_of_grace"
+            },
+            "minecraft:cooldown": {
+                "category": "boots_of_grace",
+                "duration": 5
+            },
+            "minecraft:enchantable": {
+                "slot": "armor_feet",
+                "value": 10
+            },
+            "minecraft:durability": {
+                "damage_chance": {
+                    "min": 60,
+                    "max": 100
+                },
+                "max_durability": 512
+            },
+            "minecraft:max_stack_size": 1
+        }
+    }
+}
