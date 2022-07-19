@@ -1,4 +1,4 @@
-import { world, MinecraftBlockTypes, BlockLocation, Location} from 'mojang-minecraft'
+import { world, MinecraftBlockTypes, BlockLocation, Location, ExplosionOptions } from 'mojang-minecraft'
 
 world.events.blockPlace.subscribe(blockPlace => {
 

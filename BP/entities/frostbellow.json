@@ -1,0 +1,77 @@
+{
+	"format_version": "1.18.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "exdrill:frostbellow",
+			"is_summonable": true,
+			"is_spawnable": true
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:health": {
+				"value": 15,
+				"max": 15
+			},
+			"minecraft:movement": {
+				"value": 0.01
+			},
+			"minecraft:physics": {},
+			"minecraft:breathable": {
+				"total_supply": 20,
+				"suffocate_time": 15
+			},
+			"minecraft:type_family": {
+				"family": [
+					"mob",
+					"frostbellow"
+				]
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "freezing",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 10
+					},
+					{
+						"filters": {
+							"test": "in_water",
+							"subject": "self",
+							"value": true
+						},
+						"cause": "drowning",
+						"damage_per_tick": 1
+					}
+					
+				]
+			},
+			"minecraft:pushable": {},
+			"minecraft:can_fly": {},
+			"minecraft:jump.static": {},
+
+			"minecraft:navigation.float": {
+				"can_path_over_water": true
+			},
+			"minecraft:behavior.float_wander": {
+				"priority": 2,
+				"must_reach": true
+			},
+			"minecraft:behavior.float": {
+				"priority": 0
+			}
+		},
+		"events": {}
+	}
+}

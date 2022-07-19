@@ -21,6 +21,9 @@
 					"target": "self"
 				}
 			},
+			"minecraft:projectile": {
+				"projectile_entity": "exdrill:thrown_snail_slime"
+			},
 			"minecraft:use_animation": "eat",
 			"minecraft:use_duration": 1.6,
 			"minecraft:allow_off_hand": true,
@@ -31,7 +34,7 @@
 				"add_mob_effect": {
 					"amplifier": 0,
 					"effect": "nausea",
-					"duration": 100
+					"duration": 10
 				}
 			}
 		}

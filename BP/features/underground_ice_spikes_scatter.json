@@ -1,0 +1,20 @@
+{
+	"format_version": "1.18.0",
+	"minecraft:scatter_feature": {
+		"description": {
+			"identifier": "exdrill:underground_ice_spikes_scatter"
+		},
+		"iterations": 75,
+		"project_input_to_floor": true,
+		"coordinate_eval_order": "zxy",
+		"x": {
+			"extent": [2, 4],
+			"distribution": "gaussian"
+		},
+		"z": {
+			"extent": [2, 4],
+			"distribution": "gaussian"
+		},
+		"places_feature": "exdrill:underground_ice_spikes"
+	}
+}

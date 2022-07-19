@@ -1,0 +1,63 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.frostbellow",
+				"texture_width": 64,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 5, 0],
+					"cubes": [
+						{"origin": [-2.5, 3, -3], "size": [5, 7, 3], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [0, 5, 0],
+					"cubes": [
+						{"origin": [-1.5, 0, 0], "size": [3, 5, 2], "uv": [0, 10]}
+					]
+				},
+				{
+					"name": "leftWing",
+					"parent": "body",
+					"pivot": [1.5, 3, 1],
+					"cubes": [
+						{"origin": [1.5, 0, 1], "size": [8, 8, 0], "uv": [17, 13], "mirror": true}
+					]
+				},
+				{
+					"name": "leftWingTip",
+					"parent": "leftWing",
+					"pivot": [9.5, 3, 0],
+					"cubes": [
+						{"origin": [9.5, 0, 1], "size": [5, 9, 0], "uv": [17, 22], "mirror": true}
+					]
+				},
+				{
+					"name": "rightWing",
+					"parent": "body",
+					"pivot": [-1.5, 3, 1],
+					"cubes": [
+						{"origin": [-9.5, 0, 1], "size": [8, 8, 0], "uv": [17, 13]}
+					]
+				},
+				{
+					"name": "rightWingTip",
+					"parent": "rightWing",
+					"pivot": [-9.5, 3, 0],
+					"cubes": [
+						{"origin": [-14.5, 0, 1], "size": [5, 9, 0], "uv": [17, 22]}
+					]
+				}
+			]
+		}
+	]
+}

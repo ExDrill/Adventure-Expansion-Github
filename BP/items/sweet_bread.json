@@ -26,12 +26,6 @@
 		},
 		"events": {
 			"on_consume": {
-				"add_mob_effect": {
-					"effect": "regeneration",
-					"target": "self",
-					"amplifier": 4,
-					"duration": 0.15
-				}
 			}
 		}
 	}

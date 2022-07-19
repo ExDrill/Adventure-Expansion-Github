@@ -1,0 +1,29 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "exdrill:frostbellow",
+			"materials": {
+				"default": "allay"
+			},
+			"textures": {
+				"default": "textures/entity/frostbellow"
+			},
+			"geometry": {
+				"default": "geometry.frostbellow"
+			},
+			"animations": {
+				"flap": "animation.frostbellow.flap"
+			},
+			"scripts": {
+				"animate": [
+					"flap"
+				]
+			},
+			"render_controllers": [
+				"controller.render.default_emissive"
+			],
+			"spawn_egg": {}
+		}
+	}
+}

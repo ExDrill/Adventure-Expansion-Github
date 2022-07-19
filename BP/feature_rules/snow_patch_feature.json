@@ -1,0 +1,43 @@
+{
+	"format_version": "1.18.0",
+	"minecraft:feature_rules": {
+		"description": {
+			"identifier": "exdrill:snow_patch_feature",
+			"places_feature": "exdrill:snow_patch"
+		},
+		"conditions": {
+			"placement_pass": "after_underground_pass",
+			"minecraft:biome_filter": {
+				"all_of": [
+					{
+						"test": "has_biome_tag",
+						"value": "ice_plains"
+					},
+					{
+						"test": "has_biome_tag",
+						"value": "frozen"
+					},
+					{
+						"test": "has_biome_tag",
+						"value": "mutated"
+					}
+				]
+			}
+		},
+		"distribution": {
+			"iterations": 16,
+			"x": {
+				"extent": [ 0, 16 ],
+				"distribution": "uniform"
+			},
+			"y": {
+				"extent": [ -52, 50 ],
+				"distribution": "uniform"
+			},
+			"z": {
+				"extent": [ 0, 16 ],
+				"distribution": "uniform"
+			}
+		}
+	}
+}

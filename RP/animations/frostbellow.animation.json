@@ -1,0 +1,22 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.frostbellow.flap": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": [0, 0, 0]
+				},
+				"body": {
+					"rotation": [22.5, 0, 0]
+				},
+				"leftWing": {
+					"rotation": [0, "math.cos(query.anim_time*720 * 1.5)*50", 0]
+				},
+				"rightWing": {
+					"rotation": [0, "-math.cos(query.anim_time*720 * 1.5)*50", 0]
+				}
+			}
+		}
+	}
+}

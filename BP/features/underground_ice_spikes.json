@@ -1,0 +1,20 @@
+{
+	"format_version": "1.18.0",
+	"minecraft:growing_plant_feature": {
+		"description": {
+			"identifier": "exdrill:underground_ice_spikes"
+		},
+		"height_distribution": [
+			[{"range_min": 4, "range_max": 5}, 1],
+			[{"range_min": 6, "range_max": 7}, 2]
+		],
+		"allow_water": true,
+		"growth_direction": "UP",
+		"body_blocks": [
+			["packed_ice", 1]
+		],
+		"head_blocks": [
+			["packed_ice", 1]
+		]
+	}
+}

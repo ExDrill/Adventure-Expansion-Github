@@ -1,0 +1,11 @@
+{
+	"format_version": "1.18.0",
+	"minecraft:snap_to_surface_feature": {
+		"description": {
+			"identifier": "exdrill:underground_ice_spikes_snap_to_surface"
+		},
+		"feature_to_snap": "exdrill:underground_ice_spikes",
+		"vertical_search_range": 12,
+		"surface": "floor"
+	}
+}
