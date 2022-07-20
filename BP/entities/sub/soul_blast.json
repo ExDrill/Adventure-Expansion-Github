@@ -1,5 +1,5 @@
 {
-    "format_version": "1.17.0",
+    "format_version": "1.19.0",
     "minecraft:entity": {
         "description": {
             "identifier": "exdrill:soul_blast",
@@ -46,6 +46,7 @@
                     "spawn_items": {
                         "table": "loot_tables/entities/harvest_soul.json"
                     },
+                    "swing": true,
                     "on_interact": {
                         "event": "instant_despawn",
                         "target": "self",
