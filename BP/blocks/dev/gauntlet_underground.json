@@ -1,11 +1,11 @@
 {
-    "format_version": "1.16.100",
+    "format_version": "1.19.20",
     "minecraft:block": {
         "description": {
             "identifier": "dev_random:gauntlet_underground"
         },
         "components": {
-            "minecraft:destroy_time": 99999,
+            "minecraft:destructible_by_mining": false,
             "minecraft:on_interact": {
                 "event": "load_structure",
                 "target": "self"

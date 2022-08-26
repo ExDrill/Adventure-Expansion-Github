@@ -1,5 +1,5 @@
 {
-	"format_version": "1.19.20",
+	"format_version": "1.19.30",
 	"minecraft:block": {
 		"description": {
 			"identifier": "exdrill:chorus_bed"
@@ -11,9 +11,6 @@
 					"render_method": "alpha_test"
 				}
 			},
-			"minecraft:creative_category": {
-				"category": "nature"
-			},
 			"minecraft:placement_filter": {
 				"conditions": [
 					{
@@ -24,7 +21,7 @@
 					}
 				]
 			},
-			"minecraft:light_dampening": 0,
+			"minecraft:block_light_filter": 0,
 			"minecraft:light_emission": 1,
 			"minecraft:breathability": "air",
 			"minecraft:destructible_by_mining": {

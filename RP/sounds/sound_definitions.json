@@ -19,6 +19,20 @@
 				"sounds/mob/revenant/hurt3"
 			]
 		},
+		"mob.revenant.pop": {
+			"category": "hostile",
+			"max_distance": 12,
+			"sounds": [
+				"sounds/mob/revenant/pop"
+			]
+		},
+		"mob.revenant.lift": {
+			"category": "hostile",
+			"max_distance": 12,
+			"sounds": [
+				"sounds/mob/revenant/lift"
+			]
+		},
 		"mob.revenant.death": {
 			"category": "hostile",
 			"max_distance": 12,

@@ -42,6 +42,7 @@
             "minecraft:interact": {
                 "interactions": {
                     "use_item": true,
+                    "vibration": "entity_interact",
                     "interact_text": "action.interact.collect_soul",
                     "spawn_items": {
                         "table": "loot_tables/entities/harvest_soul.json"

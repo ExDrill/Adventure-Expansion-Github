@@ -4,36 +4,40 @@
 		"description": {
 			"identifier": "exdrill:revenant",
 			"materials": {
-				"default": "entity_emissive"
+				"default": "entity_alphatest"
 			},
 			"textures": {
-				"default": "textures/entity/revenant"
+				"ehh": "textures/entity/revenant/revenant_ehh",
+				"ahh": "textures/entity/revenant/revenant_ahh",
+				"ooo": "textures/entity/revenant/revenant_ooo"
 			},
 			"geometry": {
 				"default": "geometry.revenant"
 			},
 			"animations": {
-				"general": "animation.revenant.general",
+				"controller": "controller.animation.revenant",
+				"attack_controller": "controller.animation.revenant.attack",
+				"setup": "animation.revenant.setup",
 				"move": "animation.revenant.move",
 				"emerge": "animation.revenant.emerge",
-				"controller": "controller.animation.revenant",
-				"attack": "animation.skeleton.attack",
-				"grounded": "animation.revenant.grounded"
+				"invisible": "animation.revenant.invisible",
+				"attack": "animation.revenant.attack"
 			},
 			"scripts": {
 				"animate": [
 					"controller"
 				]
 			},
+			"particle_effects": {
+				"soul_sand_ash": "exdrill:soul_sand_ash"
+			},
 			"sound_effects": {
-				"emerge": "dig.soul_sand"
+				"pop": "mob.revenant.pop",
+				"lift": "mob.revenant.lift"
 			},
 			"render_controllers": [
-				"controller.render.default"
+				"controller.render.revenant"
 			],
-			"particle_effects": {
-				"soul_flame": "exdrill:soul_flame"
-			},
 			"spawn_egg": {
 				"texture": "adventure_expansion_spawn_egg",
 				"texture_index": 0

@@ -1,5 +1,5 @@
 {
-	"format_version": "1.17.0",
+	"format_version": "1.19.20",
 	"minecraft:entity": {
 		"description": {
 			"identifier": "exdrill:revenant",
@@ -7,6 +7,14 @@
 			"is_spawnable": true,
 			"animations": {
 				"indicator": "animation.revenant.indicator"
+			},
+			"properties": {
+				"exdrill:variant": {
+					"client_sync": true,
+					"type": "int",
+					"default": 0,
+					"range": [ 0, 2 ]
+				}
 			},
 			"scripts": {
 				"animate": [
@@ -69,6 +77,14 @@
 				}
 			},
 			"start_emerging": {
+				"minecraft:timer": {
+					"looping": false,
+					"time": 1.9,
+					"time_down_event": {
+						"event": "finished_emerging",
+						"target": "self"
+					}
+				},
 				"minecraft:variant": {
 					"value": 1
 				},
@@ -78,14 +94,6 @@
 				"minecraft:collision_box": {
 					"height": 0,
 					"width": 0
-				},
-				"minecraft:timer": {
-					"looping": true,
-					"time": 3.2,
-					"time_down_event": {
-						"event": "finished_emerging",
-						"target": "self"
-					}
 				}
 			},
 			"finished_emerging": {
@@ -117,32 +125,22 @@
 					"width": 0.4
 				},
 				"minecraft:pushable": {},
-				"minecraft:navigation.hover": {
-					"can_path_over_water": true,
-					"can_sink": false,
-					"can_pass_doors": false,
-					"can_path_from_air": true,
-					"avoid_water": true,
-					"avoid_damage_blocks": true,
-					"avoid_sun": false
+				"minecraft:movement.basic": {},
+				"minecraft:navigation.walk": {},
+				"minecraft:jump.static": {},
+				"minecraft:behavior.random_stroll": {
+					"interval": 30,
+					"priority": 4,
+					"speed_multiplier": 1,
+					"xz_dist": 8,
+					"y_dist": 3
 				},
 				"minecraft:knockback_resistance": {
 					"value": 0.5
 				},
-				"minecraft:movement.hover": {},
-				"minecraft:behavior.random_hover": {
-					"priority": 2,
-					"xz_dist": 20,
-					"y_dist": 8,
-					"y_offset": -1,
-					"interval": 1,
-					"hover_height": [
-						1,
-						4
-					]
-				},
 				"minecraft:behavior.melee_attack": {
-					"priority": 0
+					"priority": 0,
+					"reach_multiplier": 0.7
 				}
 			}
 		},
@@ -164,14 +162,14 @@
 			},
 			"minecraft:physics": {},
 			"minecraft:attack": {
-				"damage": 7
+				"damage": 4
 			},
 			"minecraft:nameable": {},
 			"minecraft:movement": {
-				"value": 0.2
+				"value": 0.25
 			},
-			"minecraft:flying_speed": {
-				"value": 0.2
+			"minecraft:ground_offset": {
+				"value": 1
 			},
 			"minecraft:damage_sensor": {
 				"triggers": [
@@ -250,6 +248,11 @@
 							"subject": "other",
 							"domain": "hand",
 							"value": "exdrill:revenant_spawn_egg"
+						}
+					},
+					{
+						"set_property": {
+							"exdrill:variant": "math.random_integer(0, 2)"
 						}
 					}
 				]

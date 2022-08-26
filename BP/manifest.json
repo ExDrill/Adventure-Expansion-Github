@@ -6,10 +6,10 @@
 		],
 		"generated_with": {
 			"bridge": [
-				"2.3.0"
+				"2.2.13"
 			],
 			"dash": [
-				"0.8.29"
+				"0.8.18"
 			]
 		}
 	},
@@ -43,29 +43,21 @@
 			"language": "javascript",
 			"uuid": "26356a07-695f-4e75-a77e-c6cd3c8cac1a",
 			"version": [
+				1,
 				0,
-				0,
-				1
+				0
 			],
 			"entry": "scripts/Main.js"
 		}
 	],
 	"dependencies": [
 		{
-			"uuid": "b26a4d4c-afdf-4690-88f8-931846312678",
-			"version": [
-				0,
-				1,
-				0
-			]
+			"module_name": "mojang-minecraft",
+			"version": "1.0.0-beta"
 		},
 		{
-			"uuid": "6f4b6893-1bb6-42fd-b458-7fa3d0c89616",
-			"version": [
-				0,
-				1,
-				0
-			]
+			"module_name": "mojang-gametest",
+			"version": "1.0.0-beta"
 		},
 		{
 			"uuid": "afa80316-3c51-498e-9b13-d6cbe827b03d",

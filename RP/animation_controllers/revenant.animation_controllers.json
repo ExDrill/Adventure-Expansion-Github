@@ -19,28 +19,14 @@
 			"states": {
 				"default": {
 					"animations": [
-						"general",
-						{
-							"move": "query.modified_move_speed * 2"
-						},
-						"attack"
+						"setup",
+						"attack_controller",
+						"move"
 					],
 					"particle_effects": [
 						{
-							"effect": "soul_flame",
-							"locator": "flames0"
-						},
-						{
-							"effect": "soul_flame",
-							"locator": "flames1"
-						},
-						{
-							"effect": "soul_flame",
-							"locator": "flames2"
-						},
-						{
-							"effect": "soul_flame",
-							"locator": "flames3"
+							"locator": "locator",
+							"effect": "soul_sand_ash"
 						}
 					]
 				},
@@ -52,11 +38,12 @@
 						{
 							"default": "query.variant == 2"
 						}
-					]
+					],
+					"blend_transition": true
 				},
 				"idle": {
 					"animations": [
-						"grounded"
+						"invisible"
 					],
 					"transitions": [
 						{
@@ -64,6 +51,28 @@
 						},
 						{
 							"default": "query.variant == 2"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.revenant.attack": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"attacking": "variable.attack_time > 0.0"
+						}
+					]
+				},
+				"attacking": {
+					"animations": [
+						"attack"
+					],
+					"transitions": [
+						{
+							"default": "variable.attack_time <= 0.0"
 						}
 					]
 				}

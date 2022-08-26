@@ -17,6 +17,10 @@ world.events.tick.subscribe(tick => {
 
         if (player.getTags().includes('bootsOfGrace')) {
 
+
+            const blockBelowPlayer = dimension.getBlock(new BlockLocation(player.location.x, player.location.y, player.location.z))
+            
+
             const blockBelowPlayer1 = dimension.getBlock(new BlockLocation(player.location.x, player.location.y - 1, player.location.z))
             const blockBelowPlayer2 = dimension.getBlock(new BlockLocation(player.location.x, player.location.y - 2, player.location.z))
             const blockBelowPlayer3 = dimension.getBlock(new BlockLocation(player.location.x, player.location.y - 3, player.location.z))

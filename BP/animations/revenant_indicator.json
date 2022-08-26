@@ -5,7 +5,7 @@
 			"loop": true,
 			"timeline": {
 				"0.0": [
-					"/particle minecraft:soul_particle ~ ~ ~"
+					"/particle exdrill:soul ~ ~ ~"
 				]
 			},
 			"animation_length": 2.5

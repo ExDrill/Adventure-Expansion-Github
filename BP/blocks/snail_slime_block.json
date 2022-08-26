@@ -1,5 +1,5 @@
 {
-	"format_version": "1.19.10",
+	"format_version": "1.19.30",
 	"minecraft:block": {
 		"description": {
 			"identifier": "exdrill:snail_slime_block"
@@ -21,7 +21,7 @@
 			"minecraft:geometry": "geometry.snail_slime",
 			"minecraft:collision_box": false,
 			"minecraft:breathability": "air",
-			"minecraft:light_dampening": 1,
+			"minecraft:block_light_filter": 0,
 			"minecraft:selection_box": {
 				"origin": [ -6, 0, -6 ],
 				"size": [ 12, 2, 12 ]

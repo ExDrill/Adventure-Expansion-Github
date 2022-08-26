@@ -1,5 +1,5 @@
 {
-	"format_version": "1.19.20",
+	"format_version": "1.19.30",
 	"minecraft:block": {
 		"description": {
 			"identifier": "exdrill:stalwart_rock_block"
@@ -7,9 +7,6 @@
 		"components": {
 			"minecraft:destructible_by_mining": {
 				"seconds_to_destroy": 1
-			},
-			"minecraft:creative_category": {
-				"category": "construction"
 			},
 			"tag:exdrill:solid_block": {},
 			"tag:stone": {},

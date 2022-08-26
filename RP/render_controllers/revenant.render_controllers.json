@@ -1,0 +1,20 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.revenant": {
+			"geometry": "Geometry.default",
+			"materials": [ { "*": "Material.default" } ],
+			"textures": [ "Array.variants[query.property('exdrill:variant')]" ],
+			"arrays": {
+				"textures": {
+					"Array.variants": [
+						"Texture.ehh",
+						"Texture.ahh",
+						"Texture.ooo"
+					]
+				}
+			},
+			"ignore_lighting": true
+		}
+	}
+}
